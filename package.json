@@ -1,0 +1,25 @@
+{
+  "name": "rollcannon",
+  "version": "1.0.0",
+  "description": "COMP397 Semester Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asaddc/RollCannon.git"
+  },
+  "author": "Asad Mahmood, Brandon Ragnauth, Peitong Liu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asaddc/RollCannon/issues"
+  },
+  "homepage": "https://github.com/asaddc/RollCannon#readme",
+  "dependencies": {
+    "@types/createjs": "0.0.29",
+    "createjs": "^1.0.1",
+    "lite-server": "^2.5.4",
+    "typescript": "^3.9.6"
+  }
+}

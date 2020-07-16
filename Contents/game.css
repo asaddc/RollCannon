@@ -1,3 +1,7 @@
+body {
+  background-color: #3d0b0b;
+}
+
 canvas {
   padding-left: 0;
   padding-right: 0;
@@ -5,4 +9,15 @@ canvas {
   margin-right: auto;
   display: block;
   background-color: #000000;
+}
+
+.center-fit {
+  max-width: 100%;
+  max-height: 100vh;
+  margin:auto;
+}
+
+.game-header{
+  display: grid;
+  padding-bottom: 10px;
 }

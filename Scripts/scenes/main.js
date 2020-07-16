@@ -22,11 +22,14 @@ var scenes;
             return _this;
         }
         MainMenuScene.prototype.Start = function () {
-            this.background = new objects.Background(this.assetManager);
+            // this.background = new objects.Background(this.assetManager);
+            this.toiletPaper = new objects.ToiletPaper(this.assetManager, 300, 200);
             this.Main();
         };
         MainMenuScene.prototype.Update = function () { };
-        MainMenuScene.prototype.Main = function () { };
+        MainMenuScene.prototype.Main = function () {
+            this.addChild(this.toiletPaper);
+        };
         return MainMenuScene;
     }(objects.Scene));
     scenes.MainMenuScene = MainMenuScene;

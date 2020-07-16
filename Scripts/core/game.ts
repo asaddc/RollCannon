@@ -11,7 +11,7 @@
 
   assetManifest = [{ id: "toiletPaper", src: "./Assets/toilet-paper.png" }];
 
-  function Init() {
+  function Init(): void {
     console.log("TEST INIT");
 
     assetManager = new createjs.LoadQueue();
@@ -20,30 +20,31 @@
     assetManager.on("complete", Start, this);
   }
 
-  function Start() {
+  function Start(): void {
     stage = new createjs.Stage(canvas);
     stage.enableMouseOver(20);
+
+    createjs.Ticker.framerate = 60;
+    createjs.Ticker.on("tick", Update);
 
     // State Machine
     objects.Game.stage = stage;
     objects.Game.currentScene = config.Scene.MAIN_MENU;
     currentState = config.Scene.MAIN_MENU;
-
-    createjs.Ticker.framerate = 60;
-    createjs.Ticker.on("tick", Update);
   }
 
-  function Update() {
+  function Update(): void {
     if (currentState != objects.Game.currentScene) {
       console.log("Changing scenes to " + objects.Game.currentScene);
       Main();
     }
+    console.log("update");
 
     currentScene.Update();
     stage.update;
   }
 
-  function Main() {
+  function Main(): void {
     switch (objects.Game.currentScene) {
       case config.Scene.MAIN_MENU:
         stage.removeAllChildren();

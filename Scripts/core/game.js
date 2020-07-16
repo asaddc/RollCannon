@@ -17,18 +17,19 @@
     function Start() {
         stage = new createjs.Stage(canvas);
         stage.enableMouseOver(20);
+        createjs.Ticker.framerate = 60;
+        createjs.Ticker.on("tick", Update);
         // State Machine
         objects.Game.stage = stage;
         objects.Game.currentScene = config.Scene.MAIN_MENU;
         currentState = config.Scene.MAIN_MENU;
-        createjs.Ticker.framerate = 60;
-        createjs.Ticker.on("tick", Update);
     }
     function Update() {
         if (currentState != objects.Game.currentScene) {
             console.log("Changing scenes to " + objects.Game.currentScene);
             Main();
         }
+        console.log("update");
         currentScene.Update();
         stage.update;
     }

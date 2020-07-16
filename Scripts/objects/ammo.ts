@@ -1,14 +1,14 @@
 module objects {
-  export class ToiletPaper extends Ammo {
+  export class Ammo extends createjs.Bitmap {
     // Variables
     // Constructor
     constructor(
       assetManager: createjs.LoadQueue,
       x: number = 0,
       y: number = 0,
-      assetId: string = "toiletPaper"
+      assetId: string
     ) {
-      super(assetManager, x, y, assetId);
+      super(assetManager.getResult(assetId));
 
       // Default position
       this.x = x;

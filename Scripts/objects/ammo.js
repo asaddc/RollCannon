@@ -13,22 +13,21 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var ToiletPaper = /** @class */ (function (_super) {
-        __extends(ToiletPaper, _super);
+    var Ammo = /** @class */ (function (_super) {
+        __extends(Ammo, _super);
         // Variables
         // Constructor
-        function ToiletPaper(assetManager, x, y, assetId) {
+        function Ammo(assetManager, x, y, assetId) {
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
-            if (assetId === void 0) { assetId = "toiletPaper"; }
-            var _this = _super.call(this, assetManager, x, y, assetId) || this;
+            var _this = _super.call(this, assetManager.getResult(assetId)) || this;
             // Default position
             _this.x = x;
             _this.y = y;
             return _this;
         }
-        return ToiletPaper;
-    }(objects.Ammo));
-    objects.ToiletPaper = ToiletPaper;
+        return Ammo;
+    }(createjs.Bitmap));
+    objects.Ammo = Ammo;
 })(objects || (objects = {}));
-//# sourceMappingURL=toiletPaper.js.map
+//# sourceMappingURL=ammo.js.map

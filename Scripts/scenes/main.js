@@ -15,6 +15,7 @@ var scenes;
 (function (scenes) {
     var MainMenuScene = /** @class */ (function (_super) {
         __extends(MainMenuScene, _super);
+        // private toiletPaper: objects.ToiletPaper;
         // Constructor
         function MainMenuScene(assetManager) {
             var _this = _super.call(this, assetManager) || this;
@@ -23,12 +24,12 @@ var scenes;
         }
         MainMenuScene.prototype.Start = function () {
             // this.background = new objects.Background(this.assetManager);
-            this.toiletPaper = new objects.ToiletPaper(this.assetManager, 300, 200);
+            // this.toiletPaper = new objects.ToiletPaper(this.assetManager, 300, 200);
             this.Main();
         };
         MainMenuScene.prototype.Update = function () { };
         MainMenuScene.prototype.Main = function () {
-            this.addChild(this.toiletPaper);
+            // this.addChild(this.toiletPaper);
         };
         return MainMenuScene;
     }(objects.Scene));

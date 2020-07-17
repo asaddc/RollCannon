@@ -6,7 +6,9 @@
     var assetManifest;
     var currentScene;
     var currentState;
-    assetManifest = [{ id: "toiletPaper", src: "./Assets/toilet-paper.png" }];
+    assetManifest = [
+        { id: "toiletPaper", src: "./Assets/toilet-paper.png" }
+    ];
     function Init() {
         console.log("TEST INIT");
         assetManager = new createjs.LoadQueue();
@@ -15,21 +17,23 @@
         assetManager.on("complete", Start, this);
     }
     function Start() {
+        console.log("Starting Application...");
+        // Initialize CreateJS
         stage = new createjs.Stage(canvas);
         stage.enableMouseOver(20);
         createjs.Ticker.framerate = 60;
         createjs.Ticker.on("tick", Update);
-        // State Machine
+        // Set up default game states -- State Machine
         objects.Game.stage = stage;
         objects.Game.currentScene = config.Scene.MAIN_MENU;
         currentState = config.Scene.MAIN_MENU;
+        Main();
     }
     function Update() {
         if (currentState != objects.Game.currentScene) {
             console.log("Changing scenes to " + objects.Game.currentScene);
             Main();
         }
-        console.log("update");
         currentScene.Update();
         stage.update;
     }
@@ -51,6 +55,7 @@
                 stage.addChild(currentScene);
                 break;
         }
+        currentState = objects.Game.currentScene;
     }
     window.onload = Init;
 })();

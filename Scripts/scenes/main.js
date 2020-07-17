@@ -23,12 +23,16 @@ var scenes;
         }
         MainMenuScene.prototype.Start = function () {
             // this.background = new objects.Background(this.assetManager);
-            this.toiletPaper = new objects.ToiletPaper(this.assetManager, 300, 200);
+            console.log("start");
+            // this.toiletPaper = new objects.ToiletPaper(this.assetManager, 300, 200);
+            this.background = new objects.Background(this.assetManager);
             this.Main();
         };
         MainMenuScene.prototype.Update = function () { };
         MainMenuScene.prototype.Main = function () {
-            this.addChild(this.toiletPaper);
+            console.log(this.background);
+            this.addChild(this.background);
+            // this.addChild(this.toiletPaper);
         };
         return MainMenuScene;
     }(objects.Scene));

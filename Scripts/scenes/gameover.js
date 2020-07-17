@@ -23,6 +23,7 @@ var scenes;
             return _this;
         }
         GameOverScene.prototype.Start = function () {
+            console.log("game over");
             this.Main();
         };
         GameOverScene.prototype.Update = function () { };

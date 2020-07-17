@@ -1,5 +1,5 @@
 body {
-  /* background-color: #3d0b0b; */
+  background-color: #3d0b0b;
 }
 
 canvas {
@@ -8,7 +8,7 @@ canvas {
   margin-left: auto;
   margin-right: auto;
   display: block;
-  /* background-color: #000000; */
+  background-color: #000000;
   border: 1px solid #000;
 }
 

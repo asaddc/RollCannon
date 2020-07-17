@@ -10,17 +10,14 @@ module scenes {
     }
 
     public Start(): void {
-      // this.background = new objects.Background(this.assetManager);
-      console.log("start");
-      // this.toiletPaper = new objects.ToiletPaper(this.assetManager, 300, 200);
       this.background = new objects.Background(this.assetManager);
+      this.toiletPaper = new objects.ToiletPaper(this.assetManager, 300, 200);
       this.Main();
     }
+    
     public Update(): void {}
     public Main(): void {
-      console.log(this.background);
       this.addChild(this.background);
-      // this.addChild(this.toiletPaper);
     }
   }
 }

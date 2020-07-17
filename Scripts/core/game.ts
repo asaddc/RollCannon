@@ -9,13 +9,13 @@
   let currentScene: objects.Scene;
   let currentState: number;
 
-  function Init(): void {
-    console.log("TEST INIT");
+  function Init() {
+    console.log("Initializing...");
 
     assetManifest = [
-      { id: "background", src: "../Assets/toilet-paper.jpg" },
-      { id: "supermarketBG", src: "../Assets/supermarketBG.jpg" },
-      { id: "redPlayBtn", src: "../Assets/redPlayBtn.jpg" },
+      { id: "background", src:"./Assets/toilet-paper.jpg" },
+      { id: "supermarketBG", src:"./Assets/supermarketBG.jpg" },
+      { id: "redPlayBtn", src:"./Assets/redPlayBtn.jpg" }
     ];
 
     assetManager = new createjs.LoadQueue();
@@ -24,7 +24,7 @@
     assetManager.on("complete", Start, this);
   }
 
-  function Start(): void {
+  function Start() {
     console.log("Starting Application...");
 
     // Initialize CreateJS
@@ -35,22 +35,22 @@
     createjs.Ticker.on("tick", Update);
 
     // Set up default game states -- State Machine
-    // objects.Game.stage = stage;
+    objects.Game.stage = stage;
     objects.Game.currentScene = config.Scene.MAIN_MENU;
     currentState = config.Scene.MAIN_MENU;
     Main();
   }
 
-  function Update(): void {
+  function Update() {
     if (currentState != objects.Game.currentScene) {
       console.log("Changing scenes to " + objects.Game.currentScene);
       Main();
     }
     currentScene.Update();
-    stage.update;
+    stage.update();
   }
 
-  function Main(): void {
+  function Main() {
     switch (objects.Game.currentScene) {
       case config.Scene.MAIN_MENU:
         stage.removeAllChildren();

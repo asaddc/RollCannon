@@ -24,10 +24,16 @@ var scenes;
         PlayScene.prototype.Start = function () {
             console.log("play");
             this.background = new objects.Background(this.assetManager);
+            this.sidebar = new objects.Sidebar();
             this.Main();
         };
         PlayScene.prototype.Update = function () { };
-        PlayScene.prototype.Main = function () { };
+        PlayScene.prototype.Main = function () {
+            this.addChild(this.background);
+            this.addChild(this.sidebar.levelLabel);
+            this.addChild(this.sidebar.scoreLabel);
+            this.addChild(this.sidebar.livesLabel);
+        };
         return PlayScene;
     }(objects.Scene));
     scenes.PlayScene = PlayScene;

@@ -26,6 +26,7 @@ var objects;
             _this.y = y;
             createjs.Sound.registerSound("../Assets/waterdrop.mp3", "waterdrop");
             // Set up event handlers
+            _this.cursor = "pointer";
             _this.on("mouseover", _this.MouseOver);
             _this.on("mouseout", _this.MouseOut);
             return _this;

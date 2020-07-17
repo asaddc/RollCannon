@@ -20,6 +20,7 @@ var objects;
         function Ammo(assetManager, x, y, assetId) {
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
+            if (assetId === void 0) { assetId = ""; }
             var _this = _super.call(this, assetManager.getResult(assetId)) || this;
             // Default position
             _this.x = x;

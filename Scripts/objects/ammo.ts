@@ -6,7 +6,7 @@ module objects {
       assetManager: createjs.LoadQueue,
       x: number = 0,
       y: number = 0,
-      assetId: string
+      assetId:string=""
     ) {
       super(assetManager.getResult(assetId));
 

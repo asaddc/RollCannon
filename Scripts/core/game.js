@@ -8,24 +8,27 @@
     var currentState;
     function Init() {
         console.log("TEST INIT");
-        // assetManifest = [
-        //   { id: "toiletPaper", src: "./Assets/toilet-paper.jpg" },
-        //   { id: "supermarketBG", src: "./Assets/supermarketBG.jpg" },
-        // ];
+        assetManifest = [
+            { id: "toiletPaper", src: "./Assets/toilet-paper.jpg" },
+            { id: "supermarketBG", src: "./Assets/supermarketBG.jpg" },
+        ];
         assetManager = new createjs.LoadQueue();
         assetManager.installPlugin(createjs.Sound);
         assetManager.loadManifest(assetManifest);
         assetManager.on("complete", Start, this);
     }
     function Start() {
+        console.log("Starting Application...");
+        // Initialize CreateJS
         stage = new createjs.Stage(canvas);
         stage.enableMouseOver(20);
         createjs.Ticker.framerate = 60;
         createjs.Ticker.on("tick", Update);
-        // State Machine
+        // Set up default game states -- State Machine
         objects.Game.stage = stage;
         objects.Game.currentScene = config.Scene.MAIN_MENU;
         currentState = config.Scene.MAIN_MENU;
+        Main();
     }
     function Update() {
         if (currentState != objects.Game.currentScene) {

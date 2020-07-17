@@ -10,9 +10,7 @@ module objects {
     ) {
       super(assetManager, x, y, assetId);
 
-      // Default position
-      this.x = x;
-      this.y = y;
+      /// do something unique for TP
     }
   }
 }

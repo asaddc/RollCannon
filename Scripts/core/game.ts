@@ -9,10 +9,13 @@
   let currentScene: objects.Scene;
   let currentState: number;
 
-  assetManifest = [{ id: "toiletPaper", src: "./Assets/toilet-paper.png" }];
-
   function Init(): void {
     console.log("TEST INIT");
+
+    // assetManifest = [
+    //   { id: "toiletPaper", src: "./Assets/toilet-paper.jpg" },
+    //   { id: "supermarketBG", src: "./Assets/supermarketBG.jpg" },
+    // ];
 
     assetManager = new createjs.LoadQueue();
     assetManager.installPlugin(createjs.Sound);
@@ -38,8 +41,6 @@
       console.log("Changing scenes to " + objects.Game.currentScene);
       Main();
     }
-    console.log("update");
-
     currentScene.Update();
     stage.update;
   }
@@ -62,6 +63,7 @@
         stage.addChild(currentScene);
         break;
     }
+    currentState = objects.Game.currentScene;
   }
   window.onload = Init;
 })();

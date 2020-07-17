@@ -6,11 +6,13 @@
     var assetManifest;
     var currentScene;
     var currentState;
-    assetManifest = [
-        { id: "toiletPaper", src: "./Assets/toilet-paper.png" }
-    ];
     function Init() {
         console.log("TEST INIT");
+        assetManifest = [
+            { id: "background", src: "../Assets/toilet-paper.jpg" },
+            { id: "supermarketBG", src: "../Assets/supermarketBG.jpg" },
+            { id: "redPlayBtn", src: "../Assets/redPlayBtn.jpg" },
+        ];
         assetManager = new createjs.LoadQueue();
         assetManager.installPlugin(createjs.Sound);
         assetManager.loadManifest(assetManifest);
@@ -21,10 +23,10 @@
         // Initialize CreateJS
         stage = new createjs.Stage(canvas);
         stage.enableMouseOver(20);
-        createjs.Ticker.framerate = 60;
+        createjs.Ticker.framerate = 120;
         createjs.Ticker.on("tick", Update);
         // Set up default game states -- State Machine
-        objects.Game.stage = stage;
+        // objects.Game.stage = stage;
         objects.Game.currentScene = config.Scene.MAIN_MENU;
         currentState = config.Scene.MAIN_MENU;
         Main();

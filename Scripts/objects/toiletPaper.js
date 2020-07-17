@@ -21,11 +21,8 @@ var objects;
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             if (assetId === void 0) { assetId = "toiletPaper"; }
-            var _this = _super.call(this, assetManager, x, y, assetId) || this;
-            // Default position
-            _this.x = x;
-            _this.y = y;
-            return _this;
+            return _super.call(this, assetManager, x, y, assetId) || this;
+            /// do something unique for TP
         }
         return ToiletPaper;
     }(objects.Ammo));

@@ -22,6 +22,7 @@ var scenes;
             return _this;
         }
         PlayScene.prototype.Start = function () {
+            console.log("play");
             this.background = new objects.Background(this.assetManager);
             this.Main();
         };

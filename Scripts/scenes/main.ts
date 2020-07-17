@@ -11,12 +11,16 @@ module scenes {
 
     public Start(): void {
       // this.background = new objects.Background(this.assetManager);
-      this.toiletPaper = new objects.ToiletPaper(this.assetManager, 300, 200);
+      console.log("start");
+      // this.toiletPaper = new objects.ToiletPaper(this.assetManager, 300, 200);
+      this.background = new objects.Background(this.assetManager);
       this.Main();
     }
     public Update(): void {}
     public Main(): void {
-      this.addChild(this.toiletPaper);
+      console.log(this.background);
+      this.addChild(this.background);
+      // this.addChild(this.toiletPaper);
     }
   }
 }

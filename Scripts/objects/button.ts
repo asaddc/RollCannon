@@ -13,9 +13,6 @@ module objects {
       // Default position
       this.x = x;
       this.y = y;
-
-      createjs.Sound.registerSound("../Assets/waterdrop.mp3", "waterdrop");
-
       // Set up event handlers
       this.cursor = "pointer";
       this.on("mouseover", this.MouseOver);
@@ -25,7 +22,6 @@ module objects {
     // Event Handlers
     private MouseOver(): void {
       this.alpha = 0.85;
-      createjs.Sound.play("waterdrop");
     }
 
     private MouseOut(): void {

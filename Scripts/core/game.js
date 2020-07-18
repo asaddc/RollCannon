@@ -9,10 +9,10 @@
     function Init() {
         console.log("Initializing...");
         assetManifest = [
-            { id: "background", src: "./Assets/toilet-paper.jpg" },
             { id: "supermarketBG", src: "./Assets/supermarketBG.jpg" },
             { id: "redPlayBtn", src: "./Assets/redPlayBtn.jpg" },
-            { id: "toiletpaper", src: "./Assets/toiletpaper.png" }
+            { id: "toiletpaper", src: "./Assets/toiletpaper.png" },
+            { id: "playerGunLeft", src: "./Assets/playerSpriteGunLeft.png" },
         ];
         assetManager = new createjs.LoadQueue();
         assetManager.installPlugin(createjs.Sound);

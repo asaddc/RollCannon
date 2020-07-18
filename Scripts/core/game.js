@@ -7,11 +7,12 @@
     var currentScene;
     var currentState;
     function Init() {
-        console.log("TEST INIT");
+        console.log("Initializing...");
         assetManifest = [
-            { id: "background", src: "../Assets/toilet-paper.jpg" },
-            { id: "supermarketBG", src: "../Assets/supermarketBG.jpg" },
-            { id: "redPlayBtn", src: "../Assets/redPlayBtn.jpg" },
+            { id: "background", src: "./Assets/toilet-paper.jpg" },
+            { id: "supermarketBG", src: "./Assets/supermarketBG.jpg" },
+            { id: "redPlayBtn", src: "./Assets/redPlayBtn.jpg" },
+            { id: "toiletpaper", src: "./Assets/toiletpaper.png" }
         ];
         assetManager = new createjs.LoadQueue();
         assetManager.installPlugin(createjs.Sound);
@@ -26,7 +27,7 @@
         createjs.Ticker.framerate = 120;
         createjs.Ticker.on("tick", Update);
         // Set up default game states -- State Machine
-        // objects.Game.stage = stage;
+        objects.Game.stage = stage;
         objects.Game.currentScene = config.Scene.MAIN_MENU;
         currentState = config.Scene.MAIN_MENU;
         Main();
@@ -37,7 +38,7 @@
             Main();
         }
         currentScene.Update();
-        stage.update;
+        stage.update();
     }
     function Main() {
         switch (objects.Game.currentScene) {

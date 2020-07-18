@@ -21,6 +21,7 @@ var objects;
             _this.assetManager = assetManager;
             return _this;
         }
+        // Methods
         Scene.prototype.Start = function () { };
         Scene.prototype.Update = function () { };
         Scene.prototype.Main = function () { };

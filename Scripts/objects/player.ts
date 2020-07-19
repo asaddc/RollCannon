@@ -2,10 +2,13 @@ module objects {
   export class Player extends objects.GameObject {
     // Variables
     // Constructor
+    private playerFacingLeft: boolean;
+    private assetManager;
     constructor(assetManager: createjs.LoadQueue) {
       super(assetManager, "playerGunLeft");
+      this.assetManager = assetManager;
       this.on("tick", this.Update);
-
+      this.playerFacingLeft = true;
       this.Start();
     }
 
@@ -19,11 +22,31 @@ module objects {
     }
     public Reset(): void { }
     public Move(): void {
+
+      this.ChooseCorrectPlayerOrientation();
+
+      console.log('PLAYER OBJ', this);
       this.x = objects.Game.stage.mouseX;
       this.y = objects.Game.stage.mouseY;
+
+
     }
 
-    private addShoppingCartBoundary() {
+
+    private ChooseCorrectPlayerOrientation() {
+      // Checks if the user moved to the right, then display the right facing player image
+      // else show the left facing image
+
+      if (objects.Game.stage.mouseX > this.x) {
+        this.playerFacingLeft = false;
+        this.image = this.assetManager.getResult("playerGunRight");
+      } else if (objects.Game.stage.mouseX < this.x) {
+        this.playerFacingLeft = true;
+        this.image = this.assetManager.getResult("playerGunLeft");
+      }
+    }
+
+    private AddShoppingCartBoundary() {
       // SHOPPING CART
       if (this.x > this.halfW + 239 && this.x < this.halfW + 300 && this.y < this.halfH + 100) {
         // I have collided with the left side of the shopping cart
@@ -41,7 +64,7 @@ module objects {
       }
     }
 
-    private addAppleCounterBoundary() {
+    private AddAppleCounterBoundary() {
       // APPLE COUNTER
       if (this.x >= this.halfW + 70 && this.x <= this.halfW + 160 && this.y < this.halfH + 120) {
         // I have collided with the top of the apple counter 
@@ -63,7 +86,7 @@ module objects {
       }
     }
 
-    private addTopRightProduceBoundary() {
+    private AddTopRightProduceBoundary() {
       // TOP RIGHT PRODUCE
       if (this.x >= 420 - this.halfW && this.y < 350 - this.halfH) {
         // I have collided with the top-right produce boxes
@@ -71,7 +94,7 @@ module objects {
       }
     }
 
-    private addProduceProtrusionBoundary() {
+    private AddProduceProtrusionBoundary() {
       // PRODUCE PROTRUSION
       if (this.x >= 275 - this.halfW && this.y > this.halfH + 200 && this.y < this.halfH + 240) {
         // I have collided with the protruding produce from the top
@@ -89,7 +112,7 @@ module objects {
       }
     }
 
-    private addBottomProductsBoundary() {
+    private AddBottomProductsBoundary() {
       // BOTTOM PRODUCTS
       if (this.x >= this.halfW + 200 && this.y >= 540 - this.halfH) {
         this.y = 540 - this.halfH;
@@ -112,7 +135,7 @@ module objects {
       }
     }
 
-    private addEdgesBoundary() {
+    private AddEdgesBoundary() {
       // Right boundary
       if (this.x >= 495 - this.halfW) {
         // I have collided with the right boundary
@@ -135,13 +158,12 @@ module objects {
       }
     }
     public CheckBound(): void {
-
-      this.addEdgesBoundary();
-      this.addShoppingCartBoundary();
-      this.addAppleCounterBoundary();
-      this.addTopRightProduceBoundary();
-      this.addProduceProtrusionBoundary();
-      this.addBottomProductsBoundary();
+      this.AddEdgesBoundary();
+      this.AddShoppingCartBoundary();
+      this.AddAppleCounterBoundary();
+      this.AddTopRightProduceBoundary();
+      this.AddProduceProtrusionBoundary();
+      this.AddBottomProductsBoundary();
     }
   }
 }

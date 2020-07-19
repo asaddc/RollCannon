@@ -22,21 +22,16 @@ module objects {
     }
     public Reset(): void { }
     public Move(): void {
-
       this.ChooseCorrectPlayerOrientation();
 
-      console.log('PLAYER OBJ', this);
       this.x = objects.Game.stage.mouseX;
       this.y = objects.Game.stage.mouseY;
-
-
     }
 
 
     private ChooseCorrectPlayerOrientation() {
       // Checks if the user moved to the right, then display the right facing player image
       // else show the left facing image
-
       if (objects.Game.stage.mouseX > this.x) {
         this.playerFacingLeft = false;
         this.image = this.assetManager.getResult("playerGunRight");

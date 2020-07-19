@@ -34,7 +34,6 @@ var objects;
         Player.prototype.Reset = function () { };
         Player.prototype.Move = function () {
             this.ChooseCorrectPlayerOrientation();
-            console.log('PLAYER OBJ', this);
             this.x = objects.Game.stage.mouseX;
             this.y = objects.Game.stage.mouseY;
         };

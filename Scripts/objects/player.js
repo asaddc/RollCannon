@@ -15,12 +15,11 @@ var objects;
 (function (objects) {
     var Player = /** @class */ (function (_super) {
         __extends(Player, _super);
-        // Variables
-        // Constructor
         function Player(assetManager) {
             var _this = _super.call(this, assetManager, "playerGunLeft") || this;
+            _this.assetManager = assetManager;
             _this.on("tick", _this.Update);
-            //   this.addEventListener("click", this.Move);
+            _this.playerFacingLeft = true;
             _this.Start();
             return _this;
         }
@@ -34,10 +33,98 @@ var objects;
         };
         Player.prototype.Reset = function () { };
         Player.prototype.Move = function () {
+            this.ChooseCorrectPlayerOrientation();
             this.x = objects.Game.stage.mouseX;
             this.y = objects.Game.stage.mouseY;
         };
-        Player.prototype.CheckBound = function () {
+        Player.prototype.ChooseCorrectPlayerOrientation = function () {
+            // Checks if the user moved to the right, then display the right facing player image
+            // else show the left facing image
+            if (objects.Game.stage.mouseX > this.x) {
+                this.playerFacingLeft = false;
+                this.image = this.assetManager.getResult("playerGunRight");
+            }
+            else if (objects.Game.stage.mouseX < this.x) {
+                this.playerFacingLeft = true;
+                this.image = this.assetManager.getResult("playerGunLeft");
+            }
+        };
+        Player.prototype.AddShoppingCartBoundary = function () {
+            // SHOPPING CART
+            if (this.x > this.halfW + 239 && this.x < this.halfW + 300 && this.y < this.halfH + 100) {
+                // I have collided with the left side of the shopping cart
+                this.x = this.halfW + 239;
+            }
+            if (this.x > this.halfW + 300 && this.x < this.halfW + 340 && this.y < this.halfH + 100) {
+                // I have collided with the right  side of the shopping cart
+                this.x = this.halfW + 340;
+            }
+            if (this.x > this.halfW + 240 && this.x < this.halfW + 339 && this.y < this.halfH + 110) {
+                // I have collided with the bottom of the shopping cart
+                this.y = this.halfH + 110;
+            }
+        };
+        Player.prototype.AddAppleCounterBoundary = function () {
+            // APPLE COUNTER
+            if (this.x >= this.halfW + 70 && this.x <= this.halfW + 160 && this.y < this.halfH + 120) {
+                // I have collided with the top of the apple counter 
+                this.y = this.halfH + 50;
+            }
+            if (this.x >= this.halfW + 70 && this.x <= this.halfW + 160 && this.y > this.halfH + 180 && this.y < this.halfH + 200) {
+                // I have collided with the bottom of the apple counter 
+                this.y = this.halfH + 200;
+            }
+            if (this.x >= this.halfW + 70 && this.x <= this.halfW + 140 && this.y > this.halfH + 120 && this.y < this.halfH + 200) {
+                // I have collided with the left side of the apple counter 
+                this.x = this.halfW + 60;
+            }
+            if (this.x >= this.halfW + 140 && this.x < this.halfW + 180 && this.y > this.halfH + 100 && this.y < this.halfH + 200) {
+                // I have collided with the right side of the apple counter 
+                this.x = this.halfW + 165;
+            }
+        };
+        Player.prototype.AddTopRightProduceBoundary = function () {
+            // TOP RIGHT PRODUCE
+            if (this.x >= 420 - this.halfW && this.y < 350 - this.halfH) {
+                // I have collided with the top-right produce boxes
+                this.x = 420 - this.halfW;
+            }
+        };
+        Player.prototype.AddProduceProtrusionBoundary = function () {
+            // PRODUCE PROTRUSION
+            if (this.x >= 275 - this.halfW && this.y > this.halfH + 200 && this.y < this.halfH + 240) {
+                // I have collided with the protruding produce from the top
+                this.y = this.halfH + 210;
+            }
+            if (this.x >= 275 - this.halfW && this.y > this.halfH + 270 && this.y < this.halfH + 330) {
+                // I have collided with the protruding produce from the bottom
+                this.y = this.halfH + 330;
+            }
+            if (this.x >= 275 - this.halfW && this.y > this.halfH + 220 && this.y < this.halfH + 320) {
+                // I have collided with the protruding produce from the left
+                this.x = 275 - this.halfW;
+            }
+        };
+        Player.prototype.AddBottomProductsBoundary = function () {
+            // BOTTOM PRODUCTS
+            if (this.x >= this.halfW + 200 && this.y >= 540 - this.halfH) {
+                this.y = 540 - this.halfH;
+            }
+            // LEFT SHELVES
+            if (this.x < this.halfW + 125 && this.y > this.halfH + 190 && this.y <= this.halfH + 229) {
+                // I have collided with the left shelves from the top
+                this.y = this.halfH + 190;
+            }
+            if (this.x < this.halfW + 130 && this.y > this.halfH + 230 && this.y < this.halfH + 330) {
+                // I have collided with the left shelves from the top-right
+                this.x = this.halfW + 130;
+            }
+            if (this.x < this.halfW + 35 && this.y >= this.halfH + 336 && this.y <= this.halfH + 470) {
+                // I have collided with the left shelves from the right
+                this.x = this.halfW + 35;
+            }
+        };
+        Player.prototype.AddEdgesBoundary = function () {
             // Right boundary
             if (this.x >= 495 - this.halfW) {
                 // I have collided with the right boundary
@@ -56,71 +143,14 @@ var objects;
                 // I have collided with the top boundary
                 this.y = this.halfH + 50;
             }
-            // SHOPPING CART
-            if (this.x > this.halfW + 239 && this.x < this.halfW + 300 && this.y < this.halfH + 100) {
-                // I have collided with the left side of the shopping cart
-                this.x = this.halfW + 239;
-            }
-            if (this.x > this.halfW + 300 && this.x < this.halfW + 340 && this.y < this.halfH + 100) {
-                // I have collided with the right  side of the shopping cart
-                this.x = this.halfW + 340;
-            }
-            if (this.x > this.halfW + 240 && this.x < this.halfW + 339 && this.y < this.halfH + 110) {
-                // I have collided with the bottom of the shopping cart
-                this.y = this.halfH + 110;
-            }
-            // APPLE COUNTER
-            if (this.x >= this.halfW + 70 && this.x <= this.halfW + 160 && this.y < this.halfH + 120) {
-                // I have collided with the top of the apple counter 
-                this.y = this.halfH + 50;
-            }
-            if (this.x >= this.halfW + 70 && this.x <= this.halfW + 160 && this.y > this.halfH + 180 && this.y < this.halfH + 200) {
-                // I have collided with the bottom of the apple counter 
-                this.y = this.halfH + 200;
-            }
-            if (this.x >= this.halfW + 70 && this.x <= this.halfW + 140 && this.y > this.halfH + 120 && this.y < this.halfH + 200) {
-                // I have collided with the left side of the apple counter 
-                this.x = this.halfW + 60;
-            }
-            if (this.x >= this.halfW + 140 && this.x < this.halfW + 180 && this.y > this.halfH + 100 && this.y < this.halfH + 200) {
-                // I have collided with the right side of the apple counter 
-                this.x = this.halfW + 165;
-            }
-            // TOP RIGHT PRODUCE
-            if (this.x >= 420 - this.halfW && this.y < 350 - this.halfH) {
-                // I have collided with the top-right produce boxes
-                this.x = 420 - this.halfW;
-            }
-            // PRODUCE PROTRUSION
-            if (this.x >= 275 - this.halfW && this.y > this.halfH + 200 && this.y < this.halfH + 240) {
-                // I have collided with the protruding produce from the top
-                this.y = this.halfH + 210;
-            }
-            if (this.x >= 275 - this.halfW && this.y > this.halfH + 270 && this.y < this.halfH + 330) {
-                // I have collided with the protruding produce from the bottom
-                this.y = this.halfH + 330;
-            }
-            if (this.x >= 275 - this.halfW && this.y > this.halfH + 220 && this.y < this.halfH + 320) {
-                // I have collided with the protruding produce from the left
-                this.x = 275 - this.halfW;
-            }
-            // BOTTOM PRODUCTS
-            if (this.x >= this.halfW + 200 && this.y >= 540 - this.halfH) {
-                this.y = 540 - this.halfH;
-            }
-            // LEFT SHELVES
-            if (this.x < this.halfW + 125 && this.y > this.halfH + 190 && this.y <= this.halfH + 229) {
-                // I have collided with the left shelves from the top
-                this.y = this.halfH + 190;
-            }
-            if (this.x < this.halfW + 130 && this.y > this.halfH + 230 && this.y < this.halfH + 330) {
-                // I have collided with the left shelves from the top-right
-                this.x = this.halfW + 130;
-            }
-            if (this.x < this.halfW + 35 && this.y >= this.halfH + 336 && this.y <= this.halfH + 470) {
-                // I have collided with the left shelves from the right
-                this.x = this.halfW + 35;
-            }
+        };
+        Player.prototype.CheckBound = function () {
+            this.AddEdgesBoundary();
+            this.AddShoppingCartBoundary();
+            this.AddAppleCounterBoundary();
+            this.AddTopRightProduceBoundary();
+            this.AddProduceProtrusionBoundary();
+            this.AddBottomProductsBoundary();
         };
         return Player;
     }(objects.GameObject));

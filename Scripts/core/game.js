@@ -13,6 +13,7 @@
             { id: "redPlayBtn", src: "./Assets/redPlayBtn.jpg" },
             { id: "toiletpaper", src: "./Assets/toiletpaper.png" },
             { id: "playerGunLeft", src: "./Assets/playerSpriteGunLeft.png" },
+            { id: "playerGunRight", src: "./Assets/playerSpriteGunRight.png" },
         ];
         assetManager = new createjs.LoadQueue();
         assetManager.installPlugin(createjs.Sound);

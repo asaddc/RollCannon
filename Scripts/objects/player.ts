@@ -5,7 +5,6 @@ module objects {
     constructor(assetManager: createjs.LoadQueue) {
       super(assetManager, "playerGunLeft");
       this.on("tick", this.Update);
-      //   this.addEventListener("click", this.Move);
 
       this.Start();
     }
@@ -18,33 +17,13 @@ module objects {
       this.Move();
       this.CheckBound();
     }
-    public Reset(): void {}
+    public Reset(): void { }
     public Move(): void {
       this.x = objects.Game.stage.mouseX;
       this.y = objects.Game.stage.mouseY;
     }
-    public CheckBound(): void {
-      // Right boundary
-      if (this.x >= 495 - this.halfW) {
-        // I have collided with the right boundary
-        this.x = 495 - this.halfW;
-      }
-      // Left boundary
-      if (this.x <= this.halfW) {
-        // I have collided with the left boundary
-        this.x = this.halfW;
-      }
 
-      if (this.y >= 600 - this.halfH) {
-        // I have collided with the bottom boundary
-        this.y = 600 - this.halfH;
-      }
-
-      if (this.y <= this.halfH + 50) {
-        // I have collided with the top boundary
-        this.y = this.halfH + 50;
-      }
-
+    private addShoppingCartBoundary() {
       // SHOPPING CART
       if (this.x > this.halfW + 239 && this.x < this.halfW + 300 && this.y < this.halfH + 100) {
         // I have collided with the left side of the shopping cart
@@ -60,7 +39,9 @@ module objects {
         // I have collided with the bottom of the shopping cart
         this.y = this.halfH + 110;
       }
+    }
 
+    private addAppleCounterBoundary() {
       // APPLE COUNTER
       if (this.x >= this.halfW + 70 && this.x <= this.halfW + 160 && this.y < this.halfH + 120) {
         // I have collided with the top of the apple counter 
@@ -80,13 +61,17 @@ module objects {
         // I have collided with the right side of the apple counter 
         this.x = this.halfW + 165;
       }
+    }
 
+    private addTopRightProduceBoundary() {
       // TOP RIGHT PRODUCE
-      if (this.x >= 420 - this.halfW && this.y < 350 -this.halfH) {
+      if (this.x >= 420 - this.halfW && this.y < 350 - this.halfH) {
         // I have collided with the top-right produce boxes
         this.x = 420 - this.halfW;
       }
+    }
 
+    private addProduceProtrusionBoundary() {
       // PRODUCE PROTRUSION
       if (this.x >= 275 - this.halfW && this.y > this.halfH + 200 && this.y < this.halfH + 240) {
         // I have collided with the protruding produce from the top
@@ -98,11 +83,13 @@ module objects {
         this.y = this.halfH + 330;
       }
 
-      if (this.x >= 275 - this.halfW  && this.y > this.halfH + 220 && this.y < this.halfH + 320) {
+      if (this.x >= 275 - this.halfW && this.y > this.halfH + 220 && this.y < this.halfH + 320) {
         // I have collided with the protruding produce from the left
         this.x = 275 - this.halfW;
       }
+    }
 
+    private addBottomProductsBoundary() {
       // BOTTOM PRODUCTS
       if (this.x >= this.halfW + 200 && this.y >= 540 - this.halfH) {
         this.y = 540 - this.halfH;
@@ -123,6 +110,38 @@ module objects {
         // I have collided with the left shelves from the right
         this.x = this.halfW + 35;
       }
+    }
+
+    private addEdgesBoundary() {
+      // Right boundary
+      if (this.x >= 495 - this.halfW) {
+        // I have collided with the right boundary
+        this.x = 495 - this.halfW;
+      }
+      // Left boundary
+      if (this.x <= this.halfW) {
+        // I have collided with the left boundary
+        this.x = this.halfW;
+      }
+
+      if (this.y >= 600 - this.halfH) {
+        // I have collided with the bottom boundary
+        this.y = 600 - this.halfH;
+      }
+
+      if (this.y <= this.halfH + 50) {
+        // I have collided with the top boundary
+        this.y = this.halfH + 50;
+      }
+    }
+    public CheckBound(): void {
+
+      this.addEdgesBoundary();
+      this.addShoppingCartBoundary();
+      this.addAppleCounterBoundary();
+      this.addTopRightProduceBoundary();
+      this.addProduceProtrusionBoundary();
+      this.addBottomProductsBoundary();
     }
   }
 }

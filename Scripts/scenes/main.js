@@ -22,15 +22,19 @@ var scenes;
             return _this;
         }
         MainMenuScene.prototype.Start = function () {
-            this.playButton = new objects.Button(this.assetManager, "redPlayBtn", objects.Game.canvas.clientWidth * 0.5 - 44, objects.Game.canvas.clientHeight * 0.5);
+            this.playButton = new objects.Button(this.assetManager, "redPlayBtn", objects.Game.canvas.clientWidth * 0.5 - 44, objects.Game.canvas.clientHeight * 0.5 + 100);
             this.playButton.scaleX = 2;
             this.playButton.scaleY = 2;
+            this.background = new objects.Background(this.assetManager, "mainBG");
+            this.toiletPaperImage = new objects.ToiletPaper(this.assetManager, 175, 50, "toiletPaper");
             this.playButton.on("click", this.playButtonClicked);
             this.Main();
         };
         MainMenuScene.prototype.Update = function () { };
         MainMenuScene.prototype.Main = function () {
+            this.addChild(this.background);
             this.addChild(this.playButton);
+            this.addChild(this.toiletPaperImage);
         };
         MainMenuScene.prototype.playButtonClicked = function () {
             objects.Game.currentScene = config.Scene.PLAY;

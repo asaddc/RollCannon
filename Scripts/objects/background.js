@@ -15,8 +15,8 @@ var objects;
 (function (objects) {
     var Background = /** @class */ (function (_super) {
         __extends(Background, _super);
-        function Background(assetManager) {
-            return _super.call(this, assetManager.getResult("supermarketBG")) || this;
+        function Background(assetManager, imageString) {
+            return _super.call(this, assetManager.getResult(imageString)) || this;
         }
         return Background;
     }(createjs.Bitmap));

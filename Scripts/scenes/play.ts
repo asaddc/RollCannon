@@ -6,7 +6,7 @@ module scenes {
     private player: objects.Player;
     private enemies: objects.Enemy[];
     private heartContainer: objects.HeartContainer;
-    private readonly ENEMIES_NUM: number = 5;
+    private readonly ENEMIES_NUM: number = 3;
 
     // Constructor
     constructor(assetManager: createjs.LoadQueue) {
@@ -18,7 +18,7 @@ module scenes {
       console.log("play");
       objects.Game.canvas.style.cursor = "none";
 
-      this.background = new objects.Background(this.assetManager);
+      this.background = new objects.Background(this.assetManager, "supermarketBG");
       this.sidebar = new objects.Sidebar();
       this.player = new objects.Player(this.assetManager);
       this.heartContainer = new objects.HeartContainer(this.assetManager, "heartFull");

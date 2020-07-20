@@ -18,14 +18,14 @@ var scenes;
         // Constructor
         function PlayScene(assetManager) {
             var _this = _super.call(this, assetManager) || this;
-            _this.ENEMIES_NUM = 5;
+            _this.ENEMIES_NUM = 3;
             _this.Start();
             return _this;
         }
         PlayScene.prototype.Start = function () {
             console.log("play");
             objects.Game.canvas.style.cursor = "none";
-            this.background = new objects.Background(this.assetManager);
+            this.background = new objects.Background(this.assetManager, "supermarketBG");
             this.sidebar = new objects.Sidebar();
             this.player = new objects.Player(this.assetManager);
             this.heartContainer = new objects.HeartContainer(this.assetManager, "heartFull");

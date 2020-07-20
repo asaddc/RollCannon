@@ -32,6 +32,10 @@ module scenes {
     public Update(): void {
       this.enemies.forEach(enemy => {
         enemy.Update();
+        if (enemy.x > this.player.x - 30 && enemy.x < this.player.x + 30)
+        {
+          objects.Game.currentScene = config.Scene.GAME_OVER;
+        }
       })
     }
 

@@ -36,8 +36,12 @@ var scenes;
             this.Main();
         };
         PlayScene.prototype.Update = function () {
+            var _this = this;
             this.enemies.forEach(function (enemy) {
                 enemy.Update();
+                if (enemy.x > _this.player.x - 30 && enemy.x < _this.player.x + 30) {
+                    objects.Game.currentScene = config.Scene.GAME_OVER;
+                }
             });
         };
         PlayScene.prototype.Main = function () {

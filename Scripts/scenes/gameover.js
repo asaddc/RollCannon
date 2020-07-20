@@ -15,7 +15,6 @@ var scenes;
 (function (scenes) {
     var GameOverScene = /** @class */ (function (_super) {
         __extends(GameOverScene, _super);
-        // Variables
         // Constructor
         function GameOverScene(assetManager) {
             var _this = _super.call(this, assetManager) || this;
@@ -24,10 +23,13 @@ var scenes;
         }
         GameOverScene.prototype.Start = function () {
             console.log("game over");
+            this.gameoverLabel = new objects.Label("GAME OVER", "36pt", "Arial", "#FFF", objects.Game.canvas.clientWidth * 0.3, objects.Game.canvas.clientHeight * 0.5);
             this.Main();
         };
         GameOverScene.prototype.Update = function () { };
-        GameOverScene.prototype.Main = function () { };
+        GameOverScene.prototype.Main = function () {
+            this.addChild(this.gameoverLabel);
+        };
         return GameOverScene;
     }(objects.Scene));
     scenes.GameOverScene = GameOverScene;

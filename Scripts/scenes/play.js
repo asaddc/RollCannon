@@ -18,22 +18,38 @@ var scenes;
         // Constructor
         function PlayScene(assetManager) {
             var _this = _super.call(this, assetManager) || this;
+            _this.ENEMIES_NUM = 3;
             _this.Start();
             return _this;
         }
         PlayScene.prototype.Start = function () {
             console.log("play");
-            this.background = new objects.Background(this.assetManager);
+            objects.Game.canvas.style.cursor = "none";
+            this.background = new objects.Background(this.assetManager, "supermarketBG");
             this.sidebar = new objects.Sidebar();
             this.player = new objects.Player(this.assetManager);
+            this.heartContainer = new objects.HeartContainer(this.assetManager, "heartFull");
+            this.enemies = new Array();
+            for (var i = 0; i < this.ENEMIES_NUM; i++) {
+                this.enemies[i] = new objects.Enemy(this.assetManager);
+            }
             this.Main();
         };
-        PlayScene.prototype.Update = function () { };
+        PlayScene.prototype.Update = function () {
+            this.enemies.forEach(function (enemy) {
+                enemy.Update();
+            });
+        };
         PlayScene.prototype.Main = function () {
+            var _this = this;
             this.addChild(this.background);
             this.addChild(this.sidebar.levelLabel);
             this.addChild(this.sidebar.scoreLabel);
             this.addChild(this.sidebar.livesLabel);
+            this.addChild(this.heartContainer);
+            this.enemies.forEach(function (enemy) {
+                _this.addChild(enemy);
+            });
             this.addChild(this.player);
         };
         return PlayScene;

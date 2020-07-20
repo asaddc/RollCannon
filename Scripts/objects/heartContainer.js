@@ -13,13 +13,20 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Background = /** @class */ (function (_super) {
-        __extends(Background, _super);
-        function Background(assetManager, imageString) {
-            return _super.call(this, assetManager.getResult(imageString)) || this;
+    var HeartContainer = /** @class */ (function (_super) {
+        __extends(HeartContainer, _super);
+        // Variables
+        // Constructor
+        function HeartContainer(assetManager, imageString) {
+            var _this = _super.call(this, assetManager.getResult(imageString)) || this;
+            // these coordinates are exactly where the heart container should reside for now
+            // under the "Lives: " label.
+            _this.x = 503;
+            _this.y = 170;
+            return _this;
         }
-        return Background;
+        return HeartContainer;
     }(createjs.Bitmap));
-    objects.Background = Background;
+    objects.HeartContainer = HeartContainer;
 })(objects || (objects = {}));
-//# sourceMappingURL=background.js.map
+//# sourceMappingURL=heartContainer.js.map

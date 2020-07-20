@@ -10,13 +10,16 @@
         console.log("Initializing...");
         assetManifest = [
             { id: "supermarketBG", src: "./Assets/supermarketBG.jpg" },
+            { id: "mainBG", src: "./Assets/mainBG.jpg" },
             { id: "redPlayBtn", src: "./Assets/redPlayBtn.jpg" },
-            { id: "toiletpaper", src: "./Assets/toiletpaper.png" },
+            { id: "toiletPaper", src: "./Assets/toiletpaper.png" },
             { id: "playerGunLeft", src: "./Assets/playerSpriteGunLeft.png" },
             { id: "playerGunRight", src: "./Assets/playerSpriteGunRight.png" },
             { id: "heartFull", src: "./Assets/heartFull.png" },
             { id: "heartTwoThirds", src: "./Assets/heartTwoThirds.png" },
             { id: "heartOneThird", src: "./Assets/heartOneThird.png" },
+            { id: "baseEnemyFacingRight", src: "./Assets/baseEnemyFacingRight.png" },
+            { id: "baseEnemyFacingLeft", src: "./Assets/baseEnemyFacingLeft.png" },
         ];
         assetManager = new createjs.LoadQueue();
         assetManager.installPlugin(createjs.Sound);

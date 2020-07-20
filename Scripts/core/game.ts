@@ -21,6 +21,8 @@
       { id: "heartFull", src: "./Assets/heartFull.png" },
       { id: "heartTwoThirds", src: "./Assets/heartTwoThirds.png" },
       { id: "heartOneThird", src: "./Assets/heartOneThird.png" },
+      { id: "baseEnemyFacingRight", src: "./Assets/baseEnemyFacingRight.png" },
+      { id: "baseEnemyFacingLeft", src: "./Assets/baseEnemyFacingLeft.png" },
     ];
 
     assetManager = new createjs.LoadQueue();

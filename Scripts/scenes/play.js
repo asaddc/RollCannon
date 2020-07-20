@@ -18,6 +18,7 @@ var scenes;
         // Constructor
         function PlayScene(assetManager) {
             var _this = _super.call(this, assetManager) || this;
+            _this.ENEMIES_NUM = 5;
             _this.Start();
             return _this;
         }
@@ -26,15 +27,28 @@ var scenes;
             this.background = new objects.Background(this.assetManager);
             this.sidebar = new objects.Sidebar();
             this.player = new objects.Player(this.assetManager);
+            this.enemies = new Array();
+            for (var i = 0; i < this.ENEMIES_NUM; i++) {
+                this.enemies[i] = new objects.Enemy(this.assetManager);
+            }
             this.Main();
         };
-        PlayScene.prototype.Update = function () { };
+        PlayScene.prototype.Update = function () {
+            this.enemies.forEach(function (enemy) {
+                enemy.Update();
+                // managers.Collision.Check(this.player, enemy);
+            });
+        };
         PlayScene.prototype.Main = function () {
+            var _this = this;
             this.addChild(this.background);
             this.addChild(this.sidebar.levelLabel);
             this.addChild(this.sidebar.scoreLabel);
             this.addChild(this.sidebar.livesLabel);
             this.addChild(this.player);
+            this.enemies.forEach(function (enemy) {
+                _this.addChild(enemy);
+            });
         };
         return PlayScene;
     }(objects.Scene));

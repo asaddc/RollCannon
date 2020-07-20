@@ -16,7 +16,7 @@ module scenes {
       this.playButton.scaleY = 2;
       this.background = new objects.Background(this.assetManager, "mainBG");
       this.toiletPaperImage = new objects.ToiletPaper(this.assetManager, 175, 50, "toiletPaper");
-      this.playButton.on("click", this.playButtonClicked);
+      this.playButton.on("click", this.PlayButtonClicked);
       this.Main();
     }
 
@@ -27,7 +27,7 @@ module scenes {
       this.addChild(this.toiletPaperImage);
     }
 
-    public playButtonClicked(): void {
+    public PlayButtonClicked(): void {
       objects.Game.currentScene = config.Scene.PLAY;
     }
   }

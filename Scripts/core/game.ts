@@ -24,6 +24,7 @@
       { id: "heartOneThird", src: "./Assets/heartOneThird.png" },
       { id: "baseEnemyFacingRight", src: "./Assets/baseEnemyFacingRight.png" },
       { id: "baseEnemyFacingLeft", src: "./Assets/baseEnemyFacingLeft.png" },
+      { id: "gameOverBG", src: "./Assets/gameOverBG.jpg" },
     ];
 
     assetManager = new createjs.LoadQueue();

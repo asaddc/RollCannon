@@ -20,7 +20,7 @@ module objects {
         }
         public Move(): void {
             // move this enemy to the left
-            this.x -= 0.5;
+            this.x -= 0.3;
         }
         public CheckBound(): void {
             // once this hits the wall on the left, then reset back to the right.

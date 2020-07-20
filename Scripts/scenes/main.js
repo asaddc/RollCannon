@@ -27,7 +27,7 @@ var scenes;
             this.playButton.scaleY = 2;
             this.background = new objects.Background(this.assetManager, "mainBG");
             this.toiletPaperImage = new objects.ToiletPaper(this.assetManager, 175, 50, "toiletPaper");
-            this.playButton.on("click", this.playButtonClicked);
+            this.playButton.on("click", this.PlayButtonClicked);
             this.Main();
         };
         MainMenuScene.prototype.Update = function () { };
@@ -36,7 +36,7 @@ var scenes;
             this.addChild(this.playButton);
             this.addChild(this.toiletPaperImage);
         };
-        MainMenuScene.prototype.playButtonClicked = function () {
+        MainMenuScene.prototype.PlayButtonClicked = function () {
             objects.Game.currentScene = config.Scene.PLAY;
         };
         return MainMenuScene;

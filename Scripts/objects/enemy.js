@@ -34,9 +34,8 @@ var objects;
             this.x = 460;
         };
         Enemy.prototype.Move = function () {
-            // move this to the left
+            // move this enemy to the left
             this.x -= 0.5;
-            console.log(this.x);
         };
         Enemy.prototype.CheckBound = function () {
             // once this hits the wall on the left, then reset back to the right.

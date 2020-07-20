@@ -19,9 +19,8 @@ module objects {
             this.x = 460;
         }
         public Move(): void {
-            // move this to the left
+            // move this enemy to the left
             this.x -= 0.5;
-            console.log(this.x);
         }
         public CheckBound(): void {
             // once this hits the wall on the left, then reset back to the right.

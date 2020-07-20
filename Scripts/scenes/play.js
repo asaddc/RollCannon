@@ -24,9 +24,11 @@ var scenes;
         }
         PlayScene.prototype.Start = function () {
             console.log("play");
+            objects.Game.canvas.style.cursor = "none";
             this.background = new objects.Background(this.assetManager);
             this.sidebar = new objects.Sidebar();
             this.player = new objects.Player(this.assetManager);
+            this.heartContainer = new objects.HeartContainer(this.assetManager, "heartFull");
             this.enemies = new Array();
             for (var i = 0; i < this.ENEMIES_NUM; i++) {
                 this.enemies[i] = new objects.Enemy(this.assetManager);
@@ -36,7 +38,6 @@ var scenes;
         PlayScene.prototype.Update = function () {
             this.enemies.forEach(function (enemy) {
                 enemy.Update();
-                // managers.Collision.Check(this.player, enemy);
             });
         };
         PlayScene.prototype.Main = function () {
@@ -45,10 +46,11 @@ var scenes;
             this.addChild(this.sidebar.levelLabel);
             this.addChild(this.sidebar.scoreLabel);
             this.addChild(this.sidebar.livesLabel);
-            this.addChild(this.player);
+            this.addChild(this.heartContainer);
             this.enemies.forEach(function (enemy) {
                 _this.addChild(enemy);
             });
+            this.addChild(this.player);
         };
         return PlayScene;
     }(objects.Scene));

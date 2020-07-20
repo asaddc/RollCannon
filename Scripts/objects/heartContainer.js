@@ -17,12 +17,12 @@ var objects;
         __extends(HeartContainer, _super);
         // Variables
         // Constructor
-        function HeartContainer(assetManager, imageString, x, y) {
-            if (x === void 0) { x = 0; }
-            if (y === void 0) { y = 0; }
+        function HeartContainer(assetManager, imageString) {
             var _this = _super.call(this, assetManager.getResult(imageString)) || this;
-            _this.x = x;
-            _this.y = y;
+            // these coordinates are exactly where the heart container should reside for now
+            // under the "Lives: " label.
+            _this.x = 503;
+            _this.y = 170;
             return _this;
         }
         return HeartContainer;

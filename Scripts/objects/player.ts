@@ -2,13 +2,11 @@ module objects {
   export class Player extends objects.GameObject {
     // Variables
     // Constructor
-    private playerFacingLeft: boolean;
     private assetManager;
     constructor(assetManager: createjs.LoadQueue) {
       super(assetManager, "playerGunLeft");
       this.assetManager = assetManager;
       this.on("tick", this.Update);
-      this.playerFacingLeft = true;
       this.Start();
     }
 
@@ -33,10 +31,8 @@ module objects {
       // Checks if the user moved to the right, then display the right facing player image
       // else show the left facing image
       if (objects.Game.stage.mouseX > this.x) {
-        this.playerFacingLeft = false;
         this.image = this.assetManager.getResult("playerGunRight");
       } else if (objects.Game.stage.mouseX < this.x) {
-        this.playerFacingLeft = true;
         this.image = this.assetManager.getResult("playerGunLeft");
       }
     }

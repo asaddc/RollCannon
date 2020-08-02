@@ -47,6 +47,7 @@ module scenes {
         this.addChild(enemy);
       })
       this.addChild(this.player);
+      this.addChild(this.player.ammo);
     }
   }
 }

@@ -17,6 +17,7 @@ var objects;
         __extends(Player, _super);
         function Player(assetManager) {
             var _this = _super.call(this, assetManager, "playerGunLeft") || this;
+            _this.facingLeft = false;
             _this.assetManager = assetManager;
             _this.on("tick", _this.Update);
             _this.Start();
@@ -25,10 +26,15 @@ var objects;
         Player.prototype.Start = function () {
             this.x = 60;
             this.y = 130;
+            this.ammo = new objects.Ammo(this.assetManager, this.x, this.y - 10, "toiletPaper");
+            this.ammo.scaleX = 0.05;
+            this.ammo.scaleY = 0.05;
         };
         Player.prototype.Update = function () {
             this.Move();
             this.CheckBound();
+            this.ammo.visible = false;
+            this.ammo.Fire(this.facingLeft, this.x, this.y - 10);
         };
         Player.prototype.Reset = function () { };
         Player.prototype.Move = function () {
@@ -38,10 +44,12 @@ var objects;
             if (managers.Game.keyboardManager.moveLeft) {
                 this.x -= 1.5;
                 this.image = this.assetManager.getResult("playerGunLeft");
+                this.facingLeft = true;
             }
             if (managers.Game.keyboardManager.moveRight) {
                 this.x += 1.5;
                 this.image = this.assetManager.getResult("playerGunRight");
+                this.facingLeft = false;
             }
             if (managers.Game.keyboardManager.moveDown) {
                 this.y += 1.5;

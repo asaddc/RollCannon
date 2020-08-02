@@ -1,6 +1,8 @@
 module objects {
   export class Player extends objects.GameObject {
     // Variables
+    public ammo:objects.Ammo;
+    private facingLeft:boolean = false;
     // Constructor
     private assetManager;
     constructor(assetManager: createjs.LoadQueue) {
@@ -13,10 +15,16 @@ module objects {
     public Start(): void {
       this.x = 60;
       this.y = 130;
+      this.ammo = new objects.Ammo(this.assetManager, this.x, this.y - 10,"toiletPaper");
+      this.ammo.scaleX = 0.05;
+      this.ammo.scaleY = 0.05;
     }
     public Update(): void {
       this.Move();
       this.CheckBound();
+
+      this.ammo.visible = false;
+      this.ammo.Fire(this.facingLeft, this.x, this.y - 10);
     }
     public Reset(): void { }
     public Move(): void {
@@ -29,11 +37,13 @@ module objects {
       {
         this.x -= 1.5;
         this.image = this.assetManager.getResult("playerGunLeft");
+        this.facingLeft = true;
       }
       if (managers.Game.keyboardManager.moveRight)
       {
         this.x += 1.5;
         this.image = this.assetManager.getResult("playerGunRight");
+        this.facingLeft = false;
       }
       if (managers.Game.keyboardManager.moveDown)
       {

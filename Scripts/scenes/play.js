@@ -54,6 +54,7 @@ var scenes;
                 _this.addChild(enemy);
             });
             this.addChild(this.player);
+            this.addChild(this.player.ammo);
         };
         return PlayScene;
     }(objects.Scene));

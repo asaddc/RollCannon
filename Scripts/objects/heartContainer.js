@@ -37,7 +37,7 @@ var objects;
                 this.image = this.assetManager.getResult("heartOneThird");
             }
             else if (this.currentHealth === 0) {
-                objects.Game.currentScene = config.Scene.GAME_OVER;
+                managers.Game.currentScene = config.Scene.GAME_OVER;
             }
         };
         return HeartContainer;

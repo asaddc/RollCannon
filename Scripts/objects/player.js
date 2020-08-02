@@ -23,8 +23,8 @@ var objects;
             return _this;
         }
         Player.prototype.Start = function () {
-            this.x = 320;
-            this.y = 350;
+            this.x = 60;
+            this.y = 130;
         };
         Player.prototype.Update = function () {
             this.Move();
@@ -32,20 +32,33 @@ var objects;
         };
         Player.prototype.Reset = function () { };
         Player.prototype.Move = function () {
-            this.ChooseCorrectPlayerOrientation();
-            this.x = objects.Game.stage.mouseX;
-            this.y = objects.Game.stage.mouseY;
-        };
-        Player.prototype.ChooseCorrectPlayerOrientation = function () {
-            // Checks if the user moved to the right, then display the right facing player image
-            // else show the left facing image
-            if (objects.Game.stage.mouseX > this.x) {
-                this.image = this.assetManager.getResult("playerGunRight");
-            }
-            else if (objects.Game.stage.mouseX < this.x) {
+            // this.ChooseCorrectPlayerOrientation();
+            // this.x = managers.Game.stage.mouseX;
+            // this.y = managers.Game.stage.mouseY;
+            if (managers.Game.keyboardManager.moveLeft) {
+                this.x -= 1.5;
                 this.image = this.assetManager.getResult("playerGunLeft");
             }
+            if (managers.Game.keyboardManager.moveRight) {
+                this.x += 1.5;
+                this.image = this.assetManager.getResult("playerGunRight");
+            }
+            if (managers.Game.keyboardManager.moveDown) {
+                this.y += 1.5;
+            }
+            if (managers.Game.keyboardManager.moveUp) {
+                this.y -= 1.5;
+            }
         };
+        // private ChooseCorrectPlayerOrientation() {
+        //   // Checks if the user moved to the right, then display the right facing player image
+        //   // else show the left facing image
+        //   if (managers.Game.stage.mouseX > this.x) {
+        //     this.image = this.assetManager.getResult("playerGunRight");
+        //   } else if (managers.Game.stage.mouseX < this.x) {
+        //     this.image = this.assetManager.getResult("playerGunLeft");
+        //   }
+        // }
         Player.prototype.AddShoppingCartBoundary = function () {
             // SHOPPING CART
             if (this.x > this.halfW + 239 && this.x < this.halfW + 300 && this.y < this.halfH + 100) {
@@ -75,8 +88,8 @@ var objects;
                 // I have collided with the left side of the apple counter 
                 this.x = this.halfW + 60;
             }
-            if (this.x >= this.halfW + 140 && this.x < this.halfW + 180 && this.y > this.halfH + 100 && this.y < this.halfH + 200) {
-                // I have collided with the right side of the apple counter 
+            if (this.x >= this.halfW + 140 && this.x < this.halfW + 155 && this.y > this.halfH + 100 && this.y < this.halfH + 200) {
+                // I have collided with the right side of the apple counter
                 this.x = this.halfW + 165;
             }
         };
@@ -89,7 +102,7 @@ var objects;
         };
         Player.prototype.AddProduceProtrusionBoundary = function () {
             // PRODUCE PROTRUSION
-            if (this.x >= 275 - this.halfW && this.y > this.halfH + 200 && this.y < this.halfH + 240) {
+            if (this.x >= 275 - this.halfW && this.y > this.halfH + 215 && this.y < this.halfH + 240) {
                 // I have collided with the protruding produce from the top
                 this.y = this.halfH + 210;
             }

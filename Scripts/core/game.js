@@ -21,6 +21,7 @@
             { id: "baseEnemyFacingRight", src: "./Assets/baseEnemyFacingRight.png" },
             { id: "baseEnemyFacingLeft", src: "./Assets/baseEnemyFacingLeft.png" },
             { id: "gameOverBG", src: "./Assets/gameOverBG.jpg" },
+            { id: "damageSound", src: "./Assets/Audio/damage-sound.mp3" },
         ];
         assetManager = new createjs.LoadQueue();
         assetManager.installPlugin(createjs.Sound);

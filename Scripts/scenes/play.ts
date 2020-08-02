@@ -21,7 +21,7 @@ module scenes {
       this.background = new objects.Background(this.assetManager, "supermarketBG");
       this.sidebar = new objects.Sidebar();
       this.player = new objects.Player(this.assetManager);
-      this.heartContainer = new objects.HeartContainer(this.assetManager, "heartFull");
+      this.heartContainer = new objects.HeartContainer(this.assetManager);
       this.enemies = new Array<objects.Enemy>();
       for (let i = 0; i < this.ENEMIES_NUM; i++) {
         this.enemies[i] = new objects.Enemy(this.assetManager);
@@ -30,12 +30,10 @@ module scenes {
       this.Main();
     }
     public Update(): void {
+      this.heartContainer.Update();
       this.enemies.forEach(enemy => {
         enemy.Update();
-        if (enemy.x > this.player.x - 30 && enemy.x < this.player.x + 30 && enemy.y > this.player.y - 50 && enemy.y < this.player.y + 50)
-        {
-          objects.Game.currentScene = config.Scene.GAME_OVER;
-        }
+        managers.Collision.Check(this.player, enemy, this.heartContainer);
       })
     }
 

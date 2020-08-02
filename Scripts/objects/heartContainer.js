@@ -15,16 +15,31 @@ var objects;
 (function (objects) {
     var HeartContainer = /** @class */ (function (_super) {
         __extends(HeartContainer, _super);
-        // Variables
         // Constructor
-        function HeartContainer(assetManager, imageString) {
-            var _this = _super.call(this, assetManager.getResult(imageString)) || this;
+        function HeartContainer(assetManager) {
+            var _this = _super.call(this, assetManager.getResult("heartFull")) || this;
+            // Variables
+            _this.MAX_HEALTH_SIZE = 3;
             // these coordinates are exactly where the heart container should reside for now
             // under the "Lives: " label.
             _this.x = 503;
             _this.y = 170;
+            _this.assetManager = assetManager;
+            _this.currentHealth = _this.MAX_HEALTH_SIZE;
             return _this;
         }
+        HeartContainer.prototype.Update = function () {
+            console.log("CURRENT HEALTH", this.currentHealth);
+            if (this.currentHealth === 2) {
+                this.image = this.assetManager.getResult("heartTwoThirds");
+            }
+            else if (this.currentHealth === 1) {
+                this.image = this.assetManager.getResult("heartOneThird");
+            }
+            else if (this.currentHealth === 0) {
+                objects.Game.currentScene = config.Scene.GAME_OVER;
+            }
+        };
         return HeartContainer;
     }(createjs.Bitmap));
     objects.HeartContainer = HeartContainer;

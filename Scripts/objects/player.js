@@ -19,7 +19,6 @@ var objects;
             var _this = _super.call(this, assetManager, "playerGunLeft") || this;
             _this.assetManager = assetManager;
             _this.on("tick", _this.Update);
-            _this.playerFacingLeft = true;
             _this.Start();
             return _this;
         }
@@ -41,11 +40,9 @@ var objects;
             // Checks if the user moved to the right, then display the right facing player image
             // else show the left facing image
             if (objects.Game.stage.mouseX > this.x) {
-                this.playerFacingLeft = false;
                 this.image = this.assetManager.getResult("playerGunRight");
             }
             else if (objects.Game.stage.mouseX < this.x) {
-                this.playerFacingLeft = true;
                 this.image = this.assetManager.getResult("playerGunLeft");
             }
         };

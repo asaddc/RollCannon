@@ -28,7 +28,7 @@ var scenes;
             this.background = new objects.Background(this.assetManager, "supermarketBG");
             this.sidebar = new objects.Sidebar();
             this.player = new objects.Player(this.assetManager);
-            this.heartContainer = new objects.HeartContainer(this.assetManager, "heartFull");
+            this.heartContainer = new objects.HeartContainer(this.assetManager);
             this.enemies = new Array();
             for (var i = 0; i < this.ENEMIES_NUM; i++) {
                 this.enemies[i] = new objects.Enemy(this.assetManager);
@@ -37,11 +37,10 @@ var scenes;
         };
         PlayScene.prototype.Update = function () {
             var _this = this;
+            this.heartContainer.Update();
             this.enemies.forEach(function (enemy) {
                 enemy.Update();
-                if (enemy.x > _this.player.x - 30 && enemy.x < _this.player.x + 30 && enemy.y > _this.player.y - 50 && enemy.y < _this.player.y + 50) {
-                    objects.Game.currentScene = config.Scene.GAME_OVER;
-                }
+                managers.Collision.Check(_this.player, enemy, _this.heartContainer);
             });
         };
         PlayScene.prototype.Main = function () {

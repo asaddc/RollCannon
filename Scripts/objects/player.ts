@@ -6,7 +6,7 @@ module objects {
     // Constructor
     private assetManager;
     constructor(assetManager: createjs.LoadQueue) {
-      super(assetManager, "playerGunLeft");
+      super(assetManager, "playerGunRight");
       this.assetManager = assetManager;
       this.on("tick", this.Update);
       this.Start();
@@ -15,16 +15,16 @@ module objects {
     public Start(): void {
       this.x = 60;
       this.y = 130;
-      this.ammo = new objects.Ammo(this.assetManager, this.x, this.y - 10, "smallToiletPaper");
-      this.ammo.scaleX = 0.05;
-      this.ammo.scaleY = 0.05;
+      // this.ammo = new objects.Ammo(this.assetManager, this.x, this.y - 10, "smallToiletPaper");
+      // this.ammo.scaleX = 0.05;
+      // this.ammo.scaleY = 0.05;
     }
     public Update(): void {
       this.Move();
       this.CheckBound();
 
-      this.ammo.visible = false;
-      this.ammo.Fire(this.facingLeft, this.x, this.y - 10);
+      // this.ammo.visible = false;
+      // this.ammo.Fire(this.facingLeft, this.x, this.y - 10);
     }
     public Reset(): void { }
     public Move(): void {

@@ -1,6 +1,7 @@
 module objects {
   export class Ammo extends createjs.Bitmap {
     // Variables
+    public collided: boolean = false;
     // Constructor
     constructor(
       assetManager: createjs.LoadQueue,
@@ -22,21 +23,28 @@ module objects {
         if (facingLeft) {
           this.visible = true;
           this.x -= 10.5;
-          console.log("SHOOT LEFT");
         }
         else {
           this.x += 10.5;
           this.visible = true;
-          console.log("SHOOT RIGHT");
         }
       }
     }
 
     // Asad's temporary "Fire" method
     public Update(isFacingLeft: boolean) {
-      console.log("update ammo x", this.x);
+      // console.log("update ammo x", this.x);
       (isFacingLeft) ? this.x -= 10.5 : this.x += 10.5;
-      console.log("update ammo x after", this.x);
+      // console.log("update ammo x after", this.x);
+      
+      if (this.x >= 490 || this.x <= 86) {
+        this.collided = true;
+      }
+      else {this.collided = false; }
+    }
+
+    public checkCollision() {
+
     }
   }
 }

@@ -11,8 +11,8 @@ module objects {
     }
 
     public Start(): void {
-      this.x = 320;
-      this.y = 350;
+      this.x = 60;
+      this.y = 130;
     }
     public Update(): void {
       this.Move();
@@ -20,22 +20,41 @@ module objects {
     }
     public Reset(): void { }
     public Move(): void {
-      this.ChooseCorrectPlayerOrientation();
+      // this.ChooseCorrectPlayerOrientation();
 
-      this.x = objects.Game.stage.mouseX;
-      this.y = objects.Game.stage.mouseY;
-    }
+      // this.x = managers.Game.stage.mouseX;
+      // this.y = managers.Game.stage.mouseY;
 
-
-    private ChooseCorrectPlayerOrientation() {
-      // Checks if the user moved to the right, then display the right facing player image
-      // else show the left facing image
-      if (objects.Game.stage.mouseX > this.x) {
-        this.image = this.assetManager.getResult("playerGunRight");
-      } else if (objects.Game.stage.mouseX < this.x) {
+      if (managers.Game.keyboardManager.moveLeft)
+      {
+        this.x -= 1.5;
         this.image = this.assetManager.getResult("playerGunLeft");
       }
+      if (managers.Game.keyboardManager.moveRight)
+      {
+        this.x += 1.5;
+        this.image = this.assetManager.getResult("playerGunRight");
+      }
+      if (managers.Game.keyboardManager.moveDown)
+      {
+        this.y += 1.5;
+      }
+      if (managers.Game.keyboardManager.moveUp)
+      {
+        this.y -= 1.5;
+      }
     }
+
+
+    // private ChooseCorrectPlayerOrientation() {
+    //   // Checks if the user moved to the right, then display the right facing player image
+    //   // else show the left facing image
+    //   if (managers.Game.stage.mouseX > this.x) {
+    //     this.image = this.assetManager.getResult("playerGunRight");
+    //   } else if (managers.Game.stage.mouseX < this.x) {
+    //     this.image = this.assetManager.getResult("playerGunLeft");
+    //   }
+    // }
 
     private AddShoppingCartBoundary() {
       // SHOPPING CART
@@ -71,8 +90,8 @@ module objects {
         // I have collided with the left side of the apple counter 
         this.x = this.halfW + 60;
       }
-      if (this.x >= this.halfW + 140 && this.x < this.halfW + 180 && this.y > this.halfH + 100 && this.y < this.halfH + 200) {
-        // I have collided with the right side of the apple counter 
+      if (this.x >= this.halfW + 140 && this.x < this.halfW + 155 && this.y > this.halfH + 100 && this.y < this.halfH + 200) {
+        // I have collided with the right side of the apple counter
         this.x = this.halfW + 165;
       }
     }
@@ -87,7 +106,7 @@ module objects {
 
     private AddProduceProtrusionBoundary() {
       // PRODUCE PROTRUSION
-      if (this.x >= 275 - this.halfW && this.y > this.halfH + 200 && this.y < this.halfH + 240) {
+      if (this.x >= 275 - this.halfW && this.y > this.halfH + 215 && this.y < this.halfH + 240) {
         // I have collided with the protruding produce from the top
         this.y = this.halfH + 210;
       }

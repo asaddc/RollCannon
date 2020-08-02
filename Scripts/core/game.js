@@ -6,6 +6,7 @@
     var assetManifest;
     var currentScene;
     var currentState;
+    var keyboardManager;
     function Init() {
         console.log("Initializing...");
         assetManifest = [
@@ -36,21 +37,23 @@
         createjs.Ticker.framerate = 120;
         createjs.Ticker.on("tick", Update);
         // Set up default game states -- State Machine
-        objects.Game.stage = stage;
-        objects.Game.currentScene = config.Scene.MAIN_MENU;
+        managers.Game.stage = stage;
+        managers.Game.currentScene = config.Scene.MAIN_MENU;
         currentState = config.Scene.MAIN_MENU;
+        keyboardManager = new managers.Keyboard;
+        managers.Game.keyboardManager = keyboardManager;
         Main();
     }
     function Update() {
-        if (currentState != objects.Game.currentScene) {
-            console.log("Changing scenes to " + objects.Game.currentScene);
+        if (currentState != managers.Game.currentScene) {
+            console.log("Changing scenes to " + managers.Game.currentScene);
             Main();
         }
         currentScene.Update();
         stage.update();
     }
     function Main() {
-        switch (objects.Game.currentScene) {
+        switch (managers.Game.currentScene) {
             case config.Scene.MAIN_MENU:
                 stage.removeAllChildren();
                 currentScene = new scenes.MainMenuScene(assetManager);
@@ -67,7 +70,7 @@
                 stage.addChild(currentScene);
                 break;
         }
-        currentState = objects.Game.currentScene;
+        currentState = managers.Game.currentScene;
     }
     window.onload = Init;
 })();

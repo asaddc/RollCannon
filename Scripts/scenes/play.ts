@@ -16,7 +16,7 @@ module scenes {
 
     public Start(): void {
       console.log("play");
-      objects.Game.canvas.style.cursor = "none";
+      managers.Game.canvas.style.cursor = "none";
 
       this.background = new objects.Background(this.assetManager, "supermarketBG");
       this.sidebar = new objects.Sidebar();

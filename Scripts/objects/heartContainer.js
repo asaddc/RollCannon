@@ -36,8 +36,13 @@ var objects;
             else if (this.currentHealth === 1) {
                 this.image = this.assetManager.getResult("heartOneThird");
             }
+<<<<<<< HEAD
             else if (this.currentHealth <= 0) {
                 objects.Game.currentScene = config.Scene.GAME_OVER;
+=======
+            else if (this.currentHealth === 0) {
+                managers.Game.currentScene = config.Scene.GAME_OVER;
+>>>>>>> master
             }
         };
         return HeartContainer;

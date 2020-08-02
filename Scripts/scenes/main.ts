@@ -11,7 +11,7 @@ module scenes {
     }
 
     public Start(): void {
-      this.playButton = new objects.Button(this.assetManager, "redPlayBtn", objects.Game.canvas.clientWidth * 0.5 - 44, objects.Game.canvas.clientHeight * 0.5 + 100);
+      this.playButton = new objects.Button(this.assetManager, "redPlayBtn", managers.Game.canvas.clientWidth * 0.5 - 44, managers.Game.canvas.clientHeight * 0.5 + 100);
       this.playButton.scaleX = 2;
       this.playButton.scaleY = 2;
       this.background = new objects.Background(this.assetManager, "mainBG");
@@ -28,7 +28,7 @@ module scenes {
     }
 
     public PlayButtonClicked(): void {
-      objects.Game.currentScene = config.Scene.PLAY;
+      managers.Game.currentScene = config.Scene.PLAY;
     }
   }
 }

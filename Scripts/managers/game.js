@@ -1,5 +1,5 @@
-var objects;
-(function (objects) {
+var managers;
+(function (managers) {
     var Game = /** @class */ (function () {
         function Game() {
         }
@@ -9,6 +9,6 @@ var objects;
         Game.lives = 3;
         return Game;
     }());
-    objects.Game = Game;
-})(objects || (objects = {}));
+    managers.Game = Game;
+})(managers || (managers = {}));
 //# sourceMappingURL=game.js.map

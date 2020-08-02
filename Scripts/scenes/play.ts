@@ -33,11 +33,12 @@ module scenes {
     public Update(): void {
       this.enemies.forEach(enemy => {
         enemy.Update();
-        if (enemy.x > this.player.x - 30 && enemy.x < this.player.x + 30 && enemy.y > this.player.y - 50 && enemy.y < this.player.y + 50) {
-          objects.Game.currentScene = config.Scene.GAME_OVER;
-          this.damageSound = createjs.Sound.play("damageSound");
+        // if (enemy.x > this.player.x - 30 && enemy.x < this.player.x + 30 && enemy.y > this.player.y - 50 && enemy.y < this.player.y + 50) {
+        //   // objects.Game.currentScene = config.Scene.GAME_OVER;
+        //   // this.damageSound = createjs.Sound.play("damageSound");
 
-        }
+        // }
+        managers.Collision.Check(this.player, enemy);
       })
     }
 

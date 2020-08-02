@@ -39,10 +39,11 @@ var scenes;
             var _this = this;
             this.enemies.forEach(function (enemy) {
                 enemy.Update();
-                if (enemy.x > _this.player.x - 30 && enemy.x < _this.player.x + 30 && enemy.y > _this.player.y - 50 && enemy.y < _this.player.y + 50) {
-                    objects.Game.currentScene = config.Scene.GAME_OVER;
-                    _this.damageSound = createjs.Sound.play("damageSound");
-                }
+                // if (enemy.x > this.player.x - 30 && enemy.x < this.player.x + 30 && enemy.y > this.player.y - 50 && enemy.y < this.player.y + 50) {
+                //   // objects.Game.currentScene = config.Scene.GAME_OVER;
+                //   // this.damageSound = createjs.Sound.play("damageSound");
+                // }
+                managers.Collision.Check(_this.player, enemy);
             });
         };
         PlayScene.prototype.Main = function () {

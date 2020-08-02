@@ -34,7 +34,23 @@ module scenes {
       this.enemies.forEach(enemy => {
         enemy.Update();
         managers.Collision.Check(this.player, enemy, this.heartContainer);
-      })
+      });
+
+      // if the user presses the shoot button, then create a new bullet
+      if (managers.Game.keyboardManager.shoot) {
+        let ammo = new objects.Ammo(this.assetManager, this.player.x, this.player.y - 10, "toiletPaper");
+        ammo.scaleX = 0.05;
+        ammo.scaleY = 0.05;
+        this.addChild(ammo);
+        // add to the stage, and then every tick move it to the end of the canvas
+        createjs.Ticker.on("tick", ammo.Update.bind(ammo, this.player.facingLeft));
+
+        setInterval(() => {
+          ammo = null;
+          this.removeChild(ammo);
+        }, 2000);
+
+      }
     }
 
     public Main(): void {
@@ -45,9 +61,9 @@ module scenes {
       this.addChild(this.heartContainer);
       this.enemies.forEach(enemy => {
         this.addChild(enemy);
-      })
+      });
       this.addChild(this.player);
-      this.addChild(this.player.ammo);
+      // this.addChild(this.player.ammo);
     }
   }
 }

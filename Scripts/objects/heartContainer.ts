@@ -26,7 +26,7 @@ module objects {
             } else if (this.currentHealth === 1) {
                 this.image = this.assetManager.getResult("heartOneThird") as HTMLImageElement;
             } else if (this.currentHealth <= 0) {
-                objects.Game.currentScene = config.Scene.GAME_OVER;
+                managers.Game.currentScene = config.Scene.GAME_OVER;
             }
         }
     }

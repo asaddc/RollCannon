@@ -7,6 +7,7 @@ var managers;
             // Listen for keyup and keydown events through the DOM
             document.addEventListener("keydown", this.onKeyDown.bind(this), false);
             document.addEventListener("keyup", this.onKeyUp.bind(this), false);
+            // document.addEventListener("keypress", this.onKeyPress.bind(this), false);
         }
         // Methods
         Keyboard.prototype.onKeyDown = function (event) {
@@ -54,6 +55,14 @@ var managers;
                     this.shoot = false;
                     break;
             }
+        };
+        Keyboard.prototype.onKeyPress = function (event) {
+            switch (event.keyCode) {
+                case config.Keys.SPACE:
+                    this.shoot = true;
+                    break;
+            }
+            this.shoot = false;
         };
         return Keyboard;
     }());

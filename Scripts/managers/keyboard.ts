@@ -13,53 +13,63 @@ module managers {
       // Listen for keyup and keydown events through the DOM
       document.addEventListener("keydown", this.onKeyDown.bind(this), false);
       document.addEventListener("keyup", this.onKeyUp.bind(this), false);
+      // document.addEventListener("keypress", this.onKeyPress.bind(this), false);
     }
     // Methods
-    public onKeyDown(event:KeyboardEvent):void{
-      switch(event.keyCode) {
+    public onKeyDown(event: KeyboardEvent): void {
+      switch (event.keyCode) {
         case config.Keys.W:
         case config.Keys.UP_ARROW:
           this.moveUp = true;
-        break;
+          break;
         case config.Keys.A:
         case config.Keys.LEFT_ARROW:
           this.moveLeft = true;
-        break;
+          break;
         case config.Keys.S:
         case config.Keys.DOWN_ARROW:
           this.moveDown = true;
-        break;
+          break;
         case config.Keys.D:
         case config.Keys.RIGHT_ARROW:
           this.moveRight = true;
-        break;
+          break;
         case config.Keys.SPACE:
           this.shoot = true;
-        break;
+          break;
       }
     }
-    public onKeyUp(event:KeyboardEvent):void{
-      switch(event.keyCode) {
+    public onKeyUp(event: KeyboardEvent): void {
+      switch (event.keyCode) {
         case config.Keys.W:
         case config.Keys.UP_ARROW:
           this.moveUp = false;
-        break;
+          break;
         case config.Keys.A:
         case config.Keys.LEFT_ARROW:
           this.moveLeft = false;
-        break;
+          break;
         case config.Keys.S:
         case config.Keys.DOWN_ARROW:
           this.moveDown = false;
-        break;
+          break;
         case config.Keys.D:
         case config.Keys.RIGHT_ARROW:
           this.moveRight = false;
-        break;
+          break;
         case config.Keys.SPACE:
           this.shoot = false;
-        break;
+          break;
       }
+    }
+
+    public onKeyPress(event: KeyboardEvent): void {
+      switch (event.keyCode) {
+        case config.Keys.SPACE:
+          this.shoot = true;
+          break;
+      }
+      this.shoot = false;
     }
   }
 }

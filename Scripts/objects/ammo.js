@@ -22,7 +22,6 @@ var objects;
             if (y === void 0) { y = 0; }
             if (assetId === void 0) { assetId = ""; }
             var _this = _super.call(this, assetManager.getResult(assetId)) || this;
-            // Default position
             _this.x = x;
             _this.y = y;
             return _this;
@@ -35,7 +34,7 @@ var objects;
                 if (facingLeft) {
                     this.visible = true;
                     this.x -= 10.5;
-                    console.log("SHOOT");
+                    console.log("SHOOT LEFT");
                 }
                 else {
                     this.x += 10.5;
@@ -43,6 +42,12 @@ var objects;
                     console.log("SHOOT RIGHT");
                 }
             }
+        };
+        // Asad's temporary "Fire" method
+        Ammo.prototype.Update = function (isFacingLeft) {
+            console.log("update ammo x", this.x);
+            (isFacingLeft) ? this.x -= 10.5 : this.x += 10.5;
+            console.log("update ammo x after", this.x);
         };
         return Ammo;
     }(createjs.Bitmap));

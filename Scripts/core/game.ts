@@ -19,6 +19,7 @@
       { id: "mainBG", src: "./Assets/mainBG.jpg" },
       { id: "redPlayBtn", src: "./Assets/redPlayBtn.jpg" },
       { id: "toiletPaper", src: "./Assets/toiletpaper.png" },
+      { id: "smallToiletPaper", src: "./Assets/toiletpaper-small.png" },
       { id: "playerGunLeft", src: "./Assets/playerSpriteGunLeft.png" },
       { id: "playerGunRight", src: "./Assets/playerSpriteGunRight.png" },
       { id: "heartFull", src: "./Assets/heartFull.png" },

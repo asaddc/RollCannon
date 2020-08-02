@@ -1,8 +1,8 @@
 module objects {
   export class Player extends objects.GameObject {
     // Variables
-    public ammo:objects.Ammo;
-    private facingLeft:boolean = false;
+    public ammo: objects.Ammo;
+    public facingLeft: boolean = false;
     // Constructor
     private assetManager;
     constructor(assetManager: createjs.LoadQueue) {
@@ -15,7 +15,7 @@ module objects {
     public Start(): void {
       this.x = 60;
       this.y = 130;
-      this.ammo = new objects.Ammo(this.assetManager, this.x, this.y - 10,"toiletPaper");
+      this.ammo = new objects.Ammo(this.assetManager, this.x, this.y - 10, "smallToiletPaper");
       this.ammo.scaleX = 0.05;
       this.ammo.scaleY = 0.05;
     }
@@ -33,25 +33,30 @@ module objects {
       // this.x = managers.Game.stage.mouseX;
       // this.y = managers.Game.stage.mouseY;
 
-      if (managers.Game.keyboardManager.moveLeft)
-      {
+      if (managers.Game.keyboardManager.moveLeft) {
         this.x -= 1.5;
         this.image = this.assetManager.getResult("playerGunLeft");
         this.facingLeft = true;
       }
-      if (managers.Game.keyboardManager.moveRight)
-      {
+      if (managers.Game.keyboardManager.moveRight) {
         this.x += 1.5;
         this.image = this.assetManager.getResult("playerGunRight");
         this.facingLeft = false;
       }
-      if (managers.Game.keyboardManager.moveDown)
-      {
+      if (managers.Game.keyboardManager.moveDown) {
         this.y += 1.5;
       }
-      if (managers.Game.keyboardManager.moveUp)
-      {
+      if (managers.Game.keyboardManager.moveUp) {
         this.y -= 1.5;
+      }
+
+      if (managers.Game.keyboardManager.shoot) {
+        // this.ammo = new objects.Ammo(this.assetManager, this.x, this.y - 10, "toiletPaper");
+        // this.ammo.scaleX = 0.05;
+        // this.ammo.scaleY = 0.05;
+
+        // this.ammo.Fire(this.facingLeft, this.x, this.y - 10);
+
       }
     }
 

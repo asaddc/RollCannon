@@ -26,7 +26,7 @@ var objects;
         Player.prototype.Start = function () {
             this.x = 60;
             this.y = 130;
-            this.ammo = new objects.Ammo(this.assetManager, this.x, this.y - 10, "toiletPaper");
+            this.ammo = new objects.Ammo(this.assetManager, this.x, this.y - 10, "smallToiletPaper");
             this.ammo.scaleX = 0.05;
             this.ammo.scaleY = 0.05;
         };
@@ -56,6 +56,12 @@ var objects;
             }
             if (managers.Game.keyboardManager.moveUp) {
                 this.y -= 1.5;
+            }
+            if (managers.Game.keyboardManager.shoot) {
+                // this.ammo = new objects.Ammo(this.assetManager, this.x, this.y - 10, "toiletPaper");
+                // this.ammo.scaleX = 0.05;
+                // this.ammo.scaleY = 0.05;
+                // this.ammo.Fire(this.facingLeft, this.x, this.y - 10);
             }
         };
         // private ChooseCorrectPlayerOrientation() {

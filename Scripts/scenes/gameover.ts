@@ -12,6 +12,7 @@ module scenes {
     }
 
     public Start(): void {
+
       console.log("game over");
       this.background = new objects.Background(this.assetManager, "gameOverBG");
       console.log(this.background);
@@ -27,6 +28,7 @@ module scenes {
       this.addChild(this.background);
       this.addChild(this.gameoverLabel);
       this.addChild(this.playButton);
+
     }
 
     private PlayButtonClicked(): void {

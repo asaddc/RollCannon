@@ -30,7 +30,8 @@
       { id: "baseEnemyFacingLeft", src: "./Assets/baseEnemyFacingLeft.png" },
       { id: "gameOverBG", src: "./Assets/gameOverBG.jpg" },
       { id: "damageSound", src: "./Assets/Audio/damage-sound.mp3" },
-      { id: "titlebgm", src: "./Assets/Audio/title.mp3"}
+      { id: "titlebgm", src: "./Assets/Audio/title.mp3" },
+      { id: "playbgm", src: "./Assets/Audio/backgroundMusic.mp3" }
     ];
 
     assetManager = new createjs.LoadQueue();

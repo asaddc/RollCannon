@@ -40,7 +40,7 @@ module objects {
         this.y -= 1.5;
       }
     }
-    
+
     private AddShoppingCartBoundary() {
       // SHOPPING CART
       if (this.x > this.halfW + 239 && this.x < this.halfW + 300 && this.y < this.halfH + 100) {

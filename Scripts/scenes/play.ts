@@ -17,7 +17,6 @@ module scenes {
     }
 
     public Start(): void {
-      console.log("play");
       managers.Game.canvas.style.cursor = "none";
 
       this.background = new objects.Background(this.assetManager, "supermarketBG");
@@ -25,6 +24,7 @@ module scenes {
       this.player = new objects.Player(this.assetManager);
       this.heartContainer = new objects.HeartContainer(this.assetManager);
       this.enemies = new Array<objects.Enemy>();
+      // Add enemies to array
       for (let i = 0; i < this.ENEMIES_NUM; i++) {
         this.enemies[i] = new objects.Enemy(this.assetManager);
       }

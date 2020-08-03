@@ -21,6 +21,7 @@ var objects;
             return _this;
         }
         Enemy.prototype.Start = function () {
+            this.dx = Math.random() + 0.3;
             this.Reset();
         };
         Enemy.prototype.Update = function () {
@@ -31,11 +32,12 @@ var objects;
             var min = 400;
             var max = 500;
             this.y = Math.floor(Math.random() * (max - min + 1)) + min;
-            this.x = 460;
+            this.x = Math.floor(Math.random() * 20) + 440;
         };
         Enemy.prototype.Move = function () {
             // move this enemy to the left
-            this.x -= 0.3;
+            this.x -= this.dx;
+            // this.x -= 0.3;
         };
         Enemy.prototype.CheckBound = function () {
             // once this hits the wall on the left, then reset back to the right.

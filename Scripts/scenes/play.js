@@ -34,6 +34,9 @@ var scenes;
             for (var i = 0; i < this.ENEMIES_NUM; i++) {
                 this.enemies[i] = new objects.Enemy(this.assetManager);
             }
+            createjs.Sound.stop();
+            this.bgm = createjs.Sound.play("playbgm");
+            this.bgm.loop = -1;
             this.Main();
         };
         PlayScene.prototype.Update = function () {

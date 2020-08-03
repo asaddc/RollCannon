@@ -9,6 +9,7 @@ module scenes {
     private readonly ENEMIES_NUM: number = 3;
     private ammoOnScreen: boolean = false;
     private ammo: objects.Ammo;
+    private bgm: createjs.AbstractSoundInstance;
 
     // Constructor
     constructor(assetManager: createjs.LoadQueue) {
@@ -28,6 +29,10 @@ module scenes {
       for (let i = 0; i < this.ENEMIES_NUM; i++) {
         this.enemies[i] = new objects.Enemy(this.assetManager);
       }
+
+      createjs.Sound.stop();
+      this.bgm = createjs.Sound.play("playbgm");
+      this.bgm.loop = -1;
 
       this.Main();
     }
@@ -53,7 +58,7 @@ module scenes {
 
           // add to the stage, and then every tick move it to the end of the canvas
           createjs.Ticker.on("tick", ammo.Update.bind(ammo, this.player.facingLeft));
-          
+
           // setInterval(() => {
           //   ammo = null;
           //   this.removeChildAt(9);

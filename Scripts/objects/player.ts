@@ -6,7 +6,7 @@ module objects {
     // Constructor
     private assetManager;
     constructor(assetManager: createjs.LoadQueue) {
-      super(assetManager, "playerGunLeft");
+      super(assetManager, "playerGunRight");
       this.assetManager = assetManager;
       this.on("tick", this.Update);
       this.Start();
@@ -15,23 +15,13 @@ module objects {
     public Start(): void {
       this.x = 60;
       this.y = 130;
-      this.ammo = new objects.Ammo(this.assetManager, this.x, this.y - 10, "smallToiletPaper");
-      this.ammo.scaleX = 0.05;
-      this.ammo.scaleY = 0.05;
     }
     public Update(): void {
       this.Move();
       this.CheckBound();
-
-      this.ammo.visible = false;
-      this.ammo.Fire(this.facingLeft, this.x, this.y - 10);
     }
     public Reset(): void { }
     public Move(): void {
-      // this.ChooseCorrectPlayerOrientation();
-
-      // this.x = managers.Game.stage.mouseX;
-      // this.y = managers.Game.stage.mouseY;
 
       if (managers.Game.keyboardManager.moveLeft) {
         this.x -= 1.5;
@@ -49,28 +39,8 @@ module objects {
       if (managers.Game.keyboardManager.moveUp) {
         this.y -= 1.5;
       }
-
-      if (managers.Game.keyboardManager.shoot) {
-        // this.ammo = new objects.Ammo(this.assetManager, this.x, this.y - 10, "toiletPaper");
-        // this.ammo.scaleX = 0.05;
-        // this.ammo.scaleY = 0.05;
-
-        // this.ammo.Fire(this.facingLeft, this.x, this.y - 10);
-
-      }
     }
-
-
-    // private ChooseCorrectPlayerOrientation() {
-    //   // Checks if the user moved to the right, then display the right facing player image
-    //   // else show the left facing image
-    //   if (managers.Game.stage.mouseX > this.x) {
-    //     this.image = this.assetManager.getResult("playerGunRight");
-    //   } else if (managers.Game.stage.mouseX < this.x) {
-    //     this.image = this.assetManager.getResult("playerGunLeft");
-    //   }
-    // }
-
+    
     private AddShoppingCartBoundary() {
       // SHOPPING CART
       if (this.x > this.halfW + 239 && this.x < this.halfW + 300 && this.y < this.halfH + 100) {

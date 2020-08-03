@@ -11,8 +11,10 @@ module objects {
             super(assetManager.getResult("heartFull"));
             // these coordinates are exactly where the heart container should reside for now
             // under the "Lives: " label.
-            this.x = 503;
-            this.y = 170;
+            this.x = 570;
+            this.y = 120;
+            this.scaleX = 0.5;
+            this.scaleY = 0.5;
 
             this.assetManager = assetManager;
             this.currentHealth = this.MAX_HEALTH_SIZE;
@@ -20,7 +22,7 @@ module objects {
 
 
         public Update(): void {
-            console.log("CURRENT HEALTH", this.currentHealth);
+            // console.log("CURRENT HEALTH", this.currentHealth);
             if (this.currentHealth === 2) {
                 this.image = this.assetManager.getResult("heartTwoThirds") as HTMLImageElement;
             } else if (this.currentHealth === 1) {

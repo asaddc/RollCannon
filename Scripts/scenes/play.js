@@ -19,17 +19,18 @@ var scenes;
         function PlayScene(assetManager) {
             var _this = _super.call(this, assetManager) || this;
             _this.ENEMIES_NUM = 3;
+            _this.ammoOnScreen = false;
             _this.Start();
             return _this;
         }
         PlayScene.prototype.Start = function () {
-            console.log("play");
             managers.Game.canvas.style.cursor = "none";
             this.background = new objects.Background(this.assetManager, "supermarketBG");
             this.sidebar = new objects.Sidebar();
             this.player = new objects.Player(this.assetManager);
             this.heartContainer = new objects.HeartContainer(this.assetManager);
             this.enemies = new Array();
+            // Add enemies to array
             for (var i = 0; i < this.ENEMIES_NUM; i++) {
                 this.enemies[i] = new objects.Enemy(this.assetManager);
             }
@@ -44,16 +45,27 @@ var scenes;
             });
             // if the user presses the shoot button, then create a new bullet
             if (managers.Game.keyboardManager.shoot) {
-                var ammo_1 = new objects.Ammo(this.assetManager, this.player.x, this.player.y - 10, "toiletPaper");
-                ammo_1.scaleX = 0.05;
-                ammo_1.scaleY = 0.05;
-                this.addChild(ammo_1);
-                // add to the stage, and then every tick move it to the end of the canvas
-                createjs.Ticker.on("tick", ammo_1.Update.bind(ammo_1, this.player.facingLeft));
-                setInterval(function () {
-                    ammo_1 = null;
-                    _this.removeChild(ammo_1);
-                }, 2000);
+                // If there is not a bullet on screen, create ammo
+                if (!this.ammoOnScreen) {
+                    var ammo = new objects.Ammo(this.assetManager, this.player.x, this.player.y - 10, "toiletPaper");
+                    ammo.scaleX = 0.05;
+                    ammo.scaleY = 0.05;
+                    this.addChild(ammo);
+                    this.ammoOnScreen = true;
+                    this.ammo = ammo;
+                    // add to the stage, and then every tick move it to the end of the canvas
+                    createjs.Ticker.on("tick", ammo.Update.bind(ammo, this.player.facingLeft));
+                    // setInterval(() => {
+                    //   ammo = null;
+                    //   this.removeChildAt(9);
+                    // }, 2000);
+                }
+                // If ammo reaches end, remove ammo
+                if (this.ammo.collided) {
+                    this.removeChildAt(9);
+                    this.removeChildAt(9);
+                    this.ammoOnScreen = false;
+                }
             }
         };
         PlayScene.prototype.Main = function () {

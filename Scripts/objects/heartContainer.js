@@ -22,14 +22,16 @@ var objects;
             _this.MAX_HEALTH_SIZE = 3;
             // these coordinates are exactly where the heart container should reside for now
             // under the "Lives: " label.
-            _this.x = 503;
-            _this.y = 170;
+            _this.x = 570;
+            _this.y = 120;
+            _this.scaleX = 0.5;
+            _this.scaleY = 0.5;
             _this.assetManager = assetManager;
             _this.currentHealth = _this.MAX_HEALTH_SIZE;
             return _this;
         }
         HeartContainer.prototype.Update = function () {
-            console.log("CURRENT HEALTH", this.currentHealth);
+            // console.log("CURRENT HEALTH", this.currentHealth);
             if (this.currentHealth === 2) {
                 this.image = this.assetManager.getResult("heartTwoThirds");
             }

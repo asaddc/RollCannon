@@ -12,6 +12,7 @@
         assetManifest = [
             { id: "supermarketBG", src: "./Assets/supermarketBG.jpg" },
             { id: "mainBG", src: "./Assets/mainBG.jpg" },
+            { id: "title", src: "./Assets/title.png" },
             { id: "redPlayBtn", src: "./Assets/redPlayBtn.jpg" },
             { id: "toiletPaper", src: "./Assets/toiletpaper.png" },
             { id: "smallToiletPaper", src: "./Assets/toiletpaper-small.png" },
@@ -24,6 +25,7 @@
             { id: "baseEnemyFacingLeft", src: "./Assets/baseEnemyFacingLeft.png" },
             { id: "gameOverBG", src: "./Assets/gameOverBG.jpg" },
             { id: "damageSound", src: "./Assets/Audio/damage-sound.mp3" },
+            { id: "titlebgm", src: "./Assets/Audio/title.mp3" }
         ];
         assetManager = new createjs.LoadQueue();
         assetManager.installPlugin(createjs.Sound);

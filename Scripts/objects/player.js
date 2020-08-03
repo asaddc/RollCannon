@@ -16,7 +16,7 @@ var objects;
     var Player = /** @class */ (function (_super) {
         __extends(Player, _super);
         function Player(assetManager) {
-            var _this = _super.call(this, assetManager, "playerGunLeft") || this;
+            var _this = _super.call(this, assetManager, "playerGunRight") || this;
             _this.facingLeft = false;
             _this.assetManager = assetManager;
             _this.on("tick", _this.Update);
@@ -26,21 +26,13 @@ var objects;
         Player.prototype.Start = function () {
             this.x = 60;
             this.y = 130;
-            this.ammo = new objects.Ammo(this.assetManager, this.x, this.y - 10, "smallToiletPaper");
-            this.ammo.scaleX = 0.05;
-            this.ammo.scaleY = 0.05;
         };
         Player.prototype.Update = function () {
             this.Move();
             this.CheckBound();
-            this.ammo.visible = false;
-            this.ammo.Fire(this.facingLeft, this.x, this.y - 10);
         };
         Player.prototype.Reset = function () { };
         Player.prototype.Move = function () {
-            // this.ChooseCorrectPlayerOrientation();
-            // this.x = managers.Game.stage.mouseX;
-            // this.y = managers.Game.stage.mouseY;
             if (managers.Game.keyboardManager.moveLeft) {
                 this.x -= 1.5;
                 this.image = this.assetManager.getResult("playerGunLeft");
@@ -57,22 +49,7 @@ var objects;
             if (managers.Game.keyboardManager.moveUp) {
                 this.y -= 1.5;
             }
-            if (managers.Game.keyboardManager.shoot) {
-                // this.ammo = new objects.Ammo(this.assetManager, this.x, this.y - 10, "toiletPaper");
-                // this.ammo.scaleX = 0.05;
-                // this.ammo.scaleY = 0.05;
-                // this.ammo.Fire(this.facingLeft, this.x, this.y - 10);
-            }
         };
-        // private ChooseCorrectPlayerOrientation() {
-        //   // Checks if the user moved to the right, then display the right facing player image
-        //   // else show the left facing image
-        //   if (managers.Game.stage.mouseX > this.x) {
-        //     this.image = this.assetManager.getResult("playerGunRight");
-        //   } else if (managers.Game.stage.mouseX < this.x) {
-        //     this.image = this.assetManager.getResult("playerGunLeft");
-        //   }
-        // }
         Player.prototype.AddShoppingCartBoundary = function () {
             // SHOPPING CART
             if (this.x > this.halfW + 239 && this.x < this.halfW + 300 && this.y < this.halfH + 100) {

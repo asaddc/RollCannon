@@ -11,36 +11,24 @@
 
   let keyboardManager: managers.Keyboard;
 
-  function Init() {
+  let textureAtlasData: any;
+  let textureAtlas: createjs.SpriteSheet;
+
+
+  function Init(): void {
     console.log("Initializing...");
 
-    assetManifest = [
-      { id: "supermarketBG", src: "./Assets/supermarketBG.jpg" },
-      { id: "mainBG", src: "./Assets/mainBG.jpg" },
-      { id: "title", src: "./Assets/title.png" },
-      { id: "redPlayBtn", src: "./Assets/redPlayBtn.jpg" },
-      { id: "toiletPaper", src: "./Assets/toiletpaper.png" },
-      { id: "smallToiletPaper", src: "./Assets/toiletpaper-small.png" },
-      { id: "playerGunLeft", src: "./Assets/playerSpriteGunLeft.png" },
-      { id: "playerGunRight", src: "./Assets/playerSpriteGunRight.png" },
-      { id: "heartFull", src: "./Assets/heartFull.png" },
-      { id: "heartTwoThirds", src: "./Assets/heartTwoThirds.png" },
-      { id: "heartOneThird", src: "./Assets/heartOneThird.png" },
-      { id: "baseEnemyFacingRight", src: "./Assets/baseEnemyFacingRight.png" },
-      { id: "baseEnemyFacingLeft", src: "./Assets/baseEnemyFacingLeft.png" },
-      { id: "gameOverBG", src: "./Assets/gameOverBG.jpg" },
-      { id: "damageSound", src: "./Assets/Audio/damage-sound.mp3" },
-      { id: "titlebgm", src: "./Assets/Audio/title.mp3" },
-      { id: "playbgm", src: "./Assets/Audio/backgroundMusic.mp3" }
-    ];
+    createTextureAtlasData();
+    textureAtlas = new createjs.SpriteSheet(textureAtlasData);
 
+    createAssetManifest();
     assetManager = new createjs.LoadQueue();
     assetManager.installPlugin(createjs.Sound);
     assetManager.loadManifest(assetManifest);
     assetManager.on("complete", Start, this);
   }
 
-  function Start() {
+  function Start(): void {
     console.log("Starting Application...");
 
     // Initialize CreateJS
@@ -58,10 +46,13 @@
     keyboardManager = new managers.Keyboard;
     managers.Game.keyboardManager = keyboardManager;
 
+    managers.Game.assetManager = assetManager;
+    managers.Game.textureAtlas = textureAtlas;
+
     Main();
   }
 
-  function Update() {
+  function Update(): void {
     if (currentState != managers.Game.currentScene) {
       console.log("Changing scenes to " + managers.Game.currentScene);
       Main();
@@ -70,7 +61,7 @@
     stage.update();
   }
 
-  function Main() {
+  function Main(): void {
     switch (managers.Game.currentScene) {
       case config.Scene.MAIN_MENU:
         stage.removeAllChildren();
@@ -90,5 +81,91 @@
     }
     currentState = managers.Game.currentScene;
   }
+
+  function createTextureAtlasData(): void {
+    textureAtlasData = {
+      "images": [
+        "./Assets/Sprites/textureAtlas2.png"
+      ],
+
+      "framerate": 20,
+      "frames": [
+        [44, 0, 56, 71, 0, 0, 0],
+        [100, 0, 56, 71, 0, 0, 0],
+        [96, 288, 128, 128, 0, 0, 0],
+        [224, 228, 128, 128, 0, 0, 0],
+        [352, 288, 128, 128, 0, 0, 0],
+        [156, 0, 60, 65, 0, 0, 0],
+        [216, 0, 60, 65, 0, 0, 0],
+        [0, 0, 44, 21, 0, 0, 0],
+        [362, 0, 96, 96, 0, 0, 0],
+        [0, 96, 96, 96, 0, 0, 0],
+        [96, 96, 96, 96, 0, 0, 0],
+        [192, 96, 96, 96, 0, 0, 0],
+        [288, 96, 96, 96, 0, 0, 0],
+        [384, 96, 96, 96, 0, 0, 0],
+        [0, 192, 96, 96, 0, 0, 0],
+        [96, 192, 96, 96, 0, 0, 0],
+        [192, 192, 96, 96, 0, 0, 0],
+        [288, 192, 96, 96, 0, 0, 0],
+        [384, 192, 96, 96, 0, 0, 0],
+        [0, 288, 96, 96, 0, 0, 0],
+        [0, 416, 331, 128, 0, 0, 0],
+        [276, 0, 86, 80, 0, 0, 0],
+        [0, 544, 344, 318, 0, 0, 0]
+      ],
+
+      "animations": {
+        "baseEnemyFacingLeft": {
+          "frames": [0]
+        },
+        "baseEnemyFacingRight": {
+          "frames": [1]
+        },
+        "heartFull": {
+          "frames": [2]
+        },
+        "heartOneThird": {
+          "frames": [3]
+        },
+        "heartTwoThirds": {
+          "frames": [4]
+        },
+        "playerGunLeft": {
+          "frames": [5]
+        },
+        "playerGunRight": {
+          "frames": [6]
+        },
+        "redPlayBtn": {
+          "frames": [7]
+        },
+        "explosion": {
+          "frames": [8, 19]
+        },
+        "title": {
+          "frames": [20]
+        },
+        "smallToiletPaper": {
+          "frames": [21]
+        },
+        "toiletPaper": {
+          "frames": [22]
+        }
+      }
+    };
+  }
+
+  function createAssetManifest(): void {
+    assetManifest = [
+      { id: "supermarketBG", src: "./Assets/supermarketBG.jpg" },
+      { id: "mainBG", src: "./Assets/mainBG.jpg" },
+      { id: "gameOverBG", src: "./Assets/gameOverBG.jpg" },
+      { id: "damageSound", src: "./Assets/Audio/damage-sound.mp3" },
+      { id: "titlebgm", src: "./Assets/Audio/title.mp3" },
+      { id: "playbgm", src: "./Assets/Audio/backgroundMusic.mp3" }
+    ];
+  }
+
   window.onload = Init;
 })();

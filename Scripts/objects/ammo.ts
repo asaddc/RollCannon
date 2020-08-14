@@ -4,12 +4,11 @@ module objects {
     public collided: boolean = false;
     // Constructor
     constructor(
-      assetManager: createjs.LoadQueue,
       x: number = 0,
       y: number = 0,
       assetId: string = ""
     ) {
-      super(assetManager.getResult(assetId));
+      super(managers.Game.assetManager.getResult(assetId));
       this.x = x;
       this.y = y;
 
@@ -36,11 +35,11 @@ module objects {
       // console.log("update ammo x", this.x);
       (isFacingLeft) ? this.x -= 10.5 : this.x += 10.5;
       // console.log("update ammo x after", this.x);
-      
+
       if (this.x >= 490 || this.x <= 86) {
         this.collided = true;
       }
-      else {this.collided = false; }
+      else { this.collided = false; }
     }
 
     public checkCollision() {

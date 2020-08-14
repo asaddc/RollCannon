@@ -16,17 +16,17 @@ var scenes;
     var GameOverScene = /** @class */ (function (_super) {
         __extends(GameOverScene, _super);
         // Constructor
-        function GameOverScene(assetManager) {
-            var _this = _super.call(this, assetManager) || this;
+        function GameOverScene() {
+            var _this = _super.call(this) || this;
             _this.Start();
             return _this;
         }
         GameOverScene.prototype.Start = function () {
             console.log("game over");
-            this.background = new objects.Background(this.assetManager, "gameOverBG");
+            this.background = new objects.Background("gameOverBG");
             console.log(this.background);
             this.background.x = -35;
-            this.playButton = new objects.Button(this.assetManager, "redPlayBtn", managers.Game.canvas.clientWidth * 0.5 - 44, managers.Game.canvas.clientHeight * 0.5 + 100);
+            this.playButton = new objects.Button("redPlayBtn", managers.Game.canvas.clientWidth * 0.5 - 44, managers.Game.canvas.clientHeight * 0.5 + 100);
             this.playButton.scaleX = 2;
             this.playButton.scaleY = 2;
             this.playButton.on("click", this.PlayButtonClicked);

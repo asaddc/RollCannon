@@ -16,8 +16,8 @@ var objects;
     var HeartContainer = /** @class */ (function (_super) {
         __extends(HeartContainer, _super);
         // Constructor
-        function HeartContainer(assetManager) {
-            var _this = _super.call(this, assetManager.getResult("heartFull")) || this;
+        function HeartContainer() {
+            var _this = _super.call(this, managers.Game.assetManager.getResult("heartFull")) || this;
             // Variables
             _this.MAX_HEALTH_SIZE = 3;
             // these coordinates are exactly where the heart container should reside for now
@@ -26,17 +26,16 @@ var objects;
             _this.y = 120;
             _this.scaleX = 0.5;
             _this.scaleY = 0.5;
-            _this.assetManager = assetManager;
             _this.currentHealth = _this.MAX_HEALTH_SIZE;
             return _this;
         }
         HeartContainer.prototype.Update = function () {
             // console.log("CURRENT HEALTH", this.currentHealth);
             if (this.currentHealth === 2) {
-                this.image = this.assetManager.getResult("heartTwoThirds");
+                this.image = managers.Game.assetManager.getResult("heartTwoThirds");
             }
             else if (this.currentHealth === 1) {
-                this.image = this.assetManager.getResult("heartOneThird");
+                // this.image = this.assetManager.getResult("heartOneThird") as HTMLImageElement;
             }
             else if (this.currentHealth <= 0) {
                 managers.Game.currentScene = config.Scene.GAME_OVER;

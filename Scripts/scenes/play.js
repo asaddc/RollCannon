@@ -16,8 +16,8 @@ var scenes;
     var PlayScene = /** @class */ (function (_super) {
         __extends(PlayScene, _super);
         // Constructor
-        function PlayScene(assetManager) {
-            var _this = _super.call(this, assetManager) || this;
+        function PlayScene() {
+            var _this = _super.call(this) || this;
             _this.ENEMIES_NUM = 3;
             _this.ammoOnScreen = false;
             _this.Start();
@@ -25,14 +25,14 @@ var scenes;
         }
         PlayScene.prototype.Start = function () {
             managers.Game.canvas.style.cursor = "none";
-            this.background = new objects.Background(this.assetManager, "supermarketBG");
+            this.background = new objects.Background("supermarketBG");
             this.sidebar = new objects.Sidebar();
-            this.player = new objects.Player(this.assetManager);
-            this.heartContainer = new objects.HeartContainer(this.assetManager);
+            this.player = new objects.Player();
+            this.heartContainer = new objects.HeartContainer();
             this.enemies = new Array();
             // Add enemies to array
             for (var i = 0; i < this.ENEMIES_NUM; i++) {
-                this.enemies[i] = new objects.Enemy(this.assetManager);
+                this.enemies[i] = new objects.Enemy();
             }
             createjs.Sound.stop();
             this.bgm = createjs.Sound.play("playbgm");
@@ -50,7 +50,7 @@ var scenes;
             if (managers.Game.keyboardManager.shoot) {
                 // If there is not a bullet on screen, create ammo
                 if (!this.ammoOnScreen) {
-                    var ammo = new objects.Ammo(this.assetManager, this.player.x, this.player.y - 10, "toiletPaper");
+                    var ammo = new objects.Ammo(this.player.x, this.player.y - 10, "toiletPaper");
                     ammo.scaleX = 0.05;
                     ammo.scaleY = 0.05;
                     this.addChild(ammo);

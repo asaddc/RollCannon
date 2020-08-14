@@ -3,12 +3,11 @@ module objects {
     // Variables
     // Constructor
     constructor(
-      assetManager:createjs.LoadQueue,
-      x:number = 0,
-      y:number = 0,
-      assetId:string = "toiletPaper"
+      x: number = 0,
+      y: number = 0,
+      assetId: string = "toiletPaper"
     ) {
-      super(assetManager, x, y, assetId);
+      super(x, y, assetId);
 
       /// do something unique for TP
     }

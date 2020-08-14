@@ -15,8 +15,8 @@ var objects;
 (function (objects) {
     var Enemy = /** @class */ (function (_super) {
         __extends(Enemy, _super);
-        function Enemy(assetManager) {
-            var _this = _super.call(this, assetManager, "baseEnemyFacingLeft") || this;
+        function Enemy() {
+            var _this = _super.call(this, "baseEnemyFacingLeft") || this;
             _this.Start();
             return _this;
         }

@@ -15,10 +15,10 @@ var objects;
 (function (objects) {
     var Player = /** @class */ (function (_super) {
         __extends(Player, _super);
-        function Player(assetManager) {
-            var _this = _super.call(this, assetManager, "playerGunRight") || this;
+        // Constructor
+        function Player() {
+            var _this = _super.call(this, "playerGunRight") || this;
             _this.facingLeft = false;
-            _this.assetManager = assetManager;
             _this.on("tick", _this.Update);
             _this.Start();
             return _this;
@@ -35,12 +35,14 @@ var objects;
         Player.prototype.Move = function () {
             if (managers.Game.keyboardManager.moveLeft) {
                 this.x -= 1.5;
-                this.image = this.assetManager.getResult("playerGunLeft");
+                this.currentAnimation = "playerGunLeft";
+                // this.image = managers.Game.assetManager.getResult("playerGunLeft");
                 this.facingLeft = true;
             }
             if (managers.Game.keyboardManager.moveRight) {
                 this.x += 1.5;
-                this.image = this.assetManager.getResult("playerGunRight");
+                this.currentAnimation = "playerGunRight";
+                // this.image = this.assetManager.getResult("playerGunRight");
                 this.facingLeft = false;
             }
             if (managers.Game.keyboardManager.moveDown) {

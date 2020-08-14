@@ -4,10 +4,9 @@ module objects {
     public ammo: objects.Ammo;
     public facingLeft: boolean = false;
     // Constructor
-    private assetManager;
-    constructor(assetManager: createjs.LoadQueue) {
-      super(assetManager, "playerGunRight");
-      this.assetManager = assetManager;
+
+    constructor() {
+      super("playerGunRight");
       this.on("tick", this.Update);
       this.Start();
     }
@@ -25,12 +24,14 @@ module objects {
 
       if (managers.Game.keyboardManager.moveLeft) {
         this.x -= 1.5;
-        this.image = this.assetManager.getResult("playerGunLeft");
+        this.currentAnimation = "playerGunLeft";
+        // this.image = managers.Game.assetManager.getResult("playerGunLeft");
         this.facingLeft = true;
       }
       if (managers.Game.keyboardManager.moveRight) {
         this.x += 1.5;
-        this.image = this.assetManager.getResult("playerGunRight");
+        this.currentAnimation = "playerGunRight";
+        // this.image = this.assetManager.getResult("playerGunRight");
         this.facingLeft = false;
       }
       if (managers.Game.keyboardManager.moveDown) {

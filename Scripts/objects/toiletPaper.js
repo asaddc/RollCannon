@@ -17,11 +17,11 @@ var objects;
         __extends(ToiletPaper, _super);
         // Variables
         // Constructor
-        function ToiletPaper(assetManager, x, y, assetId) {
+        function ToiletPaper(x, y, assetId) {
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             if (assetId === void 0) { assetId = "toiletPaper"; }
-            return _super.call(this, assetManager, x, y, assetId) || this;
+            return _super.call(this, x, y, assetId) || this;
             /// do something unique for TP
         }
         return ToiletPaper;

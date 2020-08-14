@@ -1,14 +1,13 @@
 module objects {
-  export class Button extends createjs.Bitmap {
+  export class Button extends objects.GameObject {
     // Variables
     // Constructor
     constructor(
-      assetManager: createjs.LoadQueue,
       imageString: string,
       x: number = 0,
       y: number = 0
     ) {
-      super(assetManager.getResult(imageString));
+      super(imageString);
 
       // Default position
       this.x = x;

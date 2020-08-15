@@ -80,17 +80,8 @@
     };
     function Init() {
         console.log("Initializing...");
-        // CreateTextureAtlasData();
-        textureAtlas = new createjs.SpriteSheet(textureAtlasData);
+        CreateTextureAtlasData();
         CreateAssetManifest();
-        assetManifest = [
-            { id: "supermarketBG", src: "./Assets/supermarketBG.jpg" },
-            { id: "mainBG", src: "./Assets/mainBG.jpg" },
-            { id: "gameOverBG", src: "./Assets/gameOverBG.jpg" },
-            { id: "damageSound", src: "./Assets/Audio/damage-sound.mp3" },
-            { id: "titlebgm", src: "./Assets/Audio/title.mp3" },
-            { id: "playbgm", src: "./Assets/Audio/backgroundMusic.mp3" }
-        ];
         assetManager = new createjs.LoadQueue();
         assetManager.installPlugin(createjs.Sound);
         assetManager.loadManifest(assetManifest);
@@ -211,8 +202,17 @@
                 }
             }
         };
+        textureAtlas = new createjs.SpriteSheet(textureAtlasData);
     }
     function CreateAssetManifest() {
+        assetManifest = [
+            { id: "supermarketBG", src: "./Assets/supermarketBG.jpg" },
+            { id: "mainBG", src: "./Assets/mainBG.jpg" },
+            { id: "gameOverBG", src: "./Assets/gameOverBG.jpg" },
+            { id: "damageSound", src: "./Assets/Audio/damage-sound.mp3" },
+            { id: "titlebgm", src: "./Assets/Audio/title.mp3" },
+            { id: "playbgm", src: "./Assets/Audio/backgroundMusic.mp3" }
+        ];
     }
     window.onload = Init;
 })();

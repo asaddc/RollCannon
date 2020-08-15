@@ -20,7 +20,9 @@ var objects;
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             if (assetId === void 0) { assetId = ""; }
-            var _this = _super.call(this, managers.Game.assetManager.getResult(assetId)) || this;
+            var _this = 
+            // super(managers.Game.assetManager.getResult(assetId));
+            _super.call(this, assetId) || this;
             // Variables
             _this.collided = false;
             _this.x = x;
@@ -43,21 +45,19 @@ var objects;
             }
         };
         // Asad's temporary "Fire" method
-        Ammo.prototype.Update = function (isFacingLeft) {
-            // console.log("update ammo x", this.x);
-            (isFacingLeft) ? this.x -= 10.5 : this.x += 10.5;
-            // console.log("update ammo x after", this.x);
-            if (this.x >= 490 || this.x <= 86) {
-                this.collided = true;
-            }
-            else {
-                this.collided = false;
-            }
-        };
+        // public Update(isFacingLeft: boolean) {
+        //   // console.log("update ammo x", this.x);
+        //   (isFacingLeft) ? this.x -= 10.5 : this.x += 10.5;
+        //   // console.log("update ammo x after", this.x);
+        //   if (this.x >= 490 || this.x <= 86) {
+        //     this.collided = true;
+        //   }
+        //   else { this.collided = false; }
+        // }
         Ammo.prototype.checkCollision = function () {
         };
         return Ammo;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Ammo = Ammo;
 })(objects || (objects = {}));
 //# sourceMappingURL=ammo.js.map

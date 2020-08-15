@@ -32,7 +32,7 @@ var objects;
         HeartContainer.prototype.Update = function () {
             // console.log("CURRENT HEALTH", this.currentHealth);
             if (this.currentHealth === 2) {
-                this.image = managers.Game.assetManager.getResult("heartTwoThirds");
+                // this.image = managers.Game.assetManager.getResult("heartTwoThirds") as HTMLImageElement;
             }
             else if (this.currentHealth === 1) {
                 // this.image = this.assetManager.getResult("heartOneThird") as HTMLImageElement;

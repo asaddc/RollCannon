@@ -2,11 +2,7 @@ module objects {
   export class Button extends objects.GameObject {
     // Variables
     // Constructor
-    constructor(
-      imageString: string,
-      x: number = 0,
-      y: number = 0
-    ) {
+    constructor(imageString: string, x: number = 0, y: number = 0) {
       super(imageString);
 
       // Default position

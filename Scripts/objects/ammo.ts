@@ -1,17 +1,13 @@
 module objects {
-  export class Ammo extends createjs.Bitmap {
+  export class Ammo extends objects.GameObject {
     // Variables
     public collided: boolean = false;
     // Constructor
-    constructor(
-      x: number = 0,
-      y: number = 0,
-      assetId: string = ""
-    ) {
-      super(managers.Game.assetManager.getResult(assetId));
+    constructor(x: number = 0, y: number = 0, assetId: string = "") {
+      // super(managers.Game.assetManager.getResult(assetId));
+      super(assetId);
       this.x = x;
       this.y = y;
-
     }
 
     public Fire(facingLeft: boolean, x: number, y: number): void {
@@ -31,16 +27,17 @@ module objects {
     }
 
     // Asad's temporary "Fire" method
-    public Update(isFacingLeft: boolean) {
-      // console.log("update ammo x", this.x);
-      (isFacingLeft) ? this.x -= 10.5 : this.x += 10.5;
-      // console.log("update ammo x after", this.x);
 
-      if (this.x >= 490 || this.x <= 86) {
-        this.collided = true;
-      }
-      else { this.collided = false; }
-    }
+    // public Update(isFacingLeft: boolean) {
+    //   // console.log("update ammo x", this.x);
+    //   (isFacingLeft) ? this.x -= 10.5 : this.x += 10.5;
+    //   // console.log("update ammo x after", this.x);
+
+    //   if (this.x >= 490 || this.x <= 86) {
+    //     this.collided = true;
+    //   }
+    //   else { this.collided = false; }
+    // }
 
     public checkCollision() {
 

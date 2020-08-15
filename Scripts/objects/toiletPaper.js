@@ -34,7 +34,7 @@ var objects;
             this.y = -5000;
         };
         ToiletPaper.prototype.Move = function () {
-            this.x += this.speedX;
+            (managers.Game.isFacingRight) ? this.x += this.speedX : this.x -= this.speedX;
         };
         return ToiletPaper;
     }(objects.Ammo));

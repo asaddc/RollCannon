@@ -21,7 +21,7 @@ module objects {
     }
 
     public Move(): void {
-      this.x += this.speedX;
+      (managers.Game.isFacingRight) ? this.x += this.speedX : this.x -= this.speedX;
     }
   }
 }

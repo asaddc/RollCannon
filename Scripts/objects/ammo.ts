@@ -4,7 +4,6 @@ module objects {
     public collided: boolean = false;
     // Constructor
     constructor(x: number = 0, y: number = 0, assetId: string = "") {
-      // super(managers.Game.assetManager.getResult(assetId));
       super(assetId);
       this.x = x;
       this.y = y;

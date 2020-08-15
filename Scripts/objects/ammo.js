@@ -20,9 +20,7 @@ var objects;
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             if (assetId === void 0) { assetId = ""; }
-            var _this = 
-            // super(managers.Game.assetManager.getResult(assetId));
-            _super.call(this, assetId) || this;
+            var _this = _super.call(this, assetId) || this;
             // Variables
             _this.collided = false;
             _this.x = x;

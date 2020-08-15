@@ -35,13 +35,19 @@ var objects;
         Player.prototype.Move = function () {
             if (managers.Game.keyboardManager.moveLeft) {
                 this.x -= 1.5;
-                this.currentAnimation = "playerGunLeft";
+                // this.currentAnimation = "playerGunLeft";
+                // this.currentAnimationFrame = 5;
+                this.gotoAndStop("playerGunLeft");
+                console.log("PLAYER LEFT :", this);
                 // this.image = managers.Game.assetManager.getResult("playerGunLeft");
                 this.facingLeft = true;
             }
             if (managers.Game.keyboardManager.moveRight) {
                 this.x += 1.5;
-                this.currentAnimation = "playerGunRight";
+                // this.currentAnimation = "playerGunRight";
+                // this.currentAnimationFrame = 6;
+                this.gotoAndStop("playerGunRight");
+                console.log("PLAYER RIGHT :", this);
                 // this.image = this.assetManager.getResult("playerGunRight");
                 this.facingLeft = false;
             }

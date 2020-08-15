@@ -11,7 +11,6 @@
     var textureAtlas;
     function Init() {
         console.log("Initializing...");
-        CreateTextureAtlasData();
         CreateAssetManifest();
         assetManager = new createjs.LoadQueue();
         assetManager.installPlugin(createjs.Sound);
@@ -20,6 +19,7 @@
     }
     function Start() {
         console.log("Starting Application...");
+        CreateTextureAtlasData();
         // Initialize CreateJS
         stage = new createjs.Stage(canvas);
         stage.enableMouseOver(20);
@@ -62,6 +62,7 @@
                 break;
         }
         currentState = managers.Game.currentScene;
+        managers.Game.currentSceneObject = currentScene;
     }
     function CreateTextureAtlasData() {
         textureAtlasData = {
@@ -133,16 +134,19 @@
                 }
             }
         };
+        textureAtlasData.images = [assetManager.getResult("textureAtlas")];
         textureAtlas = new createjs.SpriteSheet(textureAtlasData);
     }
     function CreateAssetManifest() {
         assetManifest = [
+            { id: "textureAtlas", src: "./Assets/Sprites/textureAtlas2.png" },
             { id: "supermarketBG", src: "./Assets/supermarketBG.jpg" },
             { id: "mainBG", src: "./Assets/mainBG.jpg" },
             { id: "gameOverBG", src: "./Assets/gameOverBG.jpg" },
             { id: "damageSound", src: "./Assets/Audio/damage-sound.mp3" },
             { id: "titlebgm", src: "./Assets/Audio/title.mp3" },
-            { id: "playbgm", src: "./Assets/Audio/backgroundMusic.mp3" }
+            { id: "playbgm", src: "./Assets/Audio/backgroundMusic.mp3" },
+            { id: "explosion", src: "./Assets/Audio/backgroundMusic.mp3" }
         ];
     }
     window.onload = Init;

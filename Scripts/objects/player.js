@@ -21,35 +21,35 @@ var objects;
             _this.facingLeft = false;
             _this.on("tick", _this.Update);
             _this.Start();
+            _this.toilerPaperCount = 0;
             return _this;
         }
         Player.prototype.Start = function () {
             this.x = 60;
             this.y = 130;
+            this.toiletPapers = new Array();
         };
         Player.prototype.Update = function () {
             this.Move();
             this.CheckBound();
+            this.ToiletPaperFire();
+            this.toiletPapers.forEach(function (toiletPaper) {
+                toiletPaper.Update();
+            });
         };
         Player.prototype.Reset = function () { };
         Player.prototype.Move = function () {
             if (managers.Game.keyboardManager.moveLeft) {
                 this.x -= 1.5;
-                // this.currentAnimation = "playerGunLeft";
-                // this.currentAnimationFrame = 5;
                 this.gotoAndStop("playerGunLeft");
-                console.log("PLAYER LEFT :", this);
-                // this.image = managers.Game.assetManager.getResult("playerGunLeft");
                 this.facingLeft = true;
+                managers.Game.isFacingRight = false;
             }
             if (managers.Game.keyboardManager.moveRight) {
                 this.x += 1.5;
-                // this.currentAnimation = "playerGunRight";
-                // this.currentAnimationFrame = 6;
                 this.gotoAndStop("playerGunRight");
-                console.log("PLAYER RIGHT :", this);
-                // this.image = this.assetManager.getResult("playerGunRight");
                 this.facingLeft = false;
+                managers.Game.isFacingRight = true;
             }
             if (managers.Game.keyboardManager.moveDown) {
                 this.y += 1.5;
@@ -160,6 +160,19 @@ var objects;
             this.AddTopRightProduceBoundary();
             this.AddProduceProtrusionBoundary();
             this.AddBottomProductsBoundary();
+        };
+        Player.prototype.ToiletPaperFire = function () {
+            var ticker = createjs.Ticker.getTicks();
+            if (managers.Game.keyboardManager.shoot && (ticker % 30 == 0)) {
+                this.toiletPaperSpawn = new math.Vec2(this.x, this.y - this.halfH);
+                var toilerPaper = new objects.ToiletPaper();
+                toilerPaper.x = this.toiletPaperSpawn.x;
+                toilerPaper.y = this.toiletPaperSpawn.y;
+                toilerPaper.scaleX = 0.1;
+                toilerPaper.scaleY = 0.1;
+                this.toiletPapers[this.toilerPaperCount++] = toilerPaper;
+                managers.Game.currentSceneObject.addChild(toilerPaper);
+            }
         };
         return Player;
     }(objects.GameObject));

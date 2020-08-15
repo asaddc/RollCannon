@@ -3,6 +3,7 @@ var managers;
     var Game = /** @class */ (function () {
         function Game() {
         }
+        ;
         Game.canvas = document.getElementById("canvas");
         Game.score = 0;
         Game.level = 1;

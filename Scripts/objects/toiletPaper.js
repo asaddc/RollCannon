@@ -24,6 +24,18 @@ var objects;
             return _super.call(this, x, y, assetId) || this;
             /// do something unique for TP
         }
+        ToiletPaper.prototype.Update = function () {
+            this.speedX = 10;
+            this.speedY = 0;
+            this.Move();
+        };
+        ToiletPaper.prototype.Reset = function () {
+            this.x = -5000;
+            this.y = -5000;
+        };
+        ToiletPaper.prototype.Move = function () {
+            this.x += this.speedX;
+        };
         return ToiletPaper;
     }(objects.Ammo));
     objects.ToiletPaper = ToiletPaper;

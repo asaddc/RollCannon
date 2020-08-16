@@ -29,6 +29,7 @@ var scenes;
             this.sidebar = new objects.Sidebar();
             this.player = new objects.Player();
             this.heartContainer = new objects.HeartContainer();
+            managers.Game.heartContainer = this.heartContainer;
             this.enemies = new Array();
             // Add enemies to array
             for (var i = 0; i < this.ENEMIES_NUM; i++) {
@@ -44,6 +45,7 @@ var scenes;
             this.heartContainer.Update();
             this.enemies.forEach(function (enemy) {
                 enemy.Update();
+                // managers.Collision.Check(this.player, enemy, this.heartContainer);
                 managers.Collision.Check(_this.player, enemy, _this.heartContainer);
             });
             // if the user presses the shoot button, then create a new bullet

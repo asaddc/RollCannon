@@ -24,10 +24,8 @@ var objects;
         }
         GameObject.prototype.Init = function () {
             // Initialize all the properties of my object
-            if (this.getBounds() != null) {
-                this.width = this.getBounds().width;
-                this.height = this.getBounds().height;
-            }
+            this.width = this.getBounds().width;
+            this.height = this.getBounds().height;
             this.halfW = this.width * 0.5;
             this.halfH = this.height * 0.5;
             // Registration points

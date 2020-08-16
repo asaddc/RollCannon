@@ -24,6 +24,7 @@ module scenes {
       this.sidebar = new objects.Sidebar();
       this.player = new objects.Player();
       this.heartContainer = new objects.HeartContainer();
+      managers.Game.heartContainer = this.heartContainer;
       this.enemies = new Array<objects.Enemy>();
       // Add enemies to array
       for (let i = 0; i < this.ENEMIES_NUM; i++) {
@@ -40,6 +41,7 @@ module scenes {
       this.heartContainer.Update();
       this.enemies.forEach(enemy => {
         enemy.Update();
+        // managers.Collision.Check(this.player, enemy, this.heartContainer);
         managers.Collision.Check(this.player, enemy, this.heartContainer);
       });
 

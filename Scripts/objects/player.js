@@ -18,6 +18,7 @@ var objects;
         // Constructor
         function Player() {
             var _this = _super.call(this, "playerGunRight") || this;
+            _this.allDirections = true;
             _this.facingLeft = false;
             _this.on("tick", _this.Update);
             _this.Start();
@@ -51,10 +52,10 @@ var objects;
                 this.facingLeft = false;
                 managers.Game.isFacingRight = true;
             }
-            if (managers.Game.keyboardManager.moveDown) {
+            if (managers.Game.keyboardManager.moveDown && this.allDirections) {
                 this.y += 1.5;
             }
-            if (managers.Game.keyboardManager.moveUp) {
+            if (managers.Game.keyboardManager.moveUp && this.allDirections) {
                 this.y -= 1.5;
             }
         };
@@ -155,11 +156,13 @@ var objects;
         };
         Player.prototype.CheckBound = function () {
             this.AddEdgesBoundary();
-            this.AddShoppingCartBoundary();
-            this.AddAppleCounterBoundary();
-            this.AddTopRightProduceBoundary();
-            this.AddProduceProtrusionBoundary();
-            this.AddBottomProductsBoundary();
+            if (managers.Game.currentLevel == 1) {
+                this.AddShoppingCartBoundary();
+                this.AddAppleCounterBoundary();
+                this.AddTopRightProduceBoundary();
+                this.AddProduceProtrusionBoundary();
+                this.AddBottomProductsBoundary();
+            }
         };
         Player.prototype.ToiletPaperFire = function () {
             var ticker = createjs.Ticker.getTicks();

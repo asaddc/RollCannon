@@ -1,9 +1,11 @@
 module objects {
   export class Player extends objects.GameObject {
     // Variables
+    private toiletPaperSpawn: math.Vec2;
+    private allDirections: boolean = true;
+
     public ammo: objects.Ammo;
     public facingLeft: boolean = false;
-    private toiletPaperSpawn: math.Vec2;
     public toiletPapers: objects.ToiletPaper[];
     public toilerPaperCount: number;
     // Constructor
@@ -47,11 +49,11 @@ module objects {
         managers.Game.isFacingRight = true;
       }
 
-      if (managers.Game.keyboardManager.moveDown) {
+      if (managers.Game.keyboardManager.moveDown && this.allDirections) {
         this.y += 1.5;
       }
 
-      if (managers.Game.keyboardManager.moveUp) {
+      if (managers.Game.keyboardManager.moveUp && this.allDirections) {
         this.y -= 1.5;
       }
     }
@@ -167,13 +169,16 @@ module objects {
         this.y = this.halfH + 50;
       }
     }
+
     public CheckBound(): void {
       this.AddEdgesBoundary();
-      this.AddShoppingCartBoundary();
-      this.AddAppleCounterBoundary();
-      this.AddTopRightProduceBoundary();
-      this.AddProduceProtrusionBoundary();
-      this.AddBottomProductsBoundary();
+      if (managers.Game.currentLevel == 1) {
+        this.AddShoppingCartBoundary();
+        this.AddAppleCounterBoundary();
+        this.AddTopRightProduceBoundary();
+        this.AddProduceProtrusionBoundary();
+        this.AddBottomProductsBoundary();
+      }
     }
 
     public ToiletPaperFire() {

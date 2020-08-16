@@ -13,7 +13,6 @@ module managers {
       // Listen for keyup and keydown events through the DOM
       document.addEventListener("keydown", this.onKeyDown.bind(this), false);
       document.addEventListener("keyup", this.onKeyUp.bind(this), false);
-      // document.addEventListener("keypress", this.onKeyPress.bind(this), false);
     }
     // Methods
     public onKeyDown(event: KeyboardEvent): void {

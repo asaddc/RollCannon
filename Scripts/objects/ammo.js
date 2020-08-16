@@ -16,48 +16,19 @@ var objects;
     var Ammo = /** @class */ (function (_super) {
         __extends(Ammo, _super);
         // Constructor
-        function Ammo(assetManager, x, y, assetId) {
+        function Ammo(x, y, assetId) {
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             if (assetId === void 0) { assetId = ""; }
-            var _this = _super.call(this, assetManager.getResult(assetId)) || this;
+            var _this = _super.call(this, assetId) || this;
             // Variables
             _this.collided = false;
             _this.x = x;
             _this.y = y;
             return _this;
         }
-        Ammo.prototype.Fire = function (facingLeft, x, y) {
-            if (managers.Game.keyboardManager.shoot)
-                this.x = x;
-            this.y = y;
-            {
-                if (facingLeft) {
-                    this.visible = true;
-                    this.x -= 10.5;
-                }
-                else {
-                    this.x += 10.5;
-                    this.visible = true;
-                }
-            }
-        };
-        // Asad's temporary "Fire" method
-        Ammo.prototype.Update = function (isFacingLeft) {
-            // console.log("update ammo x", this.x);
-            (isFacingLeft) ? this.x -= 10.5 : this.x += 10.5;
-            // console.log("update ammo x after", this.x);
-            if (this.x >= 490 || this.x <= 86) {
-                this.collided = true;
-            }
-            else {
-                this.collided = false;
-            }
-        };
-        Ammo.prototype.checkCollision = function () {
-        };
         return Ammo;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Ammo = Ammo;
 })(objects || (objects = {}));
 //# sourceMappingURL=ammo.js.map

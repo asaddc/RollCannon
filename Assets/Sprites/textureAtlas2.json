@@ -1,0 +1,220 @@
+{"frames": [
+
+{
+	"filename": "baseEnemyFacingLeft.png",
+	"frame": {"x":292,"y":0,"w":56,"h":71},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":71},
+	"sourceSize": {"w":56,"h":71}
+},
+{
+	"filename": "baseEnemyFacingRight.png",
+	"frame": {"x":348,"y":0,"w":56,"h":71},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":71},
+	"sourceSize": {"w":56,"h":71}
+},
+{
+	"filename": "heartFull.png",
+	"frame": {"x":192,"y":359,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+{
+	"filename": "heartOneThird.png",
+	"frame": {"x":320,"y":359,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+{
+	"filename": "heartTwoThirds.png",
+	"frame": {"x":0,"y":487,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+{
+	"filename": "playerSpriteGunLeft.png",
+	"frame": {"x":172,"y":0,"w":60,"h":65},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":60,"h":65},
+	"sourceSize": {"w":60,"h":65}
+},
+{
+	"filename": "playerSpriteGunRight.png",
+	"frame": {"x":232,"y":0,"w":60,"h":65},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":60,"h":65},
+	"sourceSize": {"w":60,"h":65}
+},
+{
+	"filename": "redPlayBtn.jpg",
+	"frame": {"x":0,"y":0,"w":44,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":44,"h":21},
+	"sourceSize": {"w":44,"h":21}
+},
+{
+	"filename": "robotFacingLeft.png",
+	"frame": {"x":86,"y":71,"w":62,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":62,"h":90},
+	"sourceSize": {"w":62,"h":90}
+},
+{
+	"filename": "robotFacingRght.png",
+	"frame": {"x":148,"y":71,"w":62,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":62,"h":90},
+	"sourceSize": {"w":62,"h":90}
+},
+{
+	"filename": "skeletonFacingLeft.png",
+	"frame": {"x":44,"y":0,"w":64,"h":64},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
+	"sourceSize": {"w":64,"h":64}
+},
+{
+	"filename": "skeletonFacingRight.png",
+	"frame": {"x":108,"y":0,"w":64,"h":64},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
+	"sourceSize": {"w":64,"h":64}
+},
+{
+	"filename": "tile000.png",
+	"frame": {"x":210,"y":71,"w":96,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+	"sourceSize": {"w":96,"h":96}
+},
+{
+	"filename": "tile001.png",
+	"frame": {"x":306,"y":71,"w":96,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+	"sourceSize": {"w":96,"h":96}
+},
+{
+	"filename": "tile002.png",
+	"frame": {"x":0,"y":167,"w":96,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+	"sourceSize": {"w":96,"h":96}
+},
+{
+	"filename": "tile003.png",
+	"frame": {"x":96,"y":167,"w":96,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+	"sourceSize": {"w":96,"h":96}
+},
+{
+	"filename": "tile004.png",
+	"frame": {"x":192,"y":167,"w":96,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+	"sourceSize": {"w":96,"h":96}
+},
+{
+	"filename": "tile005.png",
+	"frame": {"x":288,"y":167,"w":96,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+	"sourceSize": {"w":96,"h":96}
+},
+{
+	"filename": "tile006.png",
+	"frame": {"x":0,"y":263,"w":96,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+	"sourceSize": {"w":96,"h":96}
+},
+{
+	"filename": "tile007.png",
+	"frame": {"x":96,"y":263,"w":96,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+	"sourceSize": {"w":96,"h":96}
+},
+{
+	"filename": "tile008.png",
+	"frame": {"x":192,"y":263,"w":96,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+	"sourceSize": {"w":96,"h":96}
+},
+{
+	"filename": "tile009.png",
+	"frame": {"x":288,"y":263,"w":96,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+	"sourceSize": {"w":96,"h":96}
+},
+{
+	"filename": "tile010.png",
+	"frame": {"x":0,"y":359,"w":96,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+	"sourceSize": {"w":96,"h":96}
+},
+{
+	"filename": "tile011.png",
+	"frame": {"x":96,"y":359,"w":96,"h":96},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":96,"h":96},
+	"sourceSize": {"w":96,"h":96}
+},
+{
+	"filename": "toiletpaper-small.png",
+	"frame": {"x":0,"y":71,"w":86,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":86,"h":80},
+	"sourceSize": {"w":86,"h":80}
+},
+{
+	"filename": "toiletpaper.png",
+	"frame": {"x":128,"y":487,"w":344,"h":318},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":344,"h":318},
+	"sourceSize": {"w":344,"h":318}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "textureAtlas2.png",
+	"format": "RGBA8888",
+	"size": {"w":472,"h":805},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b2290acb58fbb2e5901f7a371484956b:10fa7d13669542781eae7fa0d7b03172:9885562662227b297c62921be43b5666$"
+}
+}

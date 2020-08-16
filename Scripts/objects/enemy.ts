@@ -1,8 +1,8 @@
 module objects {
     export class Enemy extends objects.GameObject {
         private dx: number;
-        constructor(assetManager: createjs.LoadQueue) {
-            super(assetManager, "baseEnemyFacingLeft");
+        constructor() {
+            super("baseEnemyFacingLeft");
             this.Start();
         }
         public Start(): void {

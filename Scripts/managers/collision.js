@@ -9,7 +9,6 @@ var managers;
             if (math.Vec2.Distance(P1, P2) < obj1.halfH - 10 + obj2.halfH - 10) {
                 if (!obj2.isColliding) {
                     createjs.Sound.play("damageSound");
-                    // console.log("collision with" + obj2.name);
                     heartContainer.currentHealth--;
                     obj2.isColliding = true;
                 }

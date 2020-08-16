@@ -13,19 +13,15 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Scene = /** @class */ (function (_super) {
-        __extends(Scene, _super);
-        // Variables
-        // Constructor
-        function Scene() {
-            return _super.call(this) || this;
+    var Explosion = /** @class */ (function (_super) {
+        __extends(Explosion, _super);
+        function Explosion() {
+            var _this = _super.call(this, "explosion") || this;
+            _this.explosionSFX = createjs.Sound.play("explosion");
+            return _this;
         }
-        // Methods
-        Scene.prototype.Start = function () { };
-        Scene.prototype.Update = function () { };
-        Scene.prototype.Main = function () { };
-        return Scene;
-    }(createjs.Container));
-    objects.Scene = Scene;
+        return Explosion;
+    }(objects.GameObject));
+    objects.Explosion = Explosion;
 })(objects || (objects = {}));
-//# sourceMappingURL=scene.js.map
+//# sourceMappingURL=explosion.js.map

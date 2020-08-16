@@ -15,15 +15,32 @@ var objects;
 (function (objects) {
     var ToiletPaper = /** @class */ (function (_super) {
         __extends(ToiletPaper, _super);
-        // Variables
-        // Constructor
-        function ToiletPaper(assetManager, x, y, assetId) {
+        function ToiletPaper(x, y, assetId) {
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
             if (assetId === void 0) { assetId = "toiletPaper"; }
-            return _super.call(this, assetManager, x, y, assetId) || this;
+            var _this = _super.call(this, x, y, assetId) || this;
+            _this.isMovingRight = undefined;
+            return _this;
             /// do something unique for TP
         }
+        ToiletPaper.prototype.Update = function () {
+            this.speedX = 10;
+            this.speedY = 0;
+            this.Move();
+        };
+        ToiletPaper.prototype.Reset = function () {
+            this.x = -5000;
+            this.y = -5000;
+        };
+        ToiletPaper.prototype.Move = function () {
+            // If the toilet paper hasn't determined what way it's moving then set it to the way the user is facing.
+            // this solves the bug where if the user turns to the opposite direction, all the bullets (TP) turns around too.
+            if (this.isMovingRight === undefined) {
+                this.isMovingRight = managers.Game.isFacingRight;
+            }
+            (this.isMovingRight) ? this.x += this.speedX : this.x -= this.speedX;
+        };
         return ToiletPaper;
     }(objects.Ammo));
     objects.ToiletPaper = ToiletPaper;

@@ -26,8 +26,11 @@ var objects;
             this.Reset();
         };
         Enemy.prototype.Update = function () {
-            this.Move();
-            this.CheckBound();
+            // if the enemy is alive, keep it moving buddy
+            if (!this.isDead) {
+                this.Move();
+                this.CheckBound();
+            }
         };
         Enemy.prototype.Reset = function () {
             var min = 400;

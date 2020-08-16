@@ -27,6 +27,21 @@ var objects;
             _this.y = y;
             return _this;
         }
+        Ammo.prototype.Fire = function (facingLeft, x, y) {
+            if (managers.Game.keyboardManager.shoot)
+                this.x = x;
+            this.y = y;
+            {
+                if (facingLeft) {
+                    this.visible = true;
+                    this.x -= 10.5;
+                }
+                else {
+                    this.x += 10.5;
+                    this.visible = true;
+                }
+            }
+        };
         return Ammo;
     }(objects.GameObject));
     objects.Ammo = Ammo;

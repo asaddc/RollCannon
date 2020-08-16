@@ -18,7 +18,7 @@ var objects;
         function ToiletPaper(x, y, assetId) {
             if (x === void 0) { x = 0; }
             if (y === void 0) { y = 0; }
-            if (assetId === void 0) { assetId = "toiletPaper"; }
+            if (assetId === void 0) { assetId = "smallToiletPaper"; }
             var _this = _super.call(this, x, y, assetId) || this;
             _this.isMovingRight = undefined;
             return _this;

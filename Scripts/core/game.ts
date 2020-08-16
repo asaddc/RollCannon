@@ -175,6 +175,7 @@
       { id: "textureAtlas", src: "./Assets/Sprites/textureAtlas2.png" },
       { id: "supermarketBG", src: "./Assets/supermarketBG.jpg" },
       { id: "mainBG", src: "./Assets/mainBG.jpg" },
+      { id: "outsideBG", src: "./Assets/outsideBG.png"},
       { id: "gameOverBG", src: "./Assets/gameOverBG.jpg" },
       { id: "damageSound", src: "./Assets/Audio/damage-sound.mp3" },
       { id: "titlebgm", src: "./Assets/Audio/title.mp3" },

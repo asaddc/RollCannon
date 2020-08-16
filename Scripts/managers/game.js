@@ -4,6 +4,7 @@ var managers;
         function Game() {
         }
         ;
+        Game.currentLevel = 1;
         Game.canvas = document.getElementById("canvas");
         Game.score = 0;
         Game.level = 1;

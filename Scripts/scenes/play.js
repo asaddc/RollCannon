@@ -47,25 +47,25 @@ var scenes;
                 managers.Collision.Check(_this.player, enemy, _this.heartContainer);
             });
             // if the user presses the shoot button, then create a new bullet
-            if (managers.Game.keyboardManager.shoot) {
-                // If there is not a bullet on screen, create ammo
-                if (!this.ammoOnScreen) {
-                    var ammo = new objects.Ammo(this.player.x, this.player.y - 10, "toiletPaper");
-                    ammo.scaleX = 0.05;
-                    ammo.scaleY = 0.05;
-                    this.addChild(ammo);
-                    this.ammoOnScreen = true;
-                    this.ammo = ammo;
-                    // add to the stage, and then every tick move it to the end of the canvas
-                    createjs.Ticker.on("tick", ammo.Update.bind(ammo, this.player.facingLeft));
-                }
-                // If ammo reaches end, remove ammo
-                if (this.ammo.collided) {
-                    this.removeChildAt(9);
-                    this.removeChildAt(9);
-                    this.ammoOnScreen = false;
-                }
-            }
+            // if (managers.Game.keyboardManager.shoot) {
+            //   // If there is not a bullet on screen, create ammo
+            //   if (!this.ammoOnScreen) {
+            //     let ammo = new objects.Ammo(this.player.x, this.player.y - 10, "toiletPaper");
+            //     ammo.scaleX = 0.05;
+            //     ammo.scaleY = 0.05;
+            //     this.addChild(ammo);
+            //     this.ammoOnScreen = true;
+            //     this.ammo = ammo;
+            //     // add to the stage, and then every tick move it to the end of the canvas
+            //     createjs.Ticker.on("tick", ammo.Update.bind(ammo, this.player.facingLeft));
+            //   }
+            //   // If ammo reaches end, remove ammo
+            //   if (this.ammo.collided) {
+            //     this.removeChildAt(9);
+            //     this.removeChildAt(9);
+            //     this.ammoOnScreen = false;
+            //   }
+            // }
         };
         PlayScene.prototype.Main = function () {
             var _this = this;

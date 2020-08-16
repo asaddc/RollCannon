@@ -3,7 +3,7 @@ module objects {
     // Variables
     // Constructor
     private isMovingRight: boolean;
-    constructor(x: number = 0, y: number = 0, assetId: string = "toiletPaper") {
+    constructor(x: number = 0, y: number = 0, assetId: string = "smallToiletPaper") {
       super(x, y, assetId);
       this.isMovingRight = undefined;
 

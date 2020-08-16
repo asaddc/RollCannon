@@ -49,13 +49,18 @@ var scenes;
                 managers.Collision.Check(_this.player, enemy, _this.heartContainer);
                 _this.player.toiletPapers.forEach(function (tp) {
                     managers.Collision.Check(tp, enemy);
+                    if (enemy.isColliding) {
+                        _this.removeChild(tp);
+                        _this.removeChild(enemy);
+                        _this.enemies.pop();
+                        managers.Game.score += 1000;
+                    }
                 });
                 if (enemy.isColliding) {
-                    _this.removeChild(enemy);
                     _this.enemiesKilled++;
                 }
             });
-            if (this.enemiesKilled == 3) {
+            if (this.enemies.length == 0) {
                 this.enemiesKilled = 0;
                 this.changeLevel();
             }
@@ -68,6 +73,7 @@ var scenes;
             if (managers.Game.level == 2) {
                 this.currentBackground = "outsideBG";
             }
+            this.removeAllChildren();
             this.background = new objects.Background(this.currentBackground);
             this.Start();
         };

@@ -22,7 +22,7 @@ var objects;
             _this.facingLeft = false;
             _this.on("tick", _this.Update);
             _this.Start();
-            _this.toilerPaperCount = 0;
+            _this.toiletPaperCount = 0;
             return _this;
         }
         Player.prototype.Start = function () {
@@ -204,17 +204,17 @@ var objects;
             var ticker = createjs.Ticker.getTicks();
             if (managers.Game.keyboardManager.shoot && (ticker % 30 == 0)) {
                 this.toiletPaperSpawn = new math.Vec2(this.x, this.y - this.halfH + 25);
-                var toilerPaper = new objects.ToiletPaper();
-                toilerPaper.x = this.toiletPaperSpawn.x;
-                toilerPaper.y = this.toiletPaperSpawn.y;
-                toilerPaper.scaleX = 0.05;
-                toilerPaper.scaleY = 0.05;
-                toilerPaper.halfH = 25;
-                toilerPaper.halfW = 25;
-                toilerPaper.height = 50;
-                toilerPaper.height = 50;
-                this.toiletPapers[this.toilerPaperCount++] = toilerPaper;
-                managers.Game.currentSceneObject.addChild(toilerPaper);
+                var toiletPaper = new objects.ToiletPaper();
+                toiletPaper.x = this.toiletPaperSpawn.x;
+                toiletPaper.y = this.toiletPaperSpawn.y;
+                toiletPaper.scaleX = 0.05;
+                toiletPaper.scaleY = 0.05;
+                toiletPaper.halfH = 25;
+                toiletPaper.halfW = 25;
+                toiletPaper.height = 50;
+                toiletPaper.height = 50;
+                this.toiletPapers[this.toiletPaperCount++] = toiletPaper;
+                managers.Game.currentSceneObject.addChild(toiletPaper);
             }
         };
         return Player;

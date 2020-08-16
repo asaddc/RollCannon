@@ -60,8 +60,6 @@ var scenes;
                         tp.y = 0;
                         _this.removeChild(tp);
                         _this.removeChild(enemy);
-                        // this.enemies.pop();
-                        // this.enemies.
                         managers.Game.score += 1000;
                         _this.enemies.forEach(function (e, index) {
                             if (e === enemy) {
@@ -101,7 +99,6 @@ var scenes;
                 _this.addChild(enemy);
             });
             this.addChild(this.player);
-            // this.addChild(this.player.ammo);
         };
         return PlayScene;
     }(objects.Scene));

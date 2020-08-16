@@ -55,14 +55,6 @@ var managers;
                     break;
             }
         };
-        Keyboard.prototype.onKeyPress = function (event) {
-            switch (event.keyCode) {
-                case config.Keys.SPACE:
-                    this.shoot = true;
-                    break;
-            }
-            this.shoot = false;
-        };
         return Keyboard;
     }());
     managers.Keyboard = Keyboard;

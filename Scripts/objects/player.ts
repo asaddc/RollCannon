@@ -7,14 +7,14 @@ module objects {
     public ammo: objects.Ammo;
     public facingLeft: boolean = false;
     public toiletPapers: objects.ToiletPaper[];
-    public toilerPaperCount: number;
+    public toiletPaperCount: number;
     // Constructor
 
     constructor() {
       super("playerGunRight");
       this.on("tick", this.Update);
       this.Start();
-      this.toilerPaperCount = 0;
+      this.toiletPaperCount = 0;
     }
 
     public Start(): void {
@@ -34,7 +34,6 @@ module objects {
         this.y = 540;
       }
       this.toiletPapers = new Array<objects.ToiletPaper>();
-
     }
     public Update(): void {
       this.Move();
@@ -47,7 +46,6 @@ module objects {
     }
     public Reset(): void { }
     public Move(): void {
-
       if (managers.Game.keyboardManager.moveLeft) {
         this.x -= 1.5;
         this.gotoAndStop("playerGunLeft");
@@ -182,6 +180,7 @@ module objects {
         this.y = this.halfH + 50;
       }
     }
+    
     private AddLevel3EdgesBoundary() {
       // Right boundary
       if (this.x >= 495 - this.halfW) {
@@ -223,17 +222,17 @@ module objects {
       let ticker: number = createjs.Ticker.getTicks();
       if (managers.Game.keyboardManager.shoot && (ticker % 30 == 0)) {
         this.toiletPaperSpawn = new math.Vec2(this.x, this.y - this.halfH + 25);
-        let toilerPaper = new objects.ToiletPaper();
-        toilerPaper.x = this.toiletPaperSpawn.x;
-        toilerPaper.y = this.toiletPaperSpawn.y;
-        toilerPaper.scaleX = 0.05;
-        toilerPaper.scaleY = 0.05;
-        toilerPaper.halfH = 25;
-        toilerPaper.halfW = 25;
-        toilerPaper.height = 50;
-        toilerPaper.height = 50;
-        this.toiletPapers[this.toilerPaperCount++] = toilerPaper;
-        managers.Game.currentSceneObject.addChild(toilerPaper);
+        let toiletPaper = new objects.ToiletPaper();
+        toiletPaper.x = this.toiletPaperSpawn.x;
+        toiletPaper.y = this.toiletPaperSpawn.y;
+        toiletPaper.scaleX = 0.05;
+        toiletPaper.scaleY = 0.05;
+        toiletPaper.halfH = 25;
+        toiletPaper.halfW = 25;
+        toiletPaper.height = 50;
+        toiletPaper.height = 50;
+        this.toiletPapers[this.toiletPaperCount++] = toiletPaper;
+        managers.Game.currentSceneObject.addChild(toiletPaper);
       }
     }
   }

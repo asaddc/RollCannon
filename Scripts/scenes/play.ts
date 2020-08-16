@@ -58,8 +58,6 @@ module scenes {
 
             this.removeChild(tp);
             this.removeChild(enemy);
-            // this.enemies.pop();
-            // this.enemies.
             managers.Game.score += 1000;
             this.enemies.forEach((e, index) => {
               if (e === enemy) {
@@ -101,7 +99,6 @@ module scenes {
         this.addChild(enemy);
       });
       this.addChild(this.player);
-      // this.addChild(this.player.ammo);
     }
   }
 }

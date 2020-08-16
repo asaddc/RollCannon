@@ -20,7 +20,6 @@ var scenes;
             var _this = _super.call(this) || this;
             _this.currentBackground = "supermarketBG";
             _this.ENEMIES_NUM = 3;
-            _this.enemiesKilled = 0;
             _this.Start();
             return _this;
         }
@@ -49,6 +48,12 @@ var scenes;
                 managers.Collision.Check(_this.player, enemy, _this.heartContainer);
                 _this.player.toiletPapers.forEach(function (tp) {
                     managers.Collision.Check(tp, enemy);
+                    if (enemy.isColliding) {
+                        _this.removeChild(tp);
+                        _this.removeChild(enemy);
+                        _this.enemies.pop();
+                        managers.Game.score += 1000;
+                    }
                 });
                 if (enemy.isColliding && !enemy.isDead) {
                     _this.removeChild(enemy);
@@ -57,10 +62,9 @@ var scenes;
                     // this.enemiesKilled++;
                 }
             });
-            // if (this.enemiesKilled == 3) {
-            //   this.enemiesKilled = 0;
-            //   this.changeLevel();
-            // }
+            if (this.enemies.length == 0) {
+                this.changeLevel();
+            }
         };
         PlayScene.prototype.changeLevel = function () {
             managers.Game.level++;
@@ -70,6 +74,10 @@ var scenes;
             if (managers.Game.level == 2) {
                 this.currentBackground = "outsideBG";
             }
+            if (managers.Game.level == 3) {
+                this.currentBackground = "outside2BG";
+            }
+            this.removeAllChildren();
             this.background = new objects.Background(this.currentBackground);
             this.Start();
         };

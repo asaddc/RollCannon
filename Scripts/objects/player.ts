@@ -28,6 +28,11 @@ module objects {
         this.x = 60;
         this.y = 540;
       }
+      if (managers.Game.level == 3) {
+        this.allDirections = true;
+        this.x = 60;
+        this.y = 540;
+      }
       this.toiletPapers = new Array<objects.ToiletPaper>();
 
     }
@@ -177,6 +182,28 @@ module objects {
         this.y = this.halfH + 50;
       }
     }
+    private AddLevel3EdgesBoundary() {
+      // Right boundary
+      if (this.x >= 495 - this.halfW) {
+        // I have collided with the right boundary
+        this.x = 495 - this.halfW;
+      }
+      // Left boundary
+      if (this.x <= this.halfW) {
+        // I have collided with the left boundary
+        this.x = this.halfW;
+      }
+
+      if (this.y >= 600 - this.halfH) {
+        // I have collided with the bottom boundary
+        this.y = 600 - this.halfH;
+      }
+
+      if (this.y <= this.halfH + 440) {
+        // I have collided with the top boundary
+        this.y = this.halfH + 440;
+      }
+    }
 
     public CheckBound(): void {
       this.AddEdgesBoundary();
@@ -186,6 +213,9 @@ module objects {
         this.AddTopRightProduceBoundary();
         this.AddProduceProtrusionBoundary();
         this.AddBottomProductsBoundary();
+      }
+      if (managers.Game.level == 3) {
+        this.AddLevel3EdgesBoundary();
       }
     }
 

@@ -40,6 +40,10 @@ var objects;
                 this.y = 540;
                 this.x = 440;
             }
+            if (managers.Game.level == 3) {
+                this.y = Math.floor(Math.random() * (600 - 500 + 1)) + 500;
+                this.x = Math.floor(Math.random() * 20) + 440;
+            }
         };
         Enemy.prototype.Move = function () {
             // move this enemy to the left

@@ -40,6 +40,7 @@ var scenes;
         };
         GameOverScene.prototype.PlayButtonClicked = function () {
             managers.Game.level = 1;
+            managers.Game.score = 0;
             managers.Game.currentScene = config.Scene.PLAY;
         };
         return GameOverScene;

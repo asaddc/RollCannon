@@ -9,7 +9,6 @@ module scenes {
     private heartContainer: objects.HeartContainer;
     private readonly ENEMIES_NUM: number = 3;
     private bgm: createjs.AbstractSoundInstance;
-    private enemiesKilled: number = 0;
 
     // Constructor
     constructor() {
@@ -46,6 +45,12 @@ module scenes {
 
         this.player.toiletPapers.forEach(tp => {
           managers.Collision.Check(tp, enemy);
+          if (enemy.isColliding) {
+            this.removeChild(tp);
+            this.removeChild(enemy);
+            this.enemies.pop();
+            managers.Game.score += 1000;
+          }
         })
 
         if (enemy.isColliding && !enemy.isDead) {
@@ -56,10 +61,9 @@ module scenes {
         }
       });
 
-      // if (this.enemiesKilled == 3) {
-      //   this.enemiesKilled = 0;
-      //   this.changeLevel();
-      // }
+      if (this.enemies.length == 0) {
+        this.changeLevel();
+      }
     }
 
     public changeLevel(): void {
@@ -70,6 +74,10 @@ module scenes {
       if (managers.Game.level == 2) {
         this.currentBackground = "outsideBG";
       }
+      if(managers.Game.level == 3) {
+        this.currentBackground = "outside2BG";
+      }
+      this.removeAllChildren();
       this.background = new objects.Background(this.currentBackground);
       this.Start();
     }

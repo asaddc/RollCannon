@@ -9,7 +9,6 @@ module scenes {
     private heartContainer: objects.HeartContainer;
     private readonly ENEMIES_NUM: number = 3;
     private bgm: createjs.AbstractSoundInstance;
-    private enemiesKilled: number = 0;
 
     // Constructor
     constructor() {
@@ -53,14 +52,9 @@ module scenes {
             managers.Game.score += 1000;
           }
         })
-
-      if(enemy.isColliding) {
-        this.enemiesKilled++;
-      }
       });
 
       if (this.enemies.length == 0) {
-        this.enemiesKilled = 0;
         this.changeLevel();
       }
     }

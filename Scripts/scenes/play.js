@@ -20,7 +20,6 @@ var scenes;
             var _this = _super.call(this) || this;
             _this.currentBackground = "supermarketBG";
             _this.ENEMIES_NUM = 3;
-            _this.enemiesKilled = 0;
             _this.Start();
             return _this;
         }
@@ -56,12 +55,8 @@ var scenes;
                         managers.Game.score += 1000;
                     }
                 });
-                if (enemy.isColliding) {
-                    _this.enemiesKilled++;
-                }
             });
             if (this.enemies.length == 0) {
-                this.enemiesKilled = 0;
                 this.changeLevel();
             }
         };

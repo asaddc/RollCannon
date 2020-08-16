@@ -11,7 +11,7 @@ module managers {
                     obj2.isColliding = true;
                 }
                 if (!obj2.isColliding && obj1 instanceof objects.ToiletPaper) {
-                    createjs.Sound.play("damageSound");
+                    createjs.Sound.play("explosion");
                     obj2.isColliding = true;
                 }
             } else {

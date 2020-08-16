@@ -18,6 +18,7 @@ var objects;
         function Enemy() {
             var _this = _super.call(this, "baseEnemyFacingLeft") || this;
             _this.Start();
+            _this.isDead = false;
             return _this;
         }
         Enemy.prototype.Start = function () {
@@ -25,8 +26,11 @@ var objects;
             this.Reset();
         };
         Enemy.prototype.Update = function () {
-            this.Move();
-            this.CheckBound();
+            // if the enemy is alive, keep it moving buddy
+            if (!this.isDead) {
+                this.Move();
+                this.CheckBound();
+            }
         };
         Enemy.prototype.Reset = function () {
             var min = 400;

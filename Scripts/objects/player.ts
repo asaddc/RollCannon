@@ -228,6 +228,10 @@ module objects {
         toilerPaper.y = this.toiletPaperSpawn.y;
         toilerPaper.scaleX = 0.05;
         toilerPaper.scaleY = 0.05;
+        toilerPaper.halfH = 25;
+        toilerPaper.halfW = 25;
+        toilerPaper.height = 50;
+        toilerPaper.height = 50;
         this.toiletPapers[this.toilerPaperCount++] = toilerPaper;
         managers.Game.currentSceneObject.addChild(toilerPaper);
       }

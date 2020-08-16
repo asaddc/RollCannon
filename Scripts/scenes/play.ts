@@ -12,7 +12,7 @@ module scenes {
 
     // Constructor
     constructor() {
-      super();      
+      super();
       this.Start();
     }
 
@@ -45,13 +45,27 @@ module scenes {
 
         this.player.toiletPapers.forEach(tp => {
           managers.Collision.Check(tp, enemy);
-          if (enemy.isColliding) {
+          if (enemy.isColliding && !enemy.isDead) {
+            enemy.visible = false;
+            tp.visible = false;
+            enemy.isDead = true;
+            // sets the coordinates to a location which cannot be reached by the player. so the enemies "ghost" wont be able to kill him/her.
+            // This will only work with the if statement in the enemy Update method, if the player is dead, then the player will stop moving as well.
+            enemy.x = 0;
+            enemy.y = 0;
+
             this.removeChild(tp);
             this.removeChild(enemy);
-            this.enemies.pop();
+            // this.enemies.pop();
+            // this.enemies.
             managers.Game.score += 1000;
+            this.enemies.forEach((e, index) => {
+              if (e === enemy) {
+                this.enemies.splice(index, 1);
+              }
+            });
           }
-        })
+        });
       });
 
       if (this.enemies.length == 0) {
@@ -59,7 +73,7 @@ module scenes {
       }
     }
 
-    public changeLevel():void{
+    public changeLevel(): void {
       managers.Game.level++;
       if (managers.Game.level == 4) {
         managers.Game.currentScene = config.Scene.GAME_OVER
@@ -67,7 +81,7 @@ module scenes {
       if (managers.Game.level == 2) {
         this.currentBackground = "outsideBG";
       }
-      if(managers.Game.level == 3) {
+      if (managers.Game.level == 3) {
         this.currentBackground = "outside2BG";
       }
       this.removeAllChildren();

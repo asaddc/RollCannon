@@ -48,11 +48,24 @@ var scenes;
                 managers.Collision.Check(_this.player, enemy, _this.heartContainer);
                 _this.player.toiletPapers.forEach(function (tp) {
                     managers.Collision.Check(tp, enemy);
-                    if (enemy.isColliding) {
+                    if (enemy.isColliding && !enemy.isDead) {
+                        enemy.visible = false;
+                        tp.visible = false;
+                        enemy.isDead = true;
+                        // sets the coordinates to a location which cannot be reached by the player. so the enemies "ghost" wont be able to kill him/her.
+                        // This will only work with the if statement in the enemy Update method, if the player is dead, then the player will stop moving as well.
+                        enemy.x = 0;
+                        enemy.y = 0;
                         _this.removeChild(tp);
                         _this.removeChild(enemy);
-                        _this.enemies.pop();
+                        // this.enemies.pop();
+                        // this.enemies.
                         managers.Game.score += 1000;
+                        _this.enemies.forEach(function (e, index) {
+                            if (e === enemy) {
+                                _this.enemies.splice(index, 1);
+                            }
+                        });
                     }
                 });
             });

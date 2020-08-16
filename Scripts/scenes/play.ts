@@ -13,7 +13,7 @@ module scenes {
 
     // Constructor
     constructor() {
-      super();      
+      super();
       this.Start();
     }
 
@@ -48,10 +48,10 @@ module scenes {
           managers.Collision.Check(tp, enemy);
         })
 
-      if(enemy.isColliding) {
-        this.removeChild(enemy);
-        this.enemiesKilled++;
-      }
+        if (enemy.isColliding) {
+          this.removeChild(enemy);
+          this.enemiesKilled++;
+        }
       });
 
       if (this.enemiesKilled == 3) {
@@ -60,7 +60,7 @@ module scenes {
       }
     }
 
-    public changeLevel():void{
+    public changeLevel(): void {
       managers.Game.level++;
       if (managers.Game.level == 4) {
         managers.Game.currentScene = config.Scene.GAME_OVER

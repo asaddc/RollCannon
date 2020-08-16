@@ -146,7 +146,8 @@
             { id: "damageSound", src: "./Assets/Audio/damage-sound.mp3" },
             { id: "titlebgm", src: "./Assets/Audio/title.mp3" },
             { id: "playbgm", src: "./Assets/Audio/backgroundMusic.mp3" },
-            { id: "explosion", src: "./Assets/Audio/backgroundMusic.mp3" }
+            { id: "explosion", src: "./Assets/Audio/explosion.mp3" },
+            { id: "title", src: "./Assets/title.png" }
         ];
     }
     window.onload = Init;

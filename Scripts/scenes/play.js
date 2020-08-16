@@ -58,10 +58,6 @@ var scenes;
                     this.ammo = ammo;
                     // add to the stage, and then every tick move it to the end of the canvas
                     createjs.Ticker.on("tick", ammo.Update.bind(ammo, this.player.facingLeft));
-                    // setInterval(() => {
-                    //   ammo = null;
-                    //   this.removeChildAt(9);
-                    // }, 2000);
                 }
                 // If ammo reaches end, remove ammo
                 if (this.ammo.collided) {

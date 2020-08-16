@@ -9,23 +9,23 @@ module objects {
       this.y = y;
     }
 
-    public Fire(facingLeft: boolean, x: number, y: number): void {
-      if (managers.Game.keyboardManager.shoot)
-        this.x = x;
-      this.y = y;
-      {
-        if (facingLeft) {
-          this.visible = true;
-          this.x -= 10.5;
-        }
-        else {
-          this.x += 10.5;
-          this.visible = true;
-        }
-      }
-    }
+    // public Fire(facingLeft: boolean, x: number, y: number): void {
+    //   if (managers.Game.keyboardManager.shoot)
+    //     this.x = x;
+    //   this.y = y;
+    //   {
+    //     if (facingLeft) {
+    //       this.visible = true;
+    //       this.x -= 10.5;
+    //     }
+    //     else {
+    //       this.x += 10.5;
+    //       this.visible = true;
+    //     }
+    //   }
+    // }
 
-    // Asad's temporary "Fire" method
+    // Asad's temporary "Fire" method 
 
     // public Update(isFacingLeft: boolean) {
     //   // console.log("update ammo x", this.x);
@@ -38,8 +38,11 @@ module objects {
     //   else { this.collided = false; }
     // }
 
-    public checkCollision() {
+    // public checkCollision() {
 
-    }
+    // }
+
+    // public Update(isFacingRight): void {
+    // }
   }
 }

@@ -39,15 +39,18 @@ module objects {
         this.facingLeft = true;
         managers.Game.isFacingRight = false;
       }
+
       if (managers.Game.keyboardManager.moveRight) {
         this.x += 1.5;
         this.gotoAndStop("playerGunRight");
         this.facingLeft = false;
         managers.Game.isFacingRight = true;
       }
+
       if (managers.Game.keyboardManager.moveDown) {
         this.y += 1.5;
       }
+
       if (managers.Game.keyboardManager.moveUp) {
         this.y -= 1.5;
       }

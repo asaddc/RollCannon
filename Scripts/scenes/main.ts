@@ -21,7 +21,7 @@ module scenes {
 
       // Background & Large toilet paper image
       this.background = new objects.Background("mainBG");
-      this.toiletPaperImage = new objects.ToiletPaper(-345, 50, "toiletPaper");
+      this.toiletPaperImage = new objects.ToiletPaper(-345, 50, "smallToiletPaper");
 
       // Left to right translate large image
       createjs.Tween.get(this.toiletPaperImage, { loop: -1 })

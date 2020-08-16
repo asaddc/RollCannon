@@ -14,12 +14,13 @@ module scenes {
     // Constructor
     constructor() {
       super();      
-      this.background = new objects.Background("supermarketBG");
       this.Start();
     }
 
     public Start(): void {
       managers.Game.canvas.style.cursor = "none";
+
+      this.background = new objects.Background(this.currentBackground);
 
       this.sidebar = new objects.Sidebar();
       this.player = new objects.Player();
@@ -45,12 +46,30 @@ module scenes {
 
         this.player.toiletPapers.forEach(tp => {
           managers.Collision.Check(tp, enemy);
-          if(enemy.isColliding) {
-            this.removeChild(enemy);
-            this.enemiesKilled++;
-          }
         })
+
+      if(enemy.isColliding) {
+        this.removeChild(enemy);
+        this.enemiesKilled++;
+      }
       });
+
+      if (this.enemiesKilled == 3) {
+        this.enemiesKilled = 0;
+        this.changeLevel();
+      }
+    }
+
+    public changeLevel():void{
+      managers.Game.level++;
+      if (managers.Game.level == 4) {
+        managers.Game.currentScene = config.Scene.GAME_OVER
+      }
+      if (managers.Game.level == 2) {
+        this.currentBackground = "outsideBG";
+      }
+      this.background = new objects.Background(this.currentBackground);
+      this.Start();
     }
 
     public Main(): void {

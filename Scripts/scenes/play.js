@@ -21,12 +21,12 @@ var scenes;
             _this.currentBackground = "supermarketBG";
             _this.ENEMIES_NUM = 3;
             _this.enemiesKilled = 0;
-            _this.background = new objects.Background("supermarketBG");
             _this.Start();
             return _this;
         }
         PlayScene.prototype.Start = function () {
             managers.Game.canvas.style.cursor = "none";
+            this.background = new objects.Background(this.currentBackground);
             this.sidebar = new objects.Sidebar();
             this.player = new objects.Player();
             this.heartContainer = new objects.HeartContainer();
@@ -49,12 +49,27 @@ var scenes;
                 managers.Collision.Check(_this.player, enemy, _this.heartContainer);
                 _this.player.toiletPapers.forEach(function (tp) {
                     managers.Collision.Check(tp, enemy);
-                    if (enemy.isColliding) {
-                        _this.removeChild(enemy);
-                        _this.enemiesKilled++;
-                    }
                 });
+                if (enemy.isColliding) {
+                    _this.removeChild(enemy);
+                    _this.enemiesKilled++;
+                }
             });
+            if (this.enemiesKilled == 3) {
+                this.enemiesKilled = 0;
+                this.changeLevel();
+            }
+        };
+        PlayScene.prototype.changeLevel = function () {
+            managers.Game.level++;
+            if (managers.Game.level == 4) {
+                managers.Game.currentScene = config.Scene.GAME_OVER;
+            }
+            if (managers.Game.level == 2) {
+                this.currentBackground = "outsideBG";
+            }
+            this.background = new objects.Background(this.currentBackground);
+            this.Start();
         };
         PlayScene.prototype.Main = function () {
             var _this = this;

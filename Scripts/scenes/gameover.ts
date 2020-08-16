@@ -32,6 +32,7 @@ module scenes {
     }
 
     private PlayButtonClicked(): void {
+      managers.Game.level = 1;
       managers.Game.currentScene = config.Scene.PLAY;
     }
   }

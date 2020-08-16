@@ -31,8 +31,14 @@ var objects;
         Enemy.prototype.Reset = function () {
             var min = 400;
             var max = 500;
-            this.y = Math.floor(Math.random() * (max - min + 1)) + min;
-            this.x = Math.floor(Math.random() * 20) + 440;
+            if (managers.Game.level == 1) {
+                this.y = Math.floor(Math.random() * (max - min + 1)) + min;
+                this.x = Math.floor(Math.random() * 20) + 440;
+            }
+            if (managers.Game.level == 2) {
+                this.y = 540;
+                this.x = 440;
+            }
         };
         Enemy.prototype.Move = function () {
             // move this enemy to the left

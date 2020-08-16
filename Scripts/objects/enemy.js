@@ -18,6 +18,7 @@ var objects;
         function Enemy() {
             var _this = _super.call(this, "baseEnemyFacingLeft") || this;
             _this.Start();
+            _this.isDead = false;
             return _this;
         }
         Enemy.prototype.Start = function () {

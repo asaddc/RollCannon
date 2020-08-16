@@ -50,15 +50,17 @@ var scenes;
                 _this.player.toiletPapers.forEach(function (tp) {
                     managers.Collision.Check(tp, enemy);
                 });
-                if (enemy.isColliding) {
+                if (enemy.isColliding && !enemy.isDead) {
                     _this.removeChild(enemy);
-                    _this.enemiesKilled++;
+                    enemy.visible = false;
+                    enemy.isDead = true;
+                    // this.enemiesKilled++;
                 }
             });
-            if (this.enemiesKilled == 3) {
-                this.enemiesKilled = 0;
-                this.changeLevel();
-            }
+            // if (this.enemiesKilled == 3) {
+            //   this.enemiesKilled = 0;
+            //   this.changeLevel();
+            // }
         };
         PlayScene.prototype.changeLevel = function () {
             managers.Game.level++;

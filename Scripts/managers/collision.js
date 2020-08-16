@@ -12,6 +12,10 @@ var managers;
                     heartContainer.currentHealth--;
                     obj2.isColliding = true;
                 }
+                if (!obj2.isColliding && obj1 instanceof objects.ToiletPaper) {
+                    createjs.Sound.play("damageSound");
+                    obj2.isColliding = true;
+                }
             }
             else {
                 obj2.isColliding = false;

@@ -14,7 +14,7 @@ module scenes {
 
     public Start(): void {
       // Play Button
-      this.playButton = new objects.Button("redPlayBtn", managers.Game.canvas.clientWidth * 0.5 - 44, managers.Game.canvas.clientHeight * 0.5 + 100);
+      this.playButton = new objects.Button("redPlayBtn", managers.Game.canvas.clientWidth * 0.5, managers.Game.canvas.clientHeight * 0.5 + 100);
       this.playButton.scaleX = 2;
       this.playButton.scaleY = 2;
       this.playButton.on("click", this.PlayButtonClicked);

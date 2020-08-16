@@ -184,12 +184,12 @@ module objects {
     public ToiletPaperFire() {
       let ticker: number = createjs.Ticker.getTicks();
       if (managers.Game.keyboardManager.shoot && (ticker % 30 == 0)) {
-        this.toiletPaperSpawn = new math.Vec2(this.x, this.y - this.halfH);
+        this.toiletPaperSpawn = new math.Vec2(this.x, this.y - this.halfH + 25);
         let toilerPaper = new objects.ToiletPaper();
         toilerPaper.x = this.toiletPaperSpawn.x;
         toilerPaper.y = this.toiletPaperSpawn.y;
-        toilerPaper.scaleX = 0.1;
-        toilerPaper.scaleY = 0.1;
+        toilerPaper.scaleX = 0.05;
+        toilerPaper.scaleY = 0.05;
         this.toiletPapers[this.toilerPaperCount++] = toilerPaper;
         managers.Game.currentSceneObject.addChild(toilerPaper);
       }

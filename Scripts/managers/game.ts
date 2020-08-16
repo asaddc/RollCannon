@@ -8,7 +8,6 @@ module managers {
     public static keyboardManager: managers.Keyboard;
     public static textureAtlas: createjs.SpriteSheet;
     public static isFacingRight: boolean;
-    public static currentLevel: number = 1;
     public static heartContainer: objects.HeartContainer;
 
     public static canvas = document.getElementById("canvas");

@@ -26,8 +26,16 @@ var objects;
             return _this;
         }
         Player.prototype.Start = function () {
-            this.x = 60;
-            this.y = 130;
+            if (managers.Game.level == 1) {
+                this.allDirections = true;
+                this.x = 60;
+                this.y = 130;
+            }
+            if (managers.Game.level == 2) {
+                this.allDirections = false;
+                this.x = 60;
+                this.y = 540;
+            }
             this.toiletPapers = new Array();
         };
         Player.prototype.Update = function () {
@@ -156,7 +164,7 @@ var objects;
         };
         Player.prototype.CheckBound = function () {
             this.AddEdgesBoundary();
-            if (managers.Game.currentLevel == 1) {
+            if (managers.Game.level == 1) {
                 this.AddShoppingCartBoundary();
                 this.AddAppleCounterBoundary();
                 this.AddTopRightProduceBoundary();

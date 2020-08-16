@@ -68,6 +68,9 @@ var scenes;
             if (managers.Game.level == 2) {
                 this.currentBackground = "outsideBG";
             }
+            if (managers.Game.level == 3) {
+                this.currentBackground = "outside2BG";
+            }
             this.removeAllChildren();
             this.background = new objects.Background(this.currentBackground);
             this.Start();

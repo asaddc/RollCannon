@@ -3,17 +3,20 @@ module objects {
     // Variables
     // Constructor
     private isMovingRight: boolean;
+    public hasHitEnemy: boolean;
     constructor(x: number = 0, y: number = 0, assetId: string = "smallToiletPaper") {
       super(x, y, assetId);
       this.isMovingRight = undefined;
-
+      this.hasHitEnemy = false;
       /// do something unique for TP
     }
 
     public Update(): void {
-      this.speedX = 10;
-      this.speedY = 0;
-      this.Move();
+      if (!this.hasHitEnemy) {
+        this.speedX = 10;
+        this.speedY = 0;
+        this.Move();
+      }
     }
 
     public Reset(): void {

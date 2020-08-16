@@ -56,6 +56,8 @@ var scenes;
                         // This will only work with the if statement in the enemy Update method, if the player is dead, then the player will stop moving as well.
                         enemy.x = 0;
                         enemy.y = 0;
+                        tp.x = 0;
+                        tp.y = 0;
                         _this.removeChild(tp);
                         _this.removeChild(enemy);
                         // this.enemies.pop();

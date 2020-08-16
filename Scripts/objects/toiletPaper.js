@@ -21,13 +21,16 @@ var objects;
             if (assetId === void 0) { assetId = "smallToiletPaper"; }
             var _this = _super.call(this, x, y, assetId) || this;
             _this.isMovingRight = undefined;
+            _this.hasHitEnemy = false;
             return _this;
             /// do something unique for TP
         }
         ToiletPaper.prototype.Update = function () {
-            this.speedX = 10;
-            this.speedY = 0;
-            this.Move();
+            if (!this.hasHitEnemy) {
+                this.speedX = 10;
+                this.speedY = 0;
+                this.Move();
+            }
         };
         ToiletPaper.prototype.Reset = function () {
             this.x = -5000;

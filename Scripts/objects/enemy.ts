@@ -38,7 +38,7 @@ module objects {
                     this.x = 120;
                 }
                 else {
-                    this.gotoAndPlay("skeletonFacingLeft")
+                    this.gotoAndPlay("skeletonFacingLeft");
                     this.x = 440;
                 }
             }

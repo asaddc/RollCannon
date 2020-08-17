@@ -20,6 +20,7 @@ var scenes;
             var _this = _super.call(this) || this;
             _this.currentBackground = "supermarketBG";
             _this.ENEMIES_NUM = 3;
+            _this.explosions = [];
             _this.Start();
             return _this;
         }
@@ -49,10 +50,11 @@ var scenes;
                 _this.player.toiletPapers.forEach(function (tp) {
                     var bulletCollided = managers.Collision.Check(tp, enemy);
                     if (enemy.isColliding && !enemy.isDead && !enemy.isExploding) {
-                        _this.explosion = new objects.Explosion(enemy.x, enemy.y);
-                        _this.explosion.on("animationend", function () { return _this.handleExplosion(enemy); });
+                        var explosion_1 = new objects.Explosion(enemy.x, enemy.y);
+                        explosion_1.on("animationend", function () { return _this.handleExplosion(explosion_1); });
+                        _this.explosions.push(explosion_1);
                         managers.Game.score += 1000;
-                        _this.addChild(_this.explosion);
+                        _this.addChild(explosion_1);
                         enemy.isExploding = true;
                         enemy.visible = false;
                         tp.visible = false;
@@ -67,21 +69,25 @@ var scenes;
                         _this.removeChild(enemy);
                         managers.Game.score += 1000;
                         _this.sidebar.scoreLabel.text = "SCORE: " + managers.Game.score;
-                        _this.enemies.forEach(function (e, index) {
-                            if (e === enemy) {
-                                _this.enemies.splice(index, 1);
-                            }
-                        });
+                        _this.removeEnemy(enemy);
                     }
                 });
             });
+        };
+        PlayScene.prototype.removeEnemy = function (enemy) {
+            var _this = this;
+            this.enemies.forEach(function (e, index) {
+                if (e === enemy) {
+                    _this.enemies.splice(index, 1);
+                }
+            });
+        };
+        PlayScene.prototype.handleExplosion = function (explosion) {
+            explosion.stop();
+            this.stage.removeChild(explosion);
             if (this.enemies.length == 0) {
                 this.changeLevel();
             }
-        };
-        PlayScene.prototype.handleExplosion = function (enemy) {
-            this.explosion.stop();
-            this.stage.removeChild(this.explosion);
         };
         PlayScene.prototype.changeLevel = function () {
             managers.Game.level++;

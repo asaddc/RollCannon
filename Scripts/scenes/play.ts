@@ -9,11 +9,12 @@ module scenes {
     private heartContainer: objects.HeartContainer;
     private readonly ENEMIES_NUM: number = 3;
     private bgm: createjs.AbstractSoundInstance;
-    public explosion: objects.Explosion;
+    public explosions: objects.Explosion[];
 
     // Constructor
     constructor() {
       super();
+      this.explosions = [];
       this.Start();
     }
 
@@ -46,14 +47,16 @@ module scenes {
 
         this.player.toiletPapers.forEach(tp => {
           let bulletCollided = managers.Collision.Check(tp, enemy);
-          
+
           if (enemy.isColliding && !enemy.isDead && !enemy.isExploding) {
 
-            this.explosion = new objects.Explosion(enemy.x, enemy.y);
-            this.explosion.on("animationend", () => this.handleExplosion(enemy));
+            let explosion = new objects.Explosion(enemy.x, enemy.y);
+            explosion.on("animationend", () => this.handleExplosion(explosion));
+            this.explosions.push(explosion);
+
             managers.Game.score += 1000;
 
-            this.addChild(this.explosion);
+            this.addChild(explosion);
             enemy.isExploding = true;
 
             enemy.visible = false;
@@ -72,24 +75,30 @@ module scenes {
 
             managers.Game.score += 1000;
             this.sidebar.scoreLabel.text = `SCORE: ${managers.Game.score}`;
-            this.enemies.forEach((e, index) => {
-              if (e === enemy) {
-                this.enemies.splice(index, 1);
-              }
-            });
+            this.removeEnemy(enemy);
           }
         });
       });
 
-      if (this.enemies.length == 0) {
-        this.changeLevel();
-      }
+
 
     }
 
-    private handleExplosion(enemy: objects.Enemy): void {
-      this.explosion.stop();
-      this.stage.removeChild(this.explosion);
+    private removeEnemy(enemy: objects.Enemy) {
+      this.enemies.forEach((e, index) => {
+        if (e === enemy) {
+          this.enemies.splice(index, 1);
+        }
+      });
+    }
+
+    private handleExplosion(explosion: objects.Explosion): void {
+      explosion.stop();
+      this.stage.removeChild(explosion);
+
+      if (this.enemies.length == 0) {
+        this.changeLevel();
+      }
     }
 
     public changeLevel(): void {

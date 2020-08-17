@@ -7,14 +7,14 @@ module objects {
     public ammo: objects.Ammo;
     public facingLeft: boolean = false;
     public toiletPapers: objects.ToiletPaper[];
-    public toilerPaperCount: number;
+    public toiletPaperCount: number;
     // Constructor
 
     constructor() {
       super("playerGunRight");
       this.on("tick", this.Update);
       this.Start();
-      this.toilerPaperCount = 0;
+      this.toiletPaperCount = 0;
     }
 
     public Start(): void {
@@ -25,16 +25,15 @@ module objects {
       }
       if (managers.Game.level == 2) {
         this.allDirections = false;
-        this.x = 60;
+        this.x = 200;
         this.y = 540;
       }
       if (managers.Game.level == 3) {
         this.allDirections = true;
-        this.x = 60;
+        this.x = 250;
         this.y = 540;
       }
       this.toiletPapers = new Array<objects.ToiletPaper>();
-
     }
     public Update(): void {
       this.Move();
@@ -47,7 +46,6 @@ module objects {
     }
     public Reset(): void { }
     public Move(): void {
-
       if (managers.Game.keyboardManager.moveLeft) {
         this.x -= 1.5;
         this.gotoAndStop("playerGunLeft");
@@ -182,6 +180,7 @@ module objects {
         this.y = this.halfH + 50;
       }
     }
+    
     private AddLevel3EdgesBoundary() {
       // Right boundary
       if (this.x >= 495 - this.halfW) {
@@ -233,7 +232,6 @@ module objects {
         toiletPaper.height = 50;
         toiletPaper.height = 50;
         this.toiletPapers[this.toilerPaperCount++] = toiletPaper;
-        // this.toiletPapers.push(toiletPaper);
         managers.Game.currentSceneObject.addChild(toiletPaper);
       }
     }

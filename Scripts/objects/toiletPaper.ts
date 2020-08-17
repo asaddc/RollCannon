@@ -16,6 +16,7 @@ module objects {
         this.speedX = 10;
         this.speedY = 0;
         this.Move();
+        this.AddEdgesBoundary();
       }
     }
 
@@ -32,6 +33,21 @@ module objects {
       }
 
       (this.isMovingRight) ? this.x += this.speedX : this.x -= this.speedX;
+    }
+
+    private AddEdgesBoundary() {
+      // Right boundary
+      if (this.x >= 495 - this.halfW) {
+        // I have collided with the right boundary
+        this.x = 0;
+        this.visible = false;
+      }
+      // Left boundary
+      if (this.x <= this.halfW) {
+        // I have collided with the left boundary
+        this.x = 0
+        this.visible = false;
+      }
     }
   }
 }

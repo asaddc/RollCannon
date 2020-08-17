@@ -14,7 +14,12 @@ module scenes {
     public Start(): void {
 
       console.log("game over");
-      this.background = new objects.Background("gameOverBG");
+      if (managers.Game.level == 4) {
+        this.background = new objects.Background("winnerBG");
+      }
+      else {
+        this.background = new objects.Background("gameOverBG");
+      }
       console.log(this.background);
       this.background.x = -35;
       this.playButton = new objects.Button("redPlayBtn", managers.Game.canvas.clientWidth * 0.5, managers.Game.canvas.clientHeight * 0.5 + 100);

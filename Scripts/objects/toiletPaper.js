@@ -30,6 +30,7 @@ var objects;
                 this.speedX = 10;
                 this.speedY = 0;
                 this.Move();
+                this.AddEdgesBoundary();
             }
         };
         ToiletPaper.prototype.Reset = function () {
@@ -43,6 +44,20 @@ var objects;
                 this.isMovingRight = managers.Game.isFacingRight;
             }
             (this.isMovingRight) ? this.x += this.speedX : this.x -= this.speedX;
+        };
+        ToiletPaper.prototype.AddEdgesBoundary = function () {
+            // Right boundary
+            if (this.x >= 495 - this.halfW) {
+                // I have collided with the right boundary
+                this.x = 0;
+                this.visible = false;
+            }
+            // Left boundary
+            if (this.x <= this.halfW) {
+                // I have collided with the left boundary
+                this.x = 0;
+                this.visible = false;
+            }
         };
         return ToiletPaper;
     }(objects.Ammo));

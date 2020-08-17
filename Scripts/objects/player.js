@@ -22,7 +22,7 @@ var objects;
             _this.facingLeft = false;
             _this.on("tick", _this.Update);
             _this.Start();
-            _this.toilerPaperCount = 0;
+            _this.toiletPaperCount = 0;
             return _this;
         }
         Player.prototype.Start = function () {
@@ -33,12 +33,12 @@ var objects;
             }
             if (managers.Game.level == 2) {
                 this.allDirections = false;
-                this.x = 60;
+                this.x = 200;
                 this.y = 540;
             }
             if (managers.Game.level == 3) {
                 this.allDirections = true;
-                this.x = 60;
+                this.x = 250;
                 this.y = 540;
             }
             this.toiletPapers = new Array();
@@ -213,8 +213,12 @@ var objects;
                 toiletPaper.halfW = 25;
                 toiletPaper.height = 50;
                 toiletPaper.height = 50;
+<<<<<<< HEAD
                 this.toiletPapers[this.toilerPaperCount++] = toiletPaper;
                 // this.toiletPapers.push(toiletPaper);
+=======
+                this.toiletPapers[this.toiletPaperCount++] = toiletPaper;
+>>>>>>> master
                 managers.Game.currentSceneObject.addChild(toiletPaper);
             }
         };

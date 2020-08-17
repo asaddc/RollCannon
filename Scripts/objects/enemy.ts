@@ -3,10 +3,12 @@ module objects {
         private dx: number;
         public isDead: boolean;
         public isFacingLeft: boolean = true;
+        public isExploding: boolean;
         constructor() {
             super("baseEnemyFacingLeft");
             this.Start();
             this.isDead = false;
+            this.isExploding = false;
         }
         public Start(): void {
             this.dx = Math.random() + 0.3;

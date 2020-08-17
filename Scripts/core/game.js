@@ -136,7 +136,8 @@
                     "frames": [11]
                 },
                 "explosion": {
-                    "frames": [12, 24]
+                    "frames": [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+                    "speed": 0.1
                 },
                 "smallToiletPaper": {
                     "frames": [25]

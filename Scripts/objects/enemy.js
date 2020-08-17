@@ -20,6 +20,7 @@ var objects;
             _this.isFacingLeft = true;
             _this.Start();
             _this.isDead = false;
+            _this.isExploding = false;
             return _this;
         }
         Enemy.prototype.Start = function () {

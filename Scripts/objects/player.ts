@@ -180,7 +180,7 @@ module objects {
         this.y = this.halfH + 50;
       }
     }
-    
+
     private AddLevel3EdgesBoundary() {
       // Right boundary
       if (this.x >= 495 - this.halfW) {

@@ -11,14 +11,17 @@ var managers;
                     createjs.Sound.play("damageSound");
                     heartContainer.currentHealth--;
                     obj2.isColliding = true;
+                    return true;
                 }
-                if (!obj2.isColliding && obj1 instanceof objects.ToiletPaper) {
+                else if (!obj2.isColliding && obj1 instanceof objects.ToiletPaper) {
                     createjs.Sound.play("explosion");
                     obj2.isColliding = true;
+                    return true;
                 }
             }
             else {
                 obj2.isColliding = false;
+                return false;
             }
         };
         return Collision;

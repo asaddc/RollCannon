@@ -15,9 +15,11 @@ var objects;
 (function (objects) {
     var Explosion = /** @class */ (function (_super) {
         __extends(Explosion, _super);
-        function Explosion() {
+        function Explosion(x, y) {
             var _this = _super.call(this, "explosion") || this;
             _this.explosionSFX = createjs.Sound.play("explosion");
+            _this.x = x;
+            _this.y = y;
             return _this;
         }
         return Explosion;

@@ -178,6 +178,7 @@
       { id: "outsideBG", src: "./Assets/outsideBG.png"},
       { id: "outside2BG", src: "./Assets/outside2BG.png"},
       { id: "gameOverBG", src: "./Assets/gameOverBG.jpg" },
+      { id: "winnerBG", src: "./Assets/winnerBG.png" },
       { id: "damageSound", src: "./Assets/Audio/damage-sound.mp3" },
       { id: "titlebgm", src: "./Assets/Audio/title.mp3" },
       { id: "playbgm", src: "./Assets/Audio/backgroundMusic.mp3" },

@@ -73,9 +73,6 @@ var scenes;
                     }
                 });
             });
-            if (this.enemies.length == 0) {
-                this.changeLevel();
-            }
         };
         PlayScene.prototype.removeEnemy = function (enemy) {
             var _this = this;
@@ -88,6 +85,9 @@ var scenes;
         PlayScene.prototype.handleExplosion = function (explosion) {
             explosion.stop();
             this.stage.removeChild(explosion);
+            if (this.enemies.length == 0) {
+                this.changeLevel();
+            }
         };
         PlayScene.prototype.changeLevel = function () {
             managers.Game.level++;

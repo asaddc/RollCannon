@@ -80,9 +80,7 @@ module scenes {
         });
       });
 
-      if (this.enemies.length == 0) {
-        this.changeLevel();
-      }
+
 
     }
 
@@ -97,6 +95,10 @@ module scenes {
     private handleExplosion(explosion: objects.Explosion): void {
       explosion.stop();
       this.stage.removeChild(explosion);
+
+      if (this.enemies.length == 0) {
+        this.changeLevel();
+      }
     }
 
     public changeLevel(): void {

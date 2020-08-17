@@ -65,6 +65,7 @@ var scenes;
                         _this.removeChild(tp);
                         _this.removeChild(enemy);
                         managers.Game.score += 1000;
+                        _this.sidebar.scoreLabel.text = "SCORE: " + managers.Game.score;
                         _this.enemies.forEach(function (e, index) {
                             if (e === enemy) {
                                 _this.enemies.splice(index, 1);

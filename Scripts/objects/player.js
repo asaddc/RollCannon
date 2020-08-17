@@ -213,12 +213,7 @@ var objects;
                 toiletPaper.halfW = 25;
                 toiletPaper.height = 50;
                 toiletPaper.height = 50;
-<<<<<<< HEAD
-                this.toiletPapers[this.toilerPaperCount++] = toiletPaper;
-                // this.toiletPapers.push(toiletPaper);
-=======
                 this.toiletPapers[this.toiletPaperCount++] = toiletPaper;
->>>>>>> master
                 managers.Game.currentSceneObject.addChild(toiletPaper);
             }
         };

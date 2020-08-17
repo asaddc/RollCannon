@@ -180,7 +180,7 @@ module objects {
         this.y = this.halfH + 50;
       }
     }
-    
+
     private AddLevel3EdgesBoundary() {
       // Right boundary
       if (this.x >= 495 - this.halfW) {
@@ -231,7 +231,7 @@ module objects {
         toiletPaper.halfW = 25;
         toiletPaper.height = 50;
         toiletPaper.height = 50;
-        this.toiletPapers[this.toilerPaperCount++] = toiletPaper;
+        this.toiletPapers[this.toiletPaperCount++] = toiletPaper;
         managers.Game.currentSceneObject.addChild(toiletPaper);
       }
     }

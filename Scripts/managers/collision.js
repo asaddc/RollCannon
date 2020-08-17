@@ -7,10 +7,11 @@ var managers;
             var P1 = new math.Vec2(obj1.x, obj1.y);
             var P2 = new math.Vec2(obj2.x, obj2.y);
             if (math.Vec2.Distance(P1, P2) < obj1.halfH - 10 + obj2.halfH - 10) {
-                if (!obj2.isColliding && obj1 instanceof objects.Player) {
+                if (!obj2.isColliding && obj1 instanceof objects.Player && !obj1.isColliding) {
                     createjs.Sound.play("damageSound");
                     heartContainer.currentHealth--;
                     obj2.isColliding = true;
+                    obj1.isColliding = true;
                     return true;
                 }
                 else if (!obj2.isColliding && obj1 instanceof objects.ToiletPaper) {
@@ -20,6 +21,7 @@ var managers;
                 }
             }
             else {
+                obj1.isColliding = false;
                 obj2.isColliding = false;
                 return false;
             }

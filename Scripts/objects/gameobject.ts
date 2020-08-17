@@ -14,9 +14,7 @@ module objects {
     // Constructor
     constructor(imageString: string) {
       super(managers.Game.textureAtlas, imageString);
-
       this.name = imageString;
-
       this.Init();
     }
 

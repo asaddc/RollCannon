@@ -63,7 +63,7 @@ module scenes {
             tp.visible = false;
             enemy.isDead = true;
 
-            // sets the coordinates to a location which cannot be reached by the player. so the enemies "ghost" wont be able to kill him/her.
+            // sets the coordinates to a location which cannot be reached by the player. so the enemy's "ghost" wont be able to kill him/her.
             // This will only work with the if statement in the enemy Update method, if the player is dead, then the player will stop moving as well.
             enemy.x = 0;
             enemy.y = 0;
@@ -79,9 +79,6 @@ module scenes {
           }
         });
       });
-
-
-
     }
 
     private removeEnemy(enemy: objects.Enemy) {

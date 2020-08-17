@@ -1,5 +1,5 @@
 module objects {
-  export class Sidebar {
+  export class Sidebar extends createjs.Container{
     public levelLabel: objects.Label;
     public scoreLabel: objects.Label;
     public livesLabel: objects.Label;
@@ -8,6 +8,7 @@ module objects {
     public moveLabel: objects.Label;
 
     constructor() {
+      super();
       this.Init();
     }
 
@@ -19,7 +20,15 @@ module objects {
       this.controlsLabel = new objects.Label("CONTROLS:", "20px", "Arial", "#FFF", 503, 500);
       this.shootLabel = new objects.Label("SHOOT: SPACE", "18px", "Arial", "#FFF", 503, 525);
       this.moveLabel = new objects.Label("MOVE: WASD | ARROW KEYS", "18px", "Arial", "#FFF", 503, 550);
-
+      this.Main();
+    }
+    private Main():void{
+      this.addChild(this.levelLabel);
+      this.addChild(this.scoreLabel);
+      this.addChild(this.livesLabel);
+      this.addChild(this.controlsLabel);
+      this.addChild(this.shootLabel);
+      this.addChild(this.moveLabel);
     }
   }
 }

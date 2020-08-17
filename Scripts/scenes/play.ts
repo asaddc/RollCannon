@@ -70,6 +70,8 @@ module scenes {
             this.removeChild(tp);
             this.removeChild(enemy);
 
+            managers.Game.score += 1000;
+            this.sidebar.scoreLabel.text = `SCORE: ${managers.Game.score}`;
             this.enemies.forEach((e, index) => {
               if (e === enemy) {
                 this.enemies.splice(index, 1);
@@ -82,6 +84,7 @@ module scenes {
       if (this.enemies.length == 0) {
         this.changeLevel();
       }
+
     }
 
     private handleExplosion(enemy: objects.Enemy): void {

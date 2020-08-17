@@ -9,11 +9,12 @@ module scenes {
     private heartContainer: objects.HeartContainer;
     private readonly ENEMIES_NUM: number = 3;
     private bgm: createjs.AbstractSoundInstance;
-    public explosion: objects.Explosion;
+    public explosions: objects.Explosion[];
 
     // Constructor
     constructor() {
       super();
+      this.explosions = [];
       this.Start();
     }
 
@@ -49,11 +50,13 @@ module scenes {
 
           if (enemy.isColliding && !enemy.isDead && !enemy.isExploding) {
 
-            this.explosion = new objects.Explosion(enemy.x, enemy.y);
-            this.explosion.on("animationend", () => this.handleExplosion(enemy));
+            let explosion = new objects.Explosion(enemy.x, enemy.y);
+            explosion.on("animationend", () => this.handleExplosion(explosion));
+            this.explosions.push(explosion);
+
             managers.Game.score += 1000;
 
-            this.addChild(this.explosion);
+            this.addChild(explosion);
             enemy.isExploding = true;
 
             enemy.visible = false;
@@ -91,9 +94,9 @@ module scenes {
       });
     }
 
-    private handleExplosion(enemy: objects.Enemy): void {
-      this.explosion.stop();
-      this.stage.removeChild(this.explosion);
+    private handleExplosion(explosion: objects.Explosion): void {
+      explosion.stop();
+      this.stage.removeChild(explosion);
     }
 
     public changeLevel(): void {

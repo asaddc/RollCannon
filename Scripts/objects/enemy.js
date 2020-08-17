@@ -82,8 +82,33 @@ var objects;
         };
         Enemy.prototype.CheckBound = function () {
             // once this hits the wall on the left, then reset back to the right.
-            if (this.x <= 30 + this.halfH + 25 || this.x >= 440 + 25) {
+            if ((this.x <= 30 + this.halfH + 25 || this.x >= 440 + 25) && managers.Game.level == 1) {
                 this.dx = -this.dx;
+                if (this.dx < 0) {
+                    this.gotoAndStop("baseEnemyFacingRight");
+                }
+                else {
+                    this.gotoAndStop("baseEnemyFacingLeft");
+                }
+            }
+            else if (this.x <= 0 + this.halfH + 25 || this.x >= 440 + 25) {
+                this.dx = -this.dx;
+                if (this.dx < 0) {
+                    if (managers.Game.level == 2) {
+                        this.gotoAndStop("skeletonFacingRight");
+                    }
+                    else {
+                        this.gotoAndStop("robotFacingLeft");
+                    }
+                }
+                else {
+                    if (managers.Game.level == 2) {
+                        this.gotoAndStop("skeletonFacingLeft");
+                    }
+                    else {
+                        this.gotoAndStop("robotFacingRight");
+                    }
+                }
             }
         };
         return Enemy;

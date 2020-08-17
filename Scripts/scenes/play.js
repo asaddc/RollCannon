@@ -99,12 +99,7 @@ var scenes;
         PlayScene.prototype.Main = function () {
             var _this = this;
             this.addChild(this.background);
-            this.addChild(this.sidebar.levelLabel);
-            this.addChild(this.sidebar.scoreLabel);
-            this.addChild(this.sidebar.livesLabel);
-            this.addChild(this.sidebar.controlsLabel);
-            this.addChild(this.sidebar.shootLabel);
-            this.addChild(this.sidebar.moveLabel);
+            this.addChild(this.sidebar);
             this.addChild(this.heartContainer);
             this.enemies.forEach(function (enemy) {
                 _this.addChild(enemy);

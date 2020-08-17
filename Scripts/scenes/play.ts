@@ -46,9 +46,13 @@ module scenes {
 
         this.player.toiletPapers.forEach(tp => {
           let bulletCollided = managers.Collision.Check(tp, enemy);
+          
           if (enemy.isColliding && !enemy.isDead && !enemy.isExploding) {
+
             this.explosion = new objects.Explosion(enemy.x, enemy.y);
             this.explosion.on("animationend", () => this.handleExplosion(enemy));
+            managers.Game.score += 1000;
+
             this.addChild(this.explosion);
             enemy.isExploding = true;
 
@@ -63,12 +67,9 @@ module scenes {
             tp.x = 0;
             tp.y = 0;
 
-
-
             this.removeChild(tp);
             this.removeChild(enemy);
 
-            managers.Game.score += 1000;
             this.enemies.forEach((e, index) => {
               if (e === enemy) {
                 this.enemies.splice(index, 1);
@@ -109,6 +110,9 @@ module scenes {
       this.addChild(this.sidebar.levelLabel);
       this.addChild(this.sidebar.scoreLabel);
       this.addChild(this.sidebar.livesLabel);
+      this.addChild(this.sidebar.controlsLabel);
+      this.addChild(this.sidebar.shootLabel);
+      this.addChild(this.sidebar.moveLabel);
       this.addChild(this.heartContainer);
       this.enemies.forEach(enemy => {
         this.addChild(enemy);

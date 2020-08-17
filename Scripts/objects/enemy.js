@@ -45,23 +45,29 @@ var objects;
             if (managers.Game.level == 2) {
                 this.y = 540;
                 if (temp == 0) {
-                    this.gotoAndPlay("baseEnemyFacingRight");
+                    this.gotoAndPlay("skeletonFacingRight");
                     this.isFacingLeft = false;
                     this.x = 120;
                 }
                 else {
+                    this.gotoAndPlay("skeletonFacingLeft");
                     this.x = 440;
                 }
             }
             if (managers.Game.level == 3) {
                 this.y = Math.floor(Math.random() * (600 - 500 + 1)) + 480;
                 if (temp == 0) {
-                    this.gotoAndPlay("baseEnemyFacingRight");
+                    this.gotoAndPlay("robotFacingRight");
                     this.isFacingLeft = false;
                     this.x = 120;
+                    this.scaleX = (Math.random() * 2) + 1;
+                    this.scaleY = this.scaleX;
                 }
                 else {
+                    this.gotoAndPlay("robotFacingLeft");
                     this.x = Math.floor(Math.random() * 20) + 440;
+                    this.scaleX = (Math.random() * 2) + 1;
+                    this.scaleY = this.scaleX;
                 }
             }
         };

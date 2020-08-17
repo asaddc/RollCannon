@@ -47,7 +47,7 @@ var objects;
                 if (temp == 0) {
                     this.gotoAndPlay("baseEnemyFacingRight");
                     this.isFacingLeft = false;
-                    this.x = 30;
+                    this.x = 120;
                 }
                 else {
                     this.x = 440;
@@ -76,7 +76,7 @@ var objects;
         };
         Enemy.prototype.CheckBound = function () {
             // once this hits the wall on the left, then reset back to the right.
-            if ((this.x <= 30 + this.halfH + 25 || this.x >= 440 + 25) && managers.Game.level != 2) {
+            if (this.x <= 30 + this.halfH + 25 || this.x >= 440 + 25) {
                 this.dx = -this.dx;
             }
         };

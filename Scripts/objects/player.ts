@@ -25,7 +25,7 @@ module objects {
       }
       if (managers.Game.level == 2) {
         this.allDirections = false;
-        this.x = 200;
+        this.x = 250;
         this.y = 540;
       }
       if (managers.Game.level == 3) {

@@ -51,6 +51,7 @@ var scenes;
                     if (enemy.isColliding && !enemy.isDead && !enemy.isExploding) {
                         _this.explosion = new objects.Explosion(enemy.x, enemy.y);
                         _this.explosion.on("animationend", function () { return _this.handleExplosion(enemy); });
+                        managers.Game.score += 1000;
                         _this.addChild(_this.explosion);
                         enemy.isExploding = true;
                         enemy.visible = false;
@@ -103,6 +104,9 @@ var scenes;
             this.addChild(this.sidebar.levelLabel);
             this.addChild(this.sidebar.scoreLabel);
             this.addChild(this.sidebar.livesLabel);
+            this.addChild(this.sidebar.controlsLabel);
+            this.addChild(this.sidebar.shootLabel);
+            this.addChild(this.sidebar.moveLabel);
             this.addChild(this.heartContainer);
             this.enemies.forEach(function (enemy) {
                 _this.addChild(enemy);

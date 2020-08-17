@@ -46,7 +46,7 @@ module scenes {
 
         this.player.toiletPapers.forEach(tp => {
           let bulletCollided = managers.Collision.Check(tp, enemy);
-          
+
           if (enemy.isColliding && !enemy.isDead && !enemy.isExploding) {
 
             this.explosion = new objects.Explosion(enemy.x, enemy.y);
@@ -72,11 +72,7 @@ module scenes {
 
             managers.Game.score += 1000;
             this.sidebar.scoreLabel.text = `SCORE: ${managers.Game.score}`;
-            this.enemies.forEach((e, index) => {
-              if (e === enemy) {
-                this.enemies.splice(index, 1);
-              }
-            });
+            this.removeEnemy(enemy);
           }
         });
       });
@@ -85,6 +81,14 @@ module scenes {
         this.changeLevel();
       }
 
+    }
+
+    private removeEnemy(enemy: objects.Enemy) {
+      this.enemies.forEach((e, index) => {
+        if (e === enemy) {
+          this.enemies.splice(index, 1);
+        }
+      });
     }
 
     private handleExplosion(enemy: objects.Enemy): void {

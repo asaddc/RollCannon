@@ -67,17 +67,21 @@ var scenes;
                         _this.removeChild(enemy);
                         managers.Game.score += 1000;
                         _this.sidebar.scoreLabel.text = "SCORE: " + managers.Game.score;
-                        _this.enemies.forEach(function (e, index) {
-                            if (e === enemy) {
-                                _this.enemies.splice(index, 1);
-                            }
-                        });
+                        _this.removeEnemy(enemy);
                     }
                 });
             });
             if (this.enemies.length == 0) {
                 this.changeLevel();
             }
+        };
+        PlayScene.prototype.removeEnemy = function (enemy) {
+            var _this = this;
+            this.enemies.forEach(function (e, index) {
+                if (e === enemy) {
+                    _this.enemies.splice(index, 1);
+                }
+            });
         };
         PlayScene.prototype.handleExplosion = function (enemy) {
             this.explosion.stop();

@@ -2,10 +2,12 @@ module objects {
     export class Enemy extends objects.GameObject {
         private dx: number;
         public isDead: boolean;
+        public isExploding: boolean;
         constructor() {
             super("baseEnemyFacingLeft");
             this.Start();
             this.isDead = false;
+            this.isExploding = false;
         }
         public Start(): void {
             this.dx = Math.random() + 0.3;

@@ -44,11 +44,15 @@ var scenes;
             var _this = this;
             this.heartContainer.Update();
             this.enemies.forEach(function (enemy) {
+                var playerCollided = managers.Collision.Check(_this.player, enemy, _this.heartContainer);
                 enemy.Update();
-                managers.Collision.Check(_this.player, enemy, _this.heartContainer);
                 _this.player.toiletPapers.forEach(function (tp) {
-                    managers.Collision.Check(tp, enemy);
-                    if (enemy.isColliding && !enemy.isDead) {
+                    var bulletCollided = managers.Collision.Check(tp, enemy);
+                    if (enemy.isColliding && !enemy.isDead && !enemy.isExploding) {
+                        _this.explosion = new objects.Explosion(enemy.x, enemy.y);
+                        _this.explosion.on("animationend", function () { return _this.handleExplosion(enemy); });
+                        _this.addChild(_this.explosion);
+                        enemy.isExploding = true;
                         enemy.visible = false;
                         tp.visible = false;
                         enemy.isDead = true;
@@ -60,8 +64,6 @@ var scenes;
                         tp.y = 0;
                         _this.removeChild(tp);
                         _this.removeChild(enemy);
-                        // this.enemies.pop();
-                        // this.enemies.
                         managers.Game.score += 1000;
                         _this.enemies.forEach(function (e, index) {
                             if (e === enemy) {
@@ -74,6 +76,10 @@ var scenes;
             if (this.enemies.length == 0) {
                 this.changeLevel();
             }
+        };
+        PlayScene.prototype.handleExplosion = function (enemy) {
+            this.explosion.stop();
+            this.stage.removeChild(this.explosion);
         };
         PlayScene.prototype.changeLevel = function () {
             managers.Game.level++;
@@ -101,7 +107,6 @@ var scenes;
                 _this.addChild(enemy);
             });
             this.addChild(this.player);
-            // this.addChild(this.player.ammo);
         };
         return PlayScene;
     }(objects.Scene));

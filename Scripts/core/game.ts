@@ -119,49 +119,50 @@
 
       "animations": {
         "baseEnemyFacingLeft": {
-            "frames": [0]
+          "frames": [0]
         },
         "baseEnemyFacingRight": {
-            "frames": [1]
+          "frames": [1]
         },
         "heartFull": {
-            "frames": [2]
+          "frames": [2]
         },
         "heartOneThird": {
-            "frames": [3]
+          "frames": [3]
         },
         "heartTwoThirds": {
-            "frames": [4]
+          "frames": [4]
         },
         "playerGunLeft": {
-            "frames": [5]
+          "frames": [5]
         },
         "playerGunRight": {
-            "frames": [6]
+          "frames": [6]
         },
         "redPlayBtn": {
-            "frames": [7]
+          "frames": [7]
         },
         "robotFacingLeft": {
-            "frames": [8]
+          "frames": [8]
         },
         "robotFacingRight": {
-            "frames": [9]
+          "frames": [9]
         },
         "skeletonFacingLeft": {
-            "frames": [10]
+          "frames": [10]
         },
         "skeletonFacingRight": {
-            "frames": [11]
+          "frames": [11]
         },
         "explosion": {
-            "frames": [12, 24]
+          "frames": [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+          "speed": 0.1
         },
         "smallToiletPaper": {
-            "frames": [25]
+          "frames": [25]
         },
         "toiletPaper": {
-            "frames": [26]
+          "frames": [26]
         }
       },
     };
@@ -175,8 +176,8 @@
       { id: "textureAtlas", src: "./Assets/Sprites/textureAtlas2.png" },
       { id: "supermarketBG", src: "./Assets/supermarketBG.jpg" },
       { id: "mainBG", src: "./Assets/mainBG.jpg" },
-      { id: "outsideBG", src: "./Assets/outsideBG.png"},
-      { id: "outside2BG", src: "./Assets/outside2BG.png"},
+      { id: "outsideBG", src: "./Assets/outsideBG.png" },
+      { id: "outside2BG", src: "./Assets/outside2BG.png" },
       { id: "gameOverBG", src: "./Assets/gameOverBG.jpg" },
       { id: "damageSound", src: "./Assets/Audio/damage-sound.mp3" },
       { id: "titlebgm", src: "./Assets/Audio/title.mp3" },

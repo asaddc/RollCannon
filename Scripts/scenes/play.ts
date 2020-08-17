@@ -9,6 +9,7 @@ module scenes {
     private heartContainer: objects.HeartContainer;
     private readonly ENEMIES_NUM: number = 3;
     private bgm: createjs.AbstractSoundInstance;
+    public explosion: objects.Explosion;
 
     // Constructor
     constructor() {
@@ -40,15 +41,21 @@ module scenes {
     public Update(): void {
       this.heartContainer.Update();
       this.enemies.forEach(enemy => {
+        let playerCollided = managers.Collision.Check(this.player, enemy, this.heartContainer);
         enemy.Update();
-        managers.Collision.Check(this.player, enemy, this.heartContainer);
 
         this.player.toiletPapers.forEach(tp => {
-          managers.Collision.Check(tp, enemy);
-          if (enemy.isColliding && !enemy.isDead) {
+          let bulletCollided = managers.Collision.Check(tp, enemy);
+          if (enemy.isColliding && !enemy.isDead && !enemy.isExploding) {
+            this.explosion = new objects.Explosion(enemy.x, enemy.y);
+            this.explosion.on("animationend", () => this.handleExplosion(enemy));
+            this.addChild(this.explosion);
+            enemy.isExploding = true;
+
             enemy.visible = false;
             tp.visible = false;
             enemy.isDead = true;
+
             // sets the coordinates to a location which cannot be reached by the player. so the enemies "ghost" wont be able to kill him/her.
             // This will only work with the if statement in the enemy Update method, if the player is dead, then the player will stop moving as well.
             enemy.x = 0;
@@ -56,10 +63,11 @@ module scenes {
             tp.x = 0;
             tp.y = 0;
 
+
+
             this.removeChild(tp);
             this.removeChild(enemy);
-            // this.enemies.pop();
-            // this.enemies.
+
             managers.Game.score += 1000;
             this.enemies.forEach((e, index) => {
               if (e === enemy) {
@@ -73,6 +81,11 @@ module scenes {
       if (this.enemies.length == 0) {
         this.changeLevel();
       }
+    }
+
+    private handleExplosion(enemy: objects.Enemy): void {
+      this.explosion.stop();
+      this.stage.removeChild(this.explosion);
     }
 
     public changeLevel(): void {
@@ -101,7 +114,6 @@ module scenes {
         this.addChild(enemy);
       });
       this.addChild(this.player);
-      // this.addChild(this.player.ammo);
     }
   }
 }

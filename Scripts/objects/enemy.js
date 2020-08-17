@@ -46,7 +46,7 @@ var objects;
                 this.y = 540;
                 if (temp == 0) {
                     this.gotoAndPlay("skeletonFacingRight");
-                    this.isFacingLeft = false;
+                    this.dx = -this.dx;
                     this.x = 120;
                 }
                 else {
@@ -55,10 +55,10 @@ var objects;
                 }
             }
             if (managers.Game.level == 3) {
-                this.y = Math.floor(Math.random() * (600 - 500 + 1)) + 480;
+                this.y = Math.floor(Math.random() * (600 - 500 + 1)) + 420;
                 if (temp == 0) {
                     this.gotoAndPlay("robotFacingRight");
-                    this.isFacingLeft = false;
+                    this.dx = -this.dx;
                     this.x = 120;
                     this.scaleX = (Math.random() * 2) + 1;
                     this.scaleY = this.scaleX;
@@ -73,15 +73,10 @@ var objects;
         };
         Enemy.prototype.Move = function () {
             // move this enemy to the left
-            if (this.isFacingLeft) {
-                this.x -= this.dx;
-            }
-            else {
-                this.x += this.dx;
-            }
+            this.x -= this.dx;
         };
         Enemy.prototype.CheckBound = function () {
-            // once this hits the wall on the left, then reset back to the right.
+            // once this hits the wall on the left, then reset back to the right. Level 1 only
             if ((this.x <= 30 + this.halfH + 25 || this.x >= 440 + 25) && managers.Game.level == 1) {
                 this.dx = -this.dx;
                 if (this.dx < 0) {
@@ -91,14 +86,14 @@ var objects;
                     this.gotoAndStop("baseEnemyFacingLeft");
                 }
             }
-            else if (this.x <= 0 + this.halfH + 25 || this.x >= 440 + 25) {
+            else if (this.x <= 0 + this.halfH || this.x >= 440 + 25) {
                 this.dx = -this.dx;
                 if (this.dx < 0) {
                     if (managers.Game.level == 2) {
                         this.gotoAndStop("skeletonFacingRight");
                     }
                     else {
-                        this.gotoAndStop("robotFacingLeft");
+                        this.gotoAndStop("robotFacingRight");
                     }
                 }
                 else {
@@ -106,7 +101,7 @@ var objects;
                         this.gotoAndStop("skeletonFacingLeft");
                     }
                     else {
-                        this.gotoAndStop("robotFacingRight");
+                        this.gotoAndStop("robotFacingLeft");
                     }
                 }
             }
